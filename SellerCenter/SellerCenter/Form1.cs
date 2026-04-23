@@ -11,14 +11,30 @@ namespace SellerCenter
 
         private void subMenuNewRecording_Click(object sender, EventArgs e)
         {
-            frmRecording frmRecording = new frmRecording();
-            frmRecording.ShowDialog();
+            var screen = new frmRecording();
+            screen.ShowDialog();
         }
 
         private void subMenuRecordHistory_Click(object sender, EventArgs e)
         {
-            frmHistoryScreen frmHistoryScreen = new frmHistoryScreen();
-            frmHistoryScreen.ShowDialog();
+            var screen = new frmHistoryScreen();
+            screen.ShowDialog();
+        }
+
+        private void menuBigSeller_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void subMenuShopee_Click(object sender, EventArgs e)
+        {
+            var screen = new frmBigSellerShopee();
+            screen.ShowDialog();
+        }
+
+        private void subMenuTiktok_Click(object sender, EventArgs e)
+        {
+            var screen = new frmBigSellerTiktok();
+            screen.ShowDialog();
         }
     }
 }

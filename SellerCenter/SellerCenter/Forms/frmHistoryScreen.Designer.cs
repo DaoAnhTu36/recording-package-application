@@ -109,6 +109,7 @@
             txtBarcode.Font = new Font("Segoe UI", 13F);
             txtBarcode.Location = new Point(12, 69);
             txtBarcode.Name = "txtBarcode";
+            txtBarcode.PlaceholderText = "Mã đơn hàng";
             txtBarcode.Size = new Size(283, 31);
             txtBarcode.TabIndex = 6;
             txtBarcode.WordWrap = false;
@@ -125,10 +126,10 @@
             // 
             // btnSearch
             // 
-            btnSearch.BackColor = SystemColors.ActiveCaption;
-            btnSearch.FlatStyle = FlatStyle.Popup;
+            btnSearch.BackColor = Color.DodgerBlue;
+            btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 13F);
-            btnSearch.ForeColor = SystemColors.ActiveCaptionText;
+            btnSearch.ForeColor = SystemColors.ControlLightLight;
             btnSearch.Location = new Point(10, 255);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(136, 36);
@@ -139,9 +140,10 @@
             // 
             // btnReset
             // 
-            btnReset.BackColor = Color.IndianRed;
-            btnReset.FlatStyle = FlatStyle.Popup;
+            btnReset.BackColor = Color.Red;
+            btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.Font = new Font("Segoe UI", 13F);
+            btnReset.ForeColor = SystemColors.ControlLightLight;
             btnReset.Location = new Point(159, 255);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(136, 36);
@@ -175,6 +177,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmHistoryScreen";
             Text = "Lịch sử video";
             Load += frmHistoryScreen_Load;

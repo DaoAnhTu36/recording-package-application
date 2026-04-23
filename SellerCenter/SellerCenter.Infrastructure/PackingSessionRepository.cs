@@ -16,21 +16,31 @@ namespace SellerCenter.Infrastructure
         {
             using var conn = _db.GetConnection();
             conn.Open();
-            using var cmd = new MySqlCommand("SELECT barcode, video_path, created_at FROM packing_sessions", conn);
+            using var cmd = new MySqlCommand("SELECT barcode, local_path, youtube_url, created_at FROM packing_sessions", conn);
             using var adapter = new MySqlDataAdapter(cmd);
             var dt = new DataTable();
             adapter.Fill(dt);
             return dt;
         }
 
-        public void InsertSession(string barcode, string videoPath)
+        public void InsertSession(string barcode, string localPath)
         {
             using var conn = _db.GetConnection();
             conn.Open();
-            using var cmd = new MySqlCommand("INSERT INTO packing_sessions (barcode, video_path, created_at) VALUES (@barcode, @videoPath, @createdAt)", conn);
+            using var cmd = new MySqlCommand("INSERT INTO packing_sessions (barcode, local_path, created_at) VALUES (@barcode, @localPath, @createdAt)", conn);
             cmd.Parameters.AddWithValue("@barcode", barcode);
-            cmd.Parameters.AddWithValue("@videoPath", videoPath);
+            cmd.Parameters.AddWithValue("@localPath", localPath);
             cmd.Parameters.AddWithValue("@createdAt", DateTime.Now);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void UpdateSession(string barcode, string youtubeUrl)
+        {
+            using var conn = _db.GetConnection();
+            conn.Open();
+            using var cmd = new MySqlCommand("UPDATE packing_sessions SET youtube_url = @youtubeUrl WHERE barcode = @barcode", conn);
+            cmd.Parameters.AddWithValue("@barcode", barcode);
+            cmd.Parameters.AddWithValue("@youtubeUrl", youtubeUrl);
             cmd.ExecuteNonQuery();
         }
 
@@ -48,16 +58,13 @@ namespace SellerCenter.Infrastructure
         public async Task<DataTable> GetHistoryRecordByBarcode(string? barcode, DateTime? fromDate, DateTime? toDate)
         {
             var dt = new DataTable();
-
             using var conn = _db.GetConnection();
             await conn.OpenAsync();
-
-            var sql = @"SELECT barcode, video_path, created_at FROM packing_sessions WHERE 1=1";
-
+            var sql = @"SELECT barcode, local_path, youtube_url, created_at FROM packing_sessions WHERE 1=1";
             using var cmd = new MySqlCommand();
             cmd.Connection = conn;
 
-            if (!string.IsNullOrWhiteSpace(barcode))
+            if (!string.IsNullOrWhiteSpace(barcode) && !string.IsNullOrEmpty(barcode))
             {
                 sql += " AND barcode COLLATE utf8mb4_general_ci LIKE @barcode";
                 cmd.Parameters.AddWithValue("@barcode", "%" + barcode.Trim() + "%");
@@ -76,12 +83,9 @@ namespace SellerCenter.Infrastructure
             }
 
             sql += " ORDER BY created_at DESC";
-
             cmd.CommandText = sql;
-
             using var reader = await cmd.ExecuteReaderAsync();
             dt.Load(reader);
-
             return dt;
         }
     }

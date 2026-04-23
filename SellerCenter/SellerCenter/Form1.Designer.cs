@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             menu = new MenuStrip();
             menuOrder = new ToolStripMenuItem();
-            subMenuRecordHistory = new ToolStripMenuItem();
             subMenuNewRecording = new ToolStripMenuItem();
+            subMenuRecordHistory = new ToolStripMenuItem();
+            menuBigSeller = new ToolStripMenuItem();
+            subMenuShopee = new ToolStripMenuItem();
+            subMenuTiktok = new ToolStripMenuItem();
             menu.SuspendLayout();
             SuspendLayout();
             // 
             // menu
             // 
-            menu.Items.AddRange(new ToolStripItem[] { menuOrder });
+            menu.Items.AddRange(new ToolStripItem[] { menuOrder, menuBigSeller });
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
             menu.Size = new Size(800, 24);
@@ -46,24 +50,46 @@
             // 
             // menuOrder
             // 
-            menuOrder.DropDownItems.AddRange(new ToolStripItem[] { subMenuRecordHistory, subMenuNewRecording });
+            menuOrder.DropDownItems.AddRange(new ToolStripItem[] { subMenuNewRecording, subMenuRecordHistory });
             menuOrder.Name = "menuOrder";
-            menuOrder.Size = new Size(71, 20);
-            menuOrder.Text = "Đơn hàng";
-            // 
-            // subMenuRecordHistory
-            // 
-            subMenuRecordHistory.Name = "subMenuRecordHistory";
-            subMenuRecordHistory.Size = new Size(180, 22);
-            subMenuRecordHistory.Text = "Lịch sử video";
-            subMenuRecordHistory.Click += subMenuRecordHistory_Click;
+            menuOrder.Size = new Size(147, 20);
+            menuOrder.Text = "Quản lý video sản phẩm";
             // 
             // subMenuNewRecording
             // 
             subMenuNewRecording.Name = "subMenuNewRecording";
-            subMenuNewRecording.Size = new Size(180, 22);
-            subMenuNewRecording.Text = "Quay video";
+            subMenuNewRecording.Size = new Size(195, 22);
+            subMenuNewRecording.Text = "Quay video đóng hàng";
             subMenuNewRecording.Click += subMenuNewRecording_Click;
+            // 
+            // subMenuRecordHistory
+            // 
+            subMenuRecordHistory.Name = "subMenuRecordHistory";
+            subMenuRecordHistory.Size = new Size(195, 22);
+            subMenuRecordHistory.Text = "Lịch sử";
+            subMenuRecordHistory.Click += subMenuRecordHistory_Click;
+            // 
+            // menuBigSeller
+            // 
+            menuBigSeller.DropDownItems.AddRange(new ToolStripItem[] { subMenuShopee, subMenuTiktok });
+            menuBigSeller.Name = "menuBigSeller";
+            menuBigSeller.Size = new Size(64, 20);
+            menuBigSeller.Text = "BigSeller";
+            menuBigSeller.Click += menuBigSeller_Click;
+            // 
+            // subMenuShopee
+            // 
+            subMenuShopee.Name = "subMenuShopee";
+            subMenuShopee.Size = new Size(113, 22);
+            subMenuShopee.Text = "Shopee";
+            subMenuShopee.Click += subMenuShopee_Click;
+            // 
+            // subMenuTiktok
+            // 
+            subMenuTiktok.Name = "subMenuTiktok";
+            subMenuTiktok.Size = new Size(113, 22);
+            subMenuTiktok.Text = "Tiktok";
+            subMenuTiktok.Click += subMenuTiktok_Click;
             // 
             // Form1
             // 
@@ -71,6 +97,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(menu);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menu;
             Name = "Form1";
             Text = "Seller Center";
@@ -86,5 +113,8 @@
         private ToolStripMenuItem menuOrder;
         private ToolStripMenuItem subMenuRecordHistory;
         private ToolStripMenuItem subMenuNewRecording;
+        private ToolStripMenuItem menuBigSeller;
+        private ToolStripMenuItem subMenuShopee;
+        private ToolStripMenuItem subMenuTiktok;
     }
 }

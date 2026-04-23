@@ -22,6 +22,11 @@ namespace SellerCenter.Service
             _instance.InsertSession(barcode, videoPath);
         }
 
+        public void UpdateSession(string barcode, string youtubeUrl)
+        {
+            _instance.UpdateSession(barcode, youtubeUrl);
+        }
+
         public bool IsBarcodeExists(string barcode)
         {
             return _instance.IsBarcodeExists(barcode);

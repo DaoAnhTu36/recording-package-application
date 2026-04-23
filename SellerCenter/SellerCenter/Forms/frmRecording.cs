@@ -1,4 +1,10 @@
-﻿using OpenCvSharp;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
+using Google.Apis.Upload;
+using Google.Apis.Util.Store;
+using Google.Apis.YouTube.v3;
+using Google.Apis.YouTube.v3.Data;
+using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using SellerCenter.Helper;
 using SellerCenter.Infrastructure;
@@ -9,14 +15,18 @@ namespace SellerCenter.Forms
     public partial class frmRecording : Form
     {
         private VideoCapture _camera;
-        private VideoWriter _writer;
+        private VideoWriter? _writer;
         private int _width;
         private int _height;
+        private string? _fullPathFile;
+        private string? _fullNameFile;
         private bool _isSaveIntoDatabase = true;
         private CancellationTokenSource? _cts;
         private Task? _recordTask;
-        private readonly object _writerLock = new(); private CancellationTokenSource _checkCts;
-        private Task _checkTask;
+        private readonly object _writerLock = new();
+        private CancellationTokenSource? _checkCts;
+        private Task? _checkTask;
+        private string? _barcode;
 
         public frmRecording()
         {
@@ -99,7 +109,7 @@ namespace SellerCenter.Forms
 
             _checkTask = Task.Run(() =>
             {
-                while (!_checkCts.Token.IsCancellationRequested)
+                while (!_checkCts!.Token.IsCancellationRequested)
                 {
                     using var frame = new Mat();
                     _camera.Read(frame);
@@ -189,11 +199,11 @@ namespace SellerCenter.Forms
                 _writer?.Release();
                 _writer?.Dispose();
                 _writer = null;
-                var fileName = Utilities.CreateFileName(barcode, out bool isSuccess);
-                var fullPath = Utilities.CreatePath(Application.StartupPath, fileName, out isSuccess);
+                _fullNameFile = Utilities.CreateFileName(barcode, out bool isSuccess);
+                _fullPathFile = Utilities.CreatePath(Application.StartupPath, _fullNameFile, out isSuccess);
 
                 _writer = new VideoWriter(
-                    fullPath,
+                    _fullPathFile,
                     FourCC.MP4V,
                     30,
                     new OpenCvSharp.Size(_width, _height)
@@ -212,8 +222,9 @@ namespace SellerCenter.Forms
                 {
                     if (barcode != null)
                     {
+                        _barcode = barcode;
                         var packingSessionService = new PackingSessionService();
-                        packingSessionService.InsertSession(barcode, fullPath);
+                        packingSessionService.InsertSession(barcode, _fullPathFile!);
                     }
                 }
 
@@ -223,6 +234,131 @@ namespace SellerCenter.Forms
 
         private void frmRecording_Load(object sender, EventArgs e)
         {
+        }
+
+        private async void btnUploadYoutube_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(_fullPathFile) || string.IsNullOrWhiteSpace(_fullNameFile) || !File.Exists(_fullPathFile))
+            {
+                MessageBox.Show("File video không tồn tại. Vui lòng quay video trước khi upload.");
+                return;
+            }
+
+            try
+            {
+                btnUploadYoutube.Enabled = false;
+                progressBar1.Value = 0;
+                lblStatus.Visible = true;
+                lblStatus.Text = "Đang xác thực Google...";
+
+                await UploadVideoAsync(
+                    _fullPathFile!,
+                    _fullNameFile!,
+                    _fullNameFile!
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+                lblStatus.Text = "Upload thất bại";
+            }
+            finally
+            {
+                btnUploadYoutube.Enabled = true;
+            }
+        }
+
+        private async Task UploadVideoAsync(string filePath, string title, string description)
+        {
+            if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
+                throw new Exception("File video không tồn tại.");
+
+            UserCredential credential;
+
+            using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+            {
+                credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.FromStream(stream).Secrets,
+                    new[] { YouTubeService.Scope.YoutubeUpload },
+                    "user",
+                    CancellationToken.None,
+                    new FileDataStore("YouTubeUploader.Auth.Store")
+                );
+            }
+
+            var youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = "YouTube Upload WinForms"
+            });
+
+            var video = new Video();
+            video.Snippet = new VideoSnippet
+            {
+                Title = title,
+                Description = description,
+                CategoryId = "22" // People & Blogs
+            };
+
+            video.Status = new VideoStatus
+            {
+                PrivacyStatus = "public" // private | public | unlisted
+            };
+
+            using (var fileStream = new FileStream(filePath, FileMode.Open))
+            {
+                var request = youtubeService.Videos.Insert(video, "snippet,status", fileStream, "video/*");
+
+                request.ProgressChanged += Request_ProgressChanged;
+                request.ResponseReceived += Request_ResponseReceived;
+
+                await request.UploadAsync();
+            }
+        }
+
+        private void Request_ProgressChanged(IUploadProgress progress)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => Request_ProgressChanged(progress)));
+                return;
+            }
+
+            switch (progress.Status)
+            {
+                case UploadStatus.Starting:
+                    lblStatus.Text = "Bắt đầu upload...";
+                    break;
+
+                case UploadStatus.Uploading:
+                    lblStatus.Text = $"Đang upload: {progress.BytesSent / 1024 / 1024} MB";
+                    if (progressBar1.Value < 90)
+                        progressBar1.Value = Math.Min(progressBar1.Value + 5, 90);
+                    break;
+
+                case UploadStatus.Completed:
+                    progressBar1.Value = 100;
+                    lblStatus.Text = "Upload thành công";
+                    break;
+
+                case UploadStatus.Failed:
+                    lblStatus.Text = "Upload thất bại: " + progress.Exception?.Message;
+                    break;
+            }
+        }
+
+        private void Request_ResponseReceived(Video video)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => Request_ResponseReceived(video)));
+                return;
+            }
+
+            string youtubeUrl = $"https://www.youtube.com/watch?v={video.Id}";
+            lblStatus.Text = youtubeUrl;
+            var packingSessionService = new PackingSessionService();
+            packingSessionService.UpdateSession(_barcode!, youtubeUrl);
         }
     }
 }

@@ -30,6 +30,7 @@ namespace SellerCenter.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecording));
             pictureBoxCamera = new PictureBox();
             label1 = new Label();
             label2 = new Label();
@@ -40,14 +41,17 @@ namespace SellerCenter.Forms
             btnCheckOrder = new Button();
             historyScanBarcode = new ListBox();
             label3 = new Label();
+            btnUploadYoutube = new Button();
+            lblStatus = new Label();
+            progressBar1 = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)pictureBoxCamera).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxCamera
             // 
-            pictureBoxCamera.Location = new Point(12, 215);
+            pictureBoxCamera.Location = new Point(12, 250);
             pictureBoxCamera.Name = "pictureBoxCamera";
-            pictureBoxCamera.Size = new Size(900, 814);
+            pictureBoxCamera.Size = new Size(900, 779);
             pictureBoxCamera.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxCamera.TabIndex = 1;
             pictureBoxCamera.TabStop = false;
@@ -96,10 +100,11 @@ namespace SellerCenter.Forms
             // 
             // btnStart
             // 
-            btnStart.BackColor = SystemColors.ButtonFace;
+            btnStart.BackColor = Color.Bisque;
             btnStart.Enabled = false;
             btnStart.FlatStyle = FlatStyle.Flat;
-            btnStart.Location = new Point(214, 12);
+            btnStart.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnStart.Location = new Point(138, 12);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(93, 38);
             btnStart.TabIndex = 9;
@@ -109,10 +114,11 @@ namespace SellerCenter.Forms
             // 
             // btnEnd
             // 
-            btnEnd.BackColor = SystemColors.ButtonFace;
+            btnEnd.BackColor = Color.Bisque;
             btnEnd.Enabled = false;
             btnEnd.FlatStyle = FlatStyle.Flat;
-            btnEnd.Location = new Point(313, 12);
+            btnEnd.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnEnd.Location = new Point(237, 12);
             btnEnd.Name = "btnEnd";
             btnEnd.Size = new Size(93, 38);
             btnEnd.TabIndex = 10;
@@ -122,11 +128,12 @@ namespace SellerCenter.Forms
             // 
             // btnCheckOrder
             // 
-            btnCheckOrder.BackColor = SystemColors.ButtonFace;
+            btnCheckOrder.BackColor = Color.Bisque;
             btnCheckOrder.FlatStyle = FlatStyle.Flat;
+            btnCheckOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnCheckOrder.Location = new Point(12, 12);
             btnCheckOrder.Name = "btnCheckOrder";
-            btnCheckOrder.Size = new Size(196, 38);
+            btnCheckOrder.Size = new Size(120, 38);
             btnCheckOrder.TabIndex = 11;
             btnCheckOrder.Text = "Kiểm tra đơn";
             btnCheckOrder.UseVisualStyleBackColor = false;
@@ -134,27 +141,64 @@ namespace SellerCenter.Forms
             // 
             // historyScanBarcode
             // 
+            historyScanBarcode.Font = new Font("Segoe UI", 10F);
             historyScanBarcode.FormattingEnabled = true;
-            historyScanBarcode.ItemHeight = 15;
-            historyScanBarcode.Location = new Point(472, 44);
+            historyScanBarcode.ItemHeight = 17;
+            historyScanBarcode.Location = new Point(469, 42);
             historyScanBarcode.Name = "historyScanBarcode";
-            historyScanBarcode.Size = new Size(440, 154);
+            historyScanBarcode.Size = new Size(443, 191);
             historyScanBarcode.TabIndex = 12;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(472, 24);
+            label3.Font = new Font("Segoe UI", 11F);
+            label3.Location = new Point(469, 19);
             label3.Name = "label3";
-            label3.Size = new Size(90, 15);
+            label3.Size = new Size(112, 20);
             label3.TabIndex = 13;
             label3.Text = "Lịch sử thao tác";
+            // 
+            // btnUploadYoutube
+            // 
+            btnUploadYoutube.BackColor = Color.Red;
+            btnUploadYoutube.FlatStyle = FlatStyle.Flat;
+            btnUploadYoutube.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnUploadYoutube.ForeColor = SystemColors.ControlLightLight;
+            btnUploadYoutube.Location = new Point(12, 137);
+            btnUploadYoutube.Name = "btnUploadYoutube";
+            btnUploadYoutube.Size = new Size(318, 38);
+            btnUploadYoutube.TabIndex = 14;
+            btnUploadYoutube.Text = "Tải lên Youtube";
+            btnUploadYoutube.UseVisualStyleBackColor = false;
+            btnUploadYoutube.Click += btnUploadYoutube_Click;
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Segoe UI", 11F);
+            lblStatus.Location = new Point(12, 183);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(50, 20);
+            lblStatus.TabIndex = 15;
+            lblStatus.Text = "label4";
+            lblStatus.Visible = false;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(12, 206);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(318, 38);
+            progressBar1.TabIndex = 16;
             // 
             // frmRecording
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(924, 1049);
+            Controls.Add(progressBar1);
+            Controls.Add(lblStatus);
+            Controls.Add(btnUploadYoutube);
             Controls.Add(label3);
             Controls.Add(historyScanBarcode);
             Controls.Add(btnCheckOrder);
@@ -165,6 +209,7 @@ namespace SellerCenter.Forms
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pictureBoxCamera);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmRecording";
             Text = "Quay video đóng gói hàng";
             Load += frmRecording_Load;
@@ -184,5 +229,8 @@ namespace SellerCenter.Forms
         private Button btnCheckOrder;
         private ListBox historyScanBarcode;
         private Label label3;
+        private Button btnUploadYoutube;
+        private Label lblStatus;
+        private ProgressBar progressBar1;
     }
 }

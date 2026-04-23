@@ -1,6 +1,4 @@
 ﻿using SellerCenter.Service;
-using System.Windows;
-using System.Windows.Forms;
 
 namespace SellerCenter.Forms
 {
@@ -42,8 +40,6 @@ namespace SellerCenter.Forms
                 await Task.Delay(300, cts.Token);
 
                 var keyword = txtBarcode.Text.Trim();
-                if (string.IsNullOrEmpty(keyword)) return;
-
                 var packingSessionService = new PackingSessionService();
                 var dt = await packingSessionService.GetHistoryRecordByBarcode(barcode, dateFrom, dateTo);
                 listRecord.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -82,7 +78,7 @@ namespace SellerCenter.Forms
         {
             if (e.RowIndex < 0) return;
             var row = listRecord.Rows[e.RowIndex];
-            string? path = row.Cells["video_path"].Value?.ToString();
+            string? path = row.Cells["local_path"].Value?.ToString();
             if (File.Exists(path))
             {
                 axWindowsMediaPlayer1.URL = path;
