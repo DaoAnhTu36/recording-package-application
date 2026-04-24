@@ -73,14 +73,14 @@
             // 
             txtProductDesc.Location = new Point(12, 151);
             txtProductDesc.Name = "txtProductDesc";
-            txtProductDesc.Size = new Size(297, 232);
+            txtProductDesc.Size = new Size(539, 404);
             txtProductDesc.TabIndex = 3;
             txtProductDesc.Text = "";
             // 
             // btnChooseImage
             // 
             btnChooseImage.FlatStyle = FlatStyle.Flat;
-            btnChooseImage.Location = new Point(351, 122);
+            btnChooseImage.Location = new Point(634, 122);
             btnChooseImage.Name = "btnChooseImage";
             btnChooseImage.Size = new Size(75, 23);
             btnChooseImage.TabIndex = 4;
@@ -91,7 +91,7 @@
             // btnSave
             // 
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Location = new Point(12, 389);
+            btnSave.Location = new Point(12, 575);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 6;
@@ -102,7 +102,7 @@
             // btnChooseVideo
             // 
             btnChooseVideo.FlatStyle = FlatStyle.Flat;
-            btnChooseVideo.Location = new Point(710, 122);
+            btnChooseVideo.Location = new Point(1333, 122);
             btnChooseVideo.Name = "btnChooseVideo";
             btnChooseVideo.Size = new Size(113, 23);
             btnChooseVideo.TabIndex = 7;
@@ -135,23 +135,23 @@
             // 
             // multiImagePreviewControl1
             // 
-            multiImagePreviewControl1.Location = new Point(346, 151);
+            multiImagePreviewControl1.Location = new Point(634, 151);
             multiImagePreviewControl1.Name = "multiImagePreviewControl1";
-            multiImagePreviewControl1.Size = new Size(334, 232);
+            multiImagePreviewControl1.Size = new Size(624, 404);
             multiImagePreviewControl1.TabIndex = 11;
             // 
             // videoPreviewControl1
             // 
-            videoPreviewControl1.Location = new Point(710, 151);
+            videoPreviewControl1.Location = new Point(1333, 151);
             videoPreviewControl1.Name = "videoPreviewControl1";
-            videoPreviewControl1.Size = new Size(401, 232);
+            videoPreviewControl1.Size = new Size(559, 404);
             videoPreviewControl1.TabIndex = 12;
             // 
             // frmCreateNewProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1123, 450);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(videoPreviewControl1);
             Controls.Add(multiImagePreviewControl1);
             Controls.Add(txtProductCode);
@@ -164,8 +164,8 @@
             Controls.Add(txtProductName);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(1139, 489);
-            MinimumSize = new Size(1139, 489);
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmCreateNewProduct";
             Text = "Thêm sản phẩm mới";
             ResumeLayout(false);

@@ -34,9 +34,10 @@
             // frmCreateNewPost
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1050, 718);
+            ClientSize = new Size(1904, 1041);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(800, 600);
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmCreateNewPost";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tạo bài viết mới";

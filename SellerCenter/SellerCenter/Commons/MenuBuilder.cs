@@ -66,7 +66,13 @@ namespace SellerCenter.Commons
                 return;
             }
 
-            var form = (Form)Activator.CreateInstance(formType);
+            var instance = Activator.CreateInstance(formType);
+            if (instance is not Form form)
+            {
+                MessageBox.Show($"Không thể khởi tạo form: {formName}");
+                return;
+            }
+
             OpenFormInPanel(form);
         }
 
@@ -79,7 +85,7 @@ namespace SellerCenter.Commons
             form.Dock = DockStyle.Fill;
 
             _mainPanel.Controls.Add(form);
-            form.Show();
+            (_parentForm as Form1)?.OpenForm(form);
         }
     }
 }

@@ -118,10 +118,10 @@
             // listRecord
             // 
             listRecord.Dock = DockStyle.Bottom;
-            listRecord.Location = new Point(0, 385);
+            listRecord.Location = new Point(0, 657);
             listRecord.Name = "listRecord";
             listRecord.ReadOnly = true;
-            listRecord.Size = new Size(1215, 422);
+            listRecord.Size = new Size(1904, 384);
             listRecord.TabIndex = 7;
             // 
             // btnSearch
@@ -155,17 +155,17 @@
             // 
             axWindowsMediaPlayer1.Dock = DockStyle.Right;
             axWindowsMediaPlayer1.Enabled = true;
-            axWindowsMediaPlayer1.Location = new Point(301, 0);
+            axWindowsMediaPlayer1.Location = new Point(1003, 0);
             axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             axWindowsMediaPlayer1.OcxState = (AxHost.State)resources.GetObject("axWindowsMediaPlayer1.OcxState");
-            axWindowsMediaPlayer1.Size = new Size(914, 385);
+            axWindowsMediaPlayer1.Size = new Size(901, 657);
             axWindowsMediaPlayer1.TabIndex = 10;
             // 
             // frmHistoryScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1215, 807);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(axWindowsMediaPlayer1);
             Controls.Add(btnReset);
             Controls.Add(btnSearch);
@@ -178,6 +178,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmHistoryScreen";
             Text = "Lịch sử video";
             Load += frmHistoryScreen_Load;

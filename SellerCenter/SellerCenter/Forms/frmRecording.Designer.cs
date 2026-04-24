@@ -195,7 +195,7 @@ namespace SellerCenter.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(924, 1049);
+            ClientSize = new Size(1902, 991);
             Controls.Add(progressBar1);
             Controls.Add(lblStatus);
             Controls.Add(btnUploadYoutube);
@@ -210,9 +210,10 @@ namespace SellerCenter.Forms
             Controls.Add(label1);
             Controls.Add(pictureBoxCamera);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmRecording";
             Text = "Quay video đóng gói hàng";
-            Load += frmRecording_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxCamera).EndInit();
             ResumeLayout(false);
             PerformLayout();

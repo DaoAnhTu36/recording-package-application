@@ -40,8 +40,10 @@
             webViewBigSellerShopee.DefaultBackgroundColor = Color.White;
             webViewBigSellerShopee.Dock = DockStyle.Fill;
             webViewBigSellerShopee.Location = new Point(0, 0);
+            webViewBigSellerShopee.MaximumSize = new Size(1920, 1080);
+            webViewBigSellerShopee.MinimumSize = new Size(1920, 1080);
             webViewBigSellerShopee.Name = "webViewBigSellerShopee";
-            webViewBigSellerShopee.Size = new Size(800, 450);
+            webViewBigSellerShopee.Size = new Size(1920, 1080);
             webViewBigSellerShopee.TabIndex = 0;
             webViewBigSellerShopee.ZoomFactor = 1D;
             // 
@@ -49,9 +51,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(webViewBigSellerShopee);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmBigSellerShopee";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BigSeller Shopee";

@@ -1,58 +1,46 @@
-using SellerCenter.Forms;
+using SellerCenter.Helpers;
 
 namespace SellerCenter
 {
     public partial class Form1 : Form
     {
+        private Form? currentForm;
+        private Dictionary<string, Form> formCache = new();
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void subMenuNewRecording_Click(object sender, EventArgs e)
+        public void OpenForm(Form form)
         {
-            var screen = new frmRecording();
-            screen.ShowDialog();
+            string key = form.GetType().Name;
+
+            if (formCache.ContainsKey(key))
+            {
+                form = formCache[key];
+            }
+            else
+            {
+                formCache[key] = form;
+            }
+
+            foreach (Control ctrl in panelMain.Controls)
+                ctrl.Visible = false;
+
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+
+            if (!panelMain.Controls.Contains(form))
+                panelMain.Controls.Add(form);
+
+            form.Show();
+            form.BringToFront();
         }
 
-        private void subMenuRecordHistory_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            var screen = new frmHistoryScreen();
-            screen.ShowDialog();
-        }
-
-        private void menuBigSeller_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void subMenuShopee_Click(object sender, EventArgs e)
-        {
-            var screen = new frmBigSellerShopee();
-            screen.ShowDialog();
-        }
-
-        private void subMenuTiktok_Click(object sender, EventArgs e)
-        {
-            var screen = new frmBigSellerTiktok();
-            screen.ShowDialog();
-        }
-
-        private void menuItemNewPost_Click(object sender, EventArgs e)
-        {
-            var screen = new frmCreateNewPost();
-            screen.ShowDialog();
-        }
-
-        private void subMenuCreateNewProduct_Click(object sender, EventArgs e)
-        {
-            var screen = new frmCreateNewProduct();
-            screen.ShowDialog();
-        }
-
-        private void subMenuProducts_Click(object sender, EventArgs e)
-        {
-            var screen = new frmProductManager();
-            screen.ShowDialog();
+            UIHelper.InitMenu(this, panelMain);
         }
     }
 }

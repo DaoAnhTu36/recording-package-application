@@ -7,6 +7,7 @@ using Google.Apis.YouTube.v3.Data;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using SellerCenter.Helper;
+using SellerCenter.Helpers;
 using SellerCenter.Infrastructure;
 using SellerCenter.Service;
 
@@ -230,10 +231,6 @@ namespace SellerCenter.Forms
 
                 return true;
             }
-        }
-
-        private void frmRecording_Load(object sender, EventArgs e)
-        {
         }
 
         private async void btnUploadYoutube_Click(object sender, EventArgs e)

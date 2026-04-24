@@ -45,11 +45,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1264, 681);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(dataGridView1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(1280, 720);
-            MinimumSize = new Size(1280, 720);
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmProductManager";
             Text = "Quản lý sản phẩm";
             Load += frmProductManager_Load;

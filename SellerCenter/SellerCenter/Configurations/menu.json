@@ -12,11 +12,24 @@
       },
       {
         "title": "Quay video đóng gói",
-        "form": "frmRecordPackingVideo"
+        "form": "frmRecording"
       },
       {
         "title": "Lịch sử video",
-        "form": "frmRecordPackingVideoHistory"
+        "form": "frmHistoryScreen"
+      }
+    ]
+  },
+  {
+    "title": "BigSeller",
+    "children": [
+      {
+        "title": "Shopee",
+        "form": "frmBigSellerShopee"
+      },
+      {
+        "title": "Tiktok",
+        "form": "frmBigSellerTiktok"
       }
     ]
   }

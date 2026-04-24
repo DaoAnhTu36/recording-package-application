@@ -40,8 +40,10 @@
             webViewBigSellerTiktok.DefaultBackgroundColor = Color.White;
             webViewBigSellerTiktok.Dock = DockStyle.Fill;
             webViewBigSellerTiktok.Location = new Point(0, 0);
+            webViewBigSellerTiktok.MaximumSize = new Size(1920, 1080);
+            webViewBigSellerTiktok.MinimumSize = new Size(1920, 1080);
             webViewBigSellerTiktok.Name = "webViewBigSellerTiktok";
-            webViewBigSellerTiktok.Size = new Size(800, 450);
+            webViewBigSellerTiktok.Size = new Size(1920, 1080);
             webViewBigSellerTiktok.TabIndex = 0;
             webViewBigSellerTiktok.ZoomFactor = 1D;
             // 
@@ -49,9 +51,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(webViewBigSellerTiktok);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmBigSellerTiktok";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BigSeller Tiktok";
