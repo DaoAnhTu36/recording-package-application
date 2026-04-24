@@ -51,7 +51,7 @@ namespace SellerCenter.Forms
         {
             if (!ValidateInput())
                 return;
-            var product = new Product
+            var product = new ProductModel
             {
                 ProductName = txtProductName.Text.Trim(),
                 ProductCode = txtProductCode.Text.Trim(),

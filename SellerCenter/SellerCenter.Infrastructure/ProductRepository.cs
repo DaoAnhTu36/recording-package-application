@@ -27,7 +27,7 @@ namespace SellerCenter.Infrastructure
             return table;
         }
 
-        public Product? GetById(long id)
+        public ProductModel? GetById(long id)
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
@@ -42,7 +42,7 @@ namespace SellerCenter.Infrastructure
 
             if (!reader.Read()) return null;
 
-            return new Product
+            return new ProductModel
             {
                 Id = reader.GetInt64("id"),
                 ProductName = reader.GetString("product_name"),
@@ -53,7 +53,7 @@ namespace SellerCenter.Infrastructure
             };
         }
 
-        public long Insert(Product product)
+        public long Insert(ProductModel product)
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
@@ -85,7 +85,7 @@ namespace SellerCenter.Infrastructure
             return Convert.ToInt64(cmd.ExecuteScalar());
         }
 
-        public bool Update(Product product)
+        public bool Update(ProductModel product)
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
@@ -115,9 +115,7 @@ namespace SellerCenter.Infrastructure
             using var cmd = new MySqlCommand(@"
             DELETE FROM products
             WHERE id = @id;", conn);
-
             cmd.Parameters.AddWithValue("@id", id);
-
             conn.Open();
             return cmd.ExecuteNonQuery() > 0;
         }
@@ -128,11 +126,11 @@ namespace SellerCenter.Infrastructure
             using var cmd = new MySqlCommand(@"
             SELECT id, product_name, product_code, description, image_url, video_url, created_at, updated_at
             FROM products
-            WHERE product_name LIKE CONCAT('%', @keyword, '%')
+            WHERE
+                product_name LIKE @keyword
+                OR product_code LIKE @keyword
             ORDER BY id DESC;", conn);
-
-            cmd.Parameters.AddWithValue("@keyword", keyword);
-
+            cmd.Parameters.AddWithValue("@keyword", $"%{keyword}%");
             using var adapter = new MySqlDataAdapter(cmd);
             var table = new DataTable();
             adapter.Fill(table);
@@ -147,6 +145,28 @@ namespace SellerCenter.Infrastructure
             conn.Open();
             var result = cmd.ExecuteScalar();
             return result != null;
+        }
+
+        public ProductModel? GetByProductCode(string productCode)
+        {
+            using var conn = _db.GetConnection();
+            using var cmd = new MySqlCommand(@"
+            SELECT id, product_name, product_code, description, image_url, video_url
+            FROM products
+            WHERE product_code = @product_code;", conn);
+            cmd.Parameters.AddWithValue("@product_code", productCode);
+            conn.Open();
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read()) return null;
+            return new ProductModel
+            {
+                Id = reader.GetInt64("id"),
+                ProductName = reader.GetString("product_name"),
+                ProductCode = reader.GetString("product_code"),
+                Description = reader["description"]?.ToString(),
+                ImageUrl = reader["image_url"]?.ToString(),
+                VideoUrl = reader["video_url"]?.ToString()
+            };
         }
     }
 }

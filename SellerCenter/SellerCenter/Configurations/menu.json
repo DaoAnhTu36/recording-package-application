@@ -39,6 +39,19 @@
       {
         "title": "Tạo bài viết",
         "form": "frmCreateNewPost"
+      },
+      {
+        "title": "Danh sách bài viết",
+        "form": "frmPostManager"
+      }
+    ]
+  },
+  {
+    "title": "Cài đặt",
+    "children": [
+      {
+        "title": "Template prompt tạo bài viết",
+        "form": "frmTemplatePrompt"
       }
     ]
   }

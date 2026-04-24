@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\usercontrols\\articletypecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\usercontrols\\articletypecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmtemplateprompt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmtemplateprompt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\usercontrols\\articletypecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\usercontrols\\articletypecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,38 +23,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ArticleTypeControl.cs",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\UserControls\\ArticleTypeControl.cs",
-              "RelativeDocumentMoniker": "SellerCenter\\UserControls\\ArticleTypeControl.cs",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\UserControls\\ArticleTypeControl.cs",
-              "RelativeToolTip": "SellerCenter\\UserControls\\ArticleTypeControl.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAowAsAAAAAAAAAAAAAAA==",
+              "Title": "frmCreateNewPost.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAUwIYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T06:19:11.296Z",
+              "WhenOpened": "2026-04-24T11:04:10.507Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ArticleTypeControl.cs [Design]",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\UserControls\\ArticleTypeControl.cs",
-              "RelativeDocumentMoniker": "SellerCenter\\UserControls\\ArticleTypeControl.cs",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\UserControls\\ArticleTypeControl.cs [Design]",
-              "RelativeToolTip": "SellerCenter\\UserControls\\ArticleTypeControl.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T06:18:35.377Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmTemplatePrompt.cs [Design]",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmTemplatePrompt.cs",
-              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmTemplatePrompt.cs",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmTemplatePrompt.cs [Design]",
-              "RelativeToolTip": "SellerCenter\\Forms\\frmTemplatePrompt.cs [Design]",
+              "Title": "frmCreateNewPost.cs [Design]",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs [Design]",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmCreateNewPost.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T06:16:37.223Z",
+              "WhenOpened": "2026-04-24T11:03:55.056Z",
               "EditorCaption": " [Design]"
             }
           ]

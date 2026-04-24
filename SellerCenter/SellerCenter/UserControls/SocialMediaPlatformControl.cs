@@ -28,5 +28,40 @@
                 flowSocialMediaPlatformPanel.Controls.Add(rb);
             }
         }
+
+        public string GetSelectedPlatform()
+        {
+            foreach (var control in flowSocialMediaPlatformPanel.Controls)
+            {
+                if (control is RadioButton rb && rb.Checked)
+                {
+                    return rb.Text;
+                }
+            }
+            return string.Empty;
+        }
+
+        public void SetSelectedPlatform(string platform)
+        {
+            foreach (var control in flowSocialMediaPlatformPanel.Controls)
+            {
+                if (control is RadioButton rb && rb.Text.Equals(platform, StringComparison.OrdinalIgnoreCase))
+                {
+                    rb.Checked = true;
+                    break;
+                }
+            }
+        }
+
+        public void ClearSelection()
+        {
+            foreach (var control in flowSocialMediaPlatformPanel.Controls)
+            {
+                if (control is RadioButton rb)
+                {
+                    rb.Checked = false;
+                }
+            }
+        }
     }
 }

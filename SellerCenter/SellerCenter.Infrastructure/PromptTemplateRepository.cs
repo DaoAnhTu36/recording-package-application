@@ -17,9 +17,9 @@ namespace SellerCenter.Infrastructure
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
-            SELECT id, platform, post_type, template_content, is_active, created_at, updated_at
+            SELECT id, platform, title, post_type, template_content, is_active, created_at, updated_at
             FROM prompt_templates
-            ORDER BY id DESC;", conn);
+            ORDER BY created_at DESC;", conn);
 
             using var adapter = new MySqlDataAdapter(cmd);
             var table = new DataTable();
@@ -27,11 +27,11 @@ namespace SellerCenter.Infrastructure
             return table;
         }
 
-        public PromptTemplate? GetById(long id)
+        public PromptTemplateModel? GetById(long id)
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
-            SELECT id, platform, post_type, template_content, is_active
+            SELECT id, platform, title, post_type, template_content, is_active
             FROM prompt_templates
             WHERE id = @id;", conn);
 
@@ -42,23 +42,25 @@ namespace SellerCenter.Infrastructure
 
             if (!reader.Read()) return null;
 
-            return new PromptTemplate
+            return new PromptTemplateModel
             {
                 Id = reader.GetInt64("id"),
                 Platform = reader["platform"]?.ToString(),
                 PostType = reader["post_type"]?.ToString(),
                 TemplateContent = reader["template_content"]?.ToString(),
-                IsActive = Convert.ToBoolean(reader["is_active"])
+                IsActive = Convert.ToBoolean(reader["is_active"]),
+                title = reader["Title"]?.ToString(),
             };
         }
 
-        public long Insert(PromptTemplate template)
+        public long Insert(PromptTemplateModel template)
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
             INSERT INTO prompt_templates
             (
                 platform,
+                title,
                 post_type,
                 template_content,
                 is_active
@@ -66,6 +68,7 @@ namespace SellerCenter.Infrastructure
             VALUES
             (
                 @platform,
+                @title,
                 @post_type,
                 @template_content,
                 @is_active
@@ -73,6 +76,7 @@ namespace SellerCenter.Infrastructure
             SELECT LAST_INSERT_ID();", conn);
 
             cmd.Parameters.AddWithValue("@platform", template.Platform);
+            cmd.Parameters.AddWithValue("@title", template.title);
             cmd.Parameters.AddWithValue("@post_type", template.PostType);
             cmd.Parameters.AddWithValue("@template_content", template.TemplateContent);
             cmd.Parameters.AddWithValue("@is_active", template.IsActive);
@@ -81,13 +85,14 @@ namespace SellerCenter.Infrastructure
             return Convert.ToInt64(cmd.ExecuteScalar());
         }
 
-        public bool Update(PromptTemplate template)
+        public bool Update(PromptTemplateModel template)
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
             UPDATE prompt_templates
             SET
                 platform = @platform,
+                title = @title,
                 post_type = @post_type,
                 template_content = @template_content,
                 is_active = @is_active
@@ -98,6 +103,7 @@ namespace SellerCenter.Infrastructure
             cmd.Parameters.AddWithValue("@post_type", template.PostType);
             cmd.Parameters.AddWithValue("@template_content", template.TemplateContent);
             cmd.Parameters.AddWithValue("@is_active", template.IsActive);
+            cmd.Parameters.AddWithValue("@title", template.title);
 
             conn.Open();
             return cmd.ExecuteNonQuery() > 0;
@@ -120,10 +126,11 @@ namespace SellerCenter.Infrastructure
         {
             using var conn = _db.GetConnection();
             using var cmd = new MySqlCommand(@"
-            SELECT id, platform, post_type, template_content, is_active, created_at, updated_at
+            SELECT id, platform, title, post_type, template_content, is_active, created_at, updated_at
             FROM prompt_templates
             WHERE
                 platform LIKE CONCAT('%', @keyword, '%')
+                OR title LIKE CONCAT('%', @keyword, '%')
                 OR post_type LIKE CONCAT('%', @keyword, '%')
                 OR template_content LIKE CONCAT('%', @keyword, '%')
             ORDER BY id DESC;", conn);

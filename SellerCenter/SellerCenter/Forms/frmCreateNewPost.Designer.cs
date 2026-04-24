@@ -37,9 +37,15 @@
             txtProductDesc = new RichTextBox();
             label4 = new Label();
             txtQuantitPost = new NumericUpDown();
-            label5 = new Label();
-            socialMediaPlatformControl2 = new SellerCenter.UserControls.SocialMediaPlatformControl();
+            lstTemplate = new ComboBox();
+            label6 = new Label();
+            lblNotify = new Label();
+            btnCreatePost = new Button();
+            lblNotifyTemplate = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            txtResponseChatGPT = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)txtQuantitPost).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -57,11 +63,13 @@
             txtProductCode.Name = "txtProductCode";
             txtProductCode.Size = new Size(219, 23);
             txtProductCode.TabIndex = 1;
+            txtProductCode.TextChanged += txtProductCode_TextChanged;
+            txtProductCode.KeyUp += txtProductCode_KeyUp;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 70);
+            label2.Location = new Point(12, 75);
             label2.Name = "label2";
             label2.Size = new Size(81, 15);
             label2.TabIndex = 2;
@@ -69,7 +77,7 @@
             // 
             // txtProductName
             // 
-            txtProductName.Location = new Point(12, 88);
+            txtProductName.Location = new Point(12, 93);
             txtProductName.Name = "txtProductName";
             txtProductName.Size = new Size(219, 23);
             txtProductName.TabIndex = 3;
@@ -85,9 +93,10 @@
             // 
             // txtProductDesc
             // 
-            txtProductDesc.Location = new Point(12, 153);
+            txtProductDesc.Dock = DockStyle.Fill;
+            txtProductDesc.Location = new Point(3, 3);
             txtProductDesc.Name = "txtProductDesc";
-            txtProductDesc.Size = new Size(219, 178);
+            txtProductDesc.Size = new Size(946, 827);
             txtProductDesc.TabIndex = 5;
             txtProductDesc.Text = "";
             // 
@@ -106,35 +115,97 @@
             txtQuantitPost.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             txtQuantitPost.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             txtQuantitPost.Name = "txtQuantitPost";
-            txtQuantitPost.Size = new Size(120, 23);
+            txtQuantitPost.Size = new Size(64, 23);
             txtQuantitPost.TabIndex = 8;
             txtQuantitPost.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // label5
+            // lstTemplate
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(293, 70);
-            label5.Name = "label5";
-            label5.Size = new Size(124, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Nền tảng mạng xã hội";
+            lstTemplate.FormattingEnabled = true;
+            lstTemplate.Location = new Point(293, 88);
+            lstTemplate.Name = "lstTemplate";
+            lstTemplate.Size = new Size(172, 23);
+            lstTemplate.TabIndex = 11;
             // 
-            // socialMediaPlatformControl2
+            // label6
             // 
-            socialMediaPlatformControl2.Location = new Point(293, 88);
-            socialMediaPlatformControl2.Name = "socialMediaPlatformControl2";
-            socialMediaPlatformControl2.Size = new Size(124, 243);
-            socialMediaPlatformControl2.TabIndex = 10;
+            label6.AutoSize = true;
+            label6.Location = new Point(293, 70);
+            label6.Name = "label6";
+            label6.Size = new Size(86, 15);
+            label6.TabIndex = 12;
+            label6.Text = "Chọn template";
+            // 
+            // lblNotify
+            // 
+            lblNotify.AutoSize = true;
+            lblNotify.Font = new Font("Segoe UI", 6.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNotify.ForeColor = Color.Red;
+            lblNotify.Location = new Point(12, 52);
+            lblNotify.Name = "lblNotify";
+            lblNotify.Size = new Size(29, 12);
+            lblNotify.TabIndex = 13;
+            lblNotify.Text = "label5";
+            lblNotify.Visible = false;
+            // 
+            // btnCreatePost
+            // 
+            btnCreatePost.Location = new Point(484, 25);
+            btnCreatePost.Name = "btnCreatePost";
+            btnCreatePost.Size = new Size(113, 23);
+            btnCreatePost.TabIndex = 14;
+            btnCreatePost.Text = "Tạo bài viết";
+            btnCreatePost.UseVisualStyleBackColor = true;
+            btnCreatePost.Click += btnCreatePost_Click;
+            // 
+            // lblNotifyTemplate
+            // 
+            lblNotifyTemplate.AutoSize = true;
+            lblNotifyTemplate.Font = new Font("Segoe UI", 6.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNotifyTemplate.ForeColor = Color.Red;
+            lblNotifyTemplate.Location = new Point(293, 114);
+            lblNotifyTemplate.Name = "lblNotifyTemplate";
+            lblNotifyTemplate.Size = new Size(29, 12);
+            lblNotifyTemplate.TabIndex = 15;
+            lblNotifyTemplate.Text = "label5";
+            lblNotifyTemplate.Visible = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(txtResponseChatGPT, 1, 0);
+            tableLayoutPanel1.Controls.Add(txtProductDesc, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Bottom;
+            tableLayoutPanel1.Location = new Point(0, 208);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1904, 833);
+            tableLayoutPanel1.TabIndex = 16;
+            // 
+            // txtResponseChatGPT
+            // 
+            txtResponseChatGPT.Dock = DockStyle.Fill;
+            txtResponseChatGPT.Location = new Point(955, 3);
+            txtResponseChatGPT.Name = "txtResponseChatGPT";
+            txtResponseChatGPT.Size = new Size(946, 827);
+            txtResponseChatGPT.TabIndex = 6;
+            txtResponseChatGPT.Text = "";
             // 
             // frmCreateNewPost
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1904, 1041);
-            Controls.Add(socialMediaPlatformControl2);
-            Controls.Add(label5);
+            Controls.Add(tableLayoutPanel1);
+            Controls.Add(lblNotifyTemplate);
+            Controls.Add(btnCreatePost);
+            Controls.Add(lblNotify);
+            Controls.Add(label6);
+            Controls.Add(lstTemplate);
             Controls.Add(txtQuantitPost);
             Controls.Add(label4);
-            Controls.Add(txtProductDesc);
             Controls.Add(label3);
             Controls.Add(txtProductName);
             Controls.Add(label2);
@@ -149,6 +220,7 @@
             WindowState = FormWindowState.Maximized;
             Load += frmCreateNewPost_Load;
             ((System.ComponentModel.ISupportInitialize)txtQuantitPost).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,8 +235,13 @@
         private RichTextBox txtProductDesc;
         private Label label4;
         private NumericUpDown txtQuantitPost;
-        private Label label5;
         private UserControls.SocialMediaPlatformControl socialMediaPlatformControl1;
-        private UserControls.SocialMediaPlatformControl socialMediaPlatformControl2;
+        private ComboBox lstTemplate;
+        private Label label6;
+        private Label lblNotify;
+        private Button btnCreatePost;
+        private Label lblNotifyTemplate;
+        private TableLayoutPanel tableLayoutPanel1;
+        private RichTextBox txtResponseChatGPT;
     }
 }

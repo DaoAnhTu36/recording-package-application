@@ -18,17 +18,17 @@ namespace SellerCenter.Service
             return _instance.GetAll();
         }
 
-        public PromptTemplate? GetById(long id)
+        public PromptTemplateModel? GetById(long id)
         {
             return _instance.GetById(id);
         }
 
-        public long Insert(PromptTemplate template)
+        public long Insert(PromptTemplateModel template)
         {
             return _instance.Insert(template);
         }
 
-        public bool Update(PromptTemplate template)
+        public bool Update(PromptTemplateModel template)
         {
             return _instance.Update(template);
         }

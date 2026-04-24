@@ -18,17 +18,17 @@ namespace SellerCenter.Service
             return _instance.GetAll();
         }
 
-        public Product? GetById(long id)
+        public ProductModel? GetById(long id)
         {
             return _instance.GetById(id);
         }
 
-        public long Insert(Product product)
+        public long Insert(ProductModel product)
         {
             return _instance.Insert(product);
         }
 
-        public bool Update(Product product)
+        public bool Update(ProductModel product)
         {
             return _instance.Update(product);
         }
@@ -46,6 +46,11 @@ namespace SellerCenter.Service
         public bool ExistsByCode(string productCode)
         {
             return _instance.ExistsByCode(productCode);
+        }
+
+        public ProductModel? GetByProductCode(string productCode)
+        {
+            return _instance.GetByProductCode(productCode);
         }
     }
 }

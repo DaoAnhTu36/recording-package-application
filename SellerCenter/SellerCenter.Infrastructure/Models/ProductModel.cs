@@ -1,6 +1,6 @@
 ﻿namespace SellerCenter.Infrastructure.Models
 {
-    public class Product
+    public class ProductModel
     {
         public long Id { get; set; }
         public string? ProductName { get; set; }

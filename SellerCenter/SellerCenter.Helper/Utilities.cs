@@ -1,4 +1,6 @@
-﻿namespace SellerCenter.Helper
+﻿using System.Text.Json;
+
+namespace SellerCenter.Helper
 {
     public static class Utilities
     {
@@ -29,6 +31,19 @@
             Directory.CreateDirectory(folderPath);
             reval = Path.Combine(folderPath, fileName);
             return reval;
+        }
+
+        public static string FormatJson(string json)
+        {
+            using var doc = JsonDocument.Parse(json);
+
+            return JsonSerializer.Serialize(
+                doc.RootElement,
+                new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                }
+            );
         }
     }
 }

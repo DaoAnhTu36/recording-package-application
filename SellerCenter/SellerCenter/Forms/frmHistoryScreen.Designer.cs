@@ -123,6 +123,7 @@
             listRecord.ReadOnly = true;
             listRecord.Size = new Size(1904, 384);
             listRecord.TabIndex = 7;
+            listRecord.AllowUserToAddRows = false;
             // 
             // btnSearch
             // 

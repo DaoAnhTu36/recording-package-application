@@ -33,7 +33,7 @@ namespace SellerCenter
 
             if (!panelMain.Controls.Contains(form))
                 panelMain.Controls.Add(form);
-
+            form.Text = "";
             form.Show();
             form.BringToFront();
         }
