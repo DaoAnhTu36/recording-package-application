@@ -13,11 +13,32 @@
     <Compile Update="Forms\frmBigSellerTiktok.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmCreateNewPost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmCreateNewProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\frmHistoryScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmProductManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\frmRecording.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserControls\ImagePreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\MenuStripControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\MultiImagePreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\VideoPreviewControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

@@ -53,3 +53,4 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 SellerCenter/SellerCenter/client_secret.json
+SellerCenter/SellerCenter/appsettings.json

@@ -36,12 +36,22 @@
             menuBigSeller = new ToolStripMenuItem();
             subMenuShopee = new ToolStripMenuItem();
             subMenuTiktok = new ToolStripMenuItem();
+            menuPageManager = new ToolStripMenuItem();
+            subMenuNewPost = new ToolStripMenuItem();
+            menuItemNewPost = new ToolStripMenuItem();
+            menuItemFacebook = new ToolStripMenuItem();
+            menuItemTiktok = new ToolStripMenuItem();
+            menuItemShopee = new ToolStripMenuItem();
+            subMenuManager = new ToolStripMenuItem();
+            menuProductManager = new ToolStripMenuItem();
+            subMenuCreateNewProduct = new ToolStripMenuItem();
+            subMenuProducts = new ToolStripMenuItem();
             menu.SuspendLayout();
             SuspendLayout();
             // 
             // menu
             // 
-            menu.Items.AddRange(new ToolStripItem[] { menuOrder, menuBigSeller });
+            menu.Items.AddRange(new ToolStripItem[] { menuOrder, menuBigSeller, menuPageManager, menuProductManager });
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
             menu.Size = new Size(800, 24);
@@ -91,6 +101,72 @@
             subMenuTiktok.Text = "Tiktok";
             subMenuTiktok.Click += subMenuTiktok_Click;
             // 
+            // menuPageManager
+            // 
+            menuPageManager.DropDownItems.AddRange(new ToolStripItem[] { subMenuNewPost, subMenuManager });
+            menuPageManager.Name = "menuPageManager";
+            menuPageManager.Size = new Size(66, 20);
+            menuPageManager.Text = "Đăng bài";
+            // 
+            // subMenuNewPost
+            // 
+            subMenuNewPost.DropDownItems.AddRange(new ToolStripItem[] { menuItemNewPost, menuItemFacebook, menuItemTiktok, menuItemShopee });
+            subMenuNewPost.Name = "subMenuNewPost";
+            subMenuNewPost.Size = new Size(118, 22);
+            subMenuNewPost.Text = "Tạo mới";
+            // 
+            // menuItemNewPost
+            // 
+            menuItemNewPost.Name = "menuItemNewPost";
+            menuItemNewPost.Size = new Size(125, 22);
+            menuItemNewPost.Text = "Bài viết";
+            menuItemNewPost.Click += menuItemNewPost_Click;
+            // 
+            // menuItemFacebook
+            // 
+            menuItemFacebook.Name = "menuItemFacebook";
+            menuItemFacebook.Size = new Size(125, 22);
+            menuItemFacebook.Text = "Facebook";
+            // 
+            // menuItemTiktok
+            // 
+            menuItemTiktok.Name = "menuItemTiktok";
+            menuItemTiktok.Size = new Size(125, 22);
+            menuItemTiktok.Text = "Tiktok";
+            // 
+            // menuItemShopee
+            // 
+            menuItemShopee.Name = "menuItemShopee";
+            menuItemShopee.Size = new Size(125, 22);
+            menuItemShopee.Text = "Shopee";
+            // 
+            // subMenuManager
+            // 
+            subMenuManager.Name = "subMenuManager";
+            subMenuManager.Size = new Size(118, 22);
+            subMenuManager.Text = "Quản lý";
+            // 
+            // menuProductManager
+            // 
+            menuProductManager.DropDownItems.AddRange(new ToolStripItem[] { subMenuCreateNewProduct, subMenuProducts });
+            menuProductManager.Name = "menuProductManager";
+            menuProductManager.Size = new Size(115, 20);
+            menuProductManager.Text = "Quản lý sản phẩm";
+            // 
+            // subMenuCreateNewProduct
+            // 
+            subMenuCreateNewProduct.Name = "subMenuCreateNewProduct";
+            subMenuCreateNewProduct.Size = new Size(180, 22);
+            subMenuCreateNewProduct.Text = "Thêm mới";
+            subMenuCreateNewProduct.Click += subMenuCreateNewProduct_Click;
+            // 
+            // subMenuProducts
+            // 
+            subMenuProducts.Name = "subMenuProducts";
+            subMenuProducts.Size = new Size(180, 22);
+            subMenuProducts.Text = "Danh sách";
+            subMenuProducts.Click += subMenuProducts_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -116,5 +192,15 @@
         private ToolStripMenuItem menuBigSeller;
         private ToolStripMenuItem subMenuShopee;
         private ToolStripMenuItem subMenuTiktok;
+        private ToolStripMenuItem menuPageManager;
+        private ToolStripMenuItem subMenuNewPost;
+        private ToolStripMenuItem menuItemFacebook;
+        private ToolStripMenuItem menuItemTiktok;
+        private ToolStripMenuItem menuItemShopee;
+        private ToolStripMenuItem subMenuManager;
+        private ToolStripMenuItem menuItemNewPost;
+        private ToolStripMenuItem menuProductManager;
+        private ToolStripMenuItem subMenuCreateNewProduct;
+        private ToolStripMenuItem subMenuProducts;
     }
 }

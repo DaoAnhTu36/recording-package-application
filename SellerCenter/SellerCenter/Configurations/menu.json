@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Sản phẩm",
+    "children": [
+      {
+        "title": "Danh sách sản phẩm",
+        "form": "frmProductManager"
+      },
+      {
+        "title": "Thêm sản phẩm",
+        "form": "frmCreateNewProduct"
+      },
+      {
+        "title": "Quay video đóng gói",
+        "form": "frmRecordPackingVideo"
+      },
+      {
+        "title": "Lịch sử video",
+        "form": "frmRecordPackingVideoHistory"
+      }
+    ]
+  }
+]

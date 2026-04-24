@@ -36,5 +36,23 @@ namespace SellerCenter
             var screen = new frmBigSellerTiktok();
             screen.ShowDialog();
         }
+
+        private void menuItemNewPost_Click(object sender, EventArgs e)
+        {
+            var screen = new frmCreateNewPost();
+            screen.ShowDialog();
+        }
+
+        private void subMenuCreateNewProduct_Click(object sender, EventArgs e)
+        {
+            var screen = new frmCreateNewProduct();
+            screen.ShowDialog();
+        }
+
+        private void subMenuProducts_Click(object sender, EventArgs e)
+        {
+            var screen = new frmProductManager();
+            screen.ShowDialog();
+        }
     }
 }
