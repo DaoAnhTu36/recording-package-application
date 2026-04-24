@@ -16,7 +16,7 @@ namespace SellerCenter.Infrastructure
         public DataTable GetAll()
         {
             using var conn = _db.GetConnection();
-            using var cmd = new MySqlCommand("SELECT product_code, title, content, hook, image_url_1, image_url_2, image_url_3, image_url_4, image_url_5, video_url, hashtag, created_at, updated_at FROM post_content ORDER BY id DESC", conn);
+            using var cmd = new MySqlCommand("SELECT id, product_code, title, content, hook, image_url_1, image_url_2, image_url_3, image_url_4, image_url_5, video_url, hashtag, created_at, updated_at FROM post_content ORDER BY id DESC", conn);
             using var adapter = new MySqlDataAdapter(cmd);
 
             var dt = new DataTable();
@@ -83,6 +83,54 @@ namespace SellerCenter.Infrastructure
 
             conn.Open();
             return cmd.ExecuteNonQuery() > 0;
+        }
+
+        public DataTable Search(string keyword)
+        {
+            using var conn = _db.GetConnection();
+            using var cmd = new MySqlCommand(@"
+            SELECT id, product_code, title, content, hook, image_url_1, image_url_2, image_url_3, image_url_4, image_url_5, video_url, hashtag, created_at, updated_at
+            FROM post_content
+            WHERE
+                title LIKE @keyword
+                OR product_code LIKE @keyword
+            ORDER BY id DESC;", conn);
+            cmd.Parameters.AddWithValue("@keyword", $"%{keyword}%");
+            using var adapter = new MySqlDataAdapter(cmd);
+            var table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+
+        public PostContentModel? GetById(long id)
+        {
+            using var conn = _db.GetConnection();
+            using var cmd = new MySqlCommand(@"
+            SELECT id, product_code, title, content, hook, image_url_1, image_url_2, image_url_3, image_url_4, image_url_5, video_url, hashtag, created_at, updated_at FROM post_content
+            WHERE id = @id;", conn);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            conn.Open();
+            using var reader = cmd.ExecuteReader();
+
+            if (!reader.Read()) return null;
+
+            return new PostContentModel
+            {
+                Id = reader.GetInt32("id"),
+                Title = reader.GetString("title"),
+                ProductCode = reader.GetString("product_code"),
+                Content = reader["content"]?.ToString(),
+                Hook = reader["hook"]?.ToString(),
+                ImageUrl1 = reader["image_url_1"]?.ToString(),
+                ImageUrl2 = reader["image_url_2"]?.ToString(),
+                ImageUrl3 = reader["image_url_3"]?.ToString(),
+                ImageUrl4 = reader["image_url_4"]?.ToString(),
+                ImageUrl5 = reader["image_url_5"]?.ToString(),
+                VideoUrl = reader["video_url"]?.ToString(),
+                Hashtag = reader["hashtag"]?.ToString()
+            };
         }
 
         private void AddParams(MySqlCommand cmd, PostContentModel item)

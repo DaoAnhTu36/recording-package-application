@@ -32,5 +32,15 @@ namespace SellerCenter.Service
         {
             return _repository.Delete(id);
         }
+
+        public DataTable Search(string keyword)
+        {
+            return _repository.Search(keyword);
+        }
+
+        public PostContentModel? GetById(long id)
+        {
+            return _repository.GetById(id);
+        }
     }
 }

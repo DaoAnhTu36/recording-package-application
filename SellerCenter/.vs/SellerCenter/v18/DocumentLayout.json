@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4634FC2-811F-4B23-9311-A3CC67D9B8F9}|SellerCenter.Infrastructure\\SellerCenter.Infrastructure.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter.infrastructure\\postcontentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4634FC2-811F-4B23-9311-A3CC67D9B8F9}|SellerCenter.Infrastructure\\SellerCenter.Infrastructure.csproj|solutionrelative:sellercenter.infrastructure\\postcontentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A2D4513-9043-44D2-920B-923533948659}|SellerCenter.Service\\SellerCenter.Service.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter.service\\postcontentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A2D4513-9043-44D2-920B-923533948659}|SellerCenter.Service\\SellerCenter.Service.csproj|solutionrelative:sellercenter.service\\postcontentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmCreateNewPost.cs",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
-              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmCreateNewPost.cs",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
-              "RelativeToolTip": "SellerCenter\\Forms\\frmCreateNewPost.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAUwIYAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PostContentRepository.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter.Infrastructure\\PostContentRepository.cs",
+              "RelativeDocumentMoniker": "SellerCenter.Infrastructure\\PostContentRepository.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter.Infrastructure\\PostContentRepository.cs",
+              "RelativeToolTip": "SellerCenter.Infrastructure\\PostContentRepository.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAwC0AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T11:04:10.507Z",
+              "WhenOpened": "2026-04-24T11:54:11.045Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmCreateNewPost.cs [Design]",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
-              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmCreateNewPost.cs",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs [Design]",
-              "RelativeToolTip": "SellerCenter\\Forms\\frmCreateNewPost.cs [Design]",
+              "DocumentIndex": 3,
+              "Title": "PostContentService.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter.Service\\PostContentService.cs",
+              "RelativeDocumentMoniker": "SellerCenter.Service\\PostContentService.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter.Service\\PostContentService.cs",
+              "RelativeToolTip": "SellerCenter.Service\\PostContentService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAYwBsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T11:03:55.056Z",
+              "WhenOpened": "2026-04-24T11:52:23.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmPostManager.cs [Design]",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmPostManager.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs [Design]",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmPostManager.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T11:33:53.997Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmPostManager.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmPostManager.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmPostManager.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAA6wJAAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T11:31:45.911Z",
+              "EditorCaption": ""
             }
           ]
         }

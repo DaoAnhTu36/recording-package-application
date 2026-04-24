@@ -15,6 +15,7 @@
     <None Remove="appsettings.json" />
     <None Remove="client_secret.json" />
     <None Remove="Configurations\menu.json" />
+    <None Remove="Forms\frmPostManager.resx~RFbe3fd0c.TMP" />
   </ItemGroup>
 
   <ItemGroup>
