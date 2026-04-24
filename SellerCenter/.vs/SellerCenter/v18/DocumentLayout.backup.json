@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\usercontrols\\socialmediaplatformcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\usercontrols\\socialmediaplatformcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmcreatenewpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmcreatenewpost.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmcreatenewpost.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
@@ -14,11 +30,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmCreateNewPost.Designer.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.Designer.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmCreateNewPost.Designer.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.Designer.cs",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmCreateNewPost.Designer.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAkwCoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T06:14:48.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SocialMediaPlatformControl.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\UserControls\\SocialMediaPlatformControl.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\UserControls\\SocialMediaPlatformControl.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\UserControls\\SocialMediaPlatformControl.cs",
+              "RelativeToolTip": "SellerCenter\\UserControls\\SocialMediaPlatformControl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T06:09:34.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmCreateNewPost.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAEwBIAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T05:53:47.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmCreateNewPost.cs [Design]",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmCreateNewPost.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmCreateNewPost.cs [Design]",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmCreateNewPost.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T05:34:45.918Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Form1.cs",
               "RelativeDocumentMoniker": "SellerCenter\\Form1.cs",

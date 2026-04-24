@@ -28,6 +28,12 @@
     <Compile Update="Forms\frmRecording.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmTemplatePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserControls\ArticleTypeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\ImagePreviewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -35,6 +41,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\MultiImagePreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\SocialMediaPlatformControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\VideoPreviewControl.cs">

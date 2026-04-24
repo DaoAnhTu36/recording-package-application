@@ -51,6 +51,10 @@ namespace SellerCenter.Forms
 
         private void frmCreateNewPost_Load(object sender, EventArgs e)
         {
+        }
+
+        private void ConnectToChatGPT()
+        {
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
