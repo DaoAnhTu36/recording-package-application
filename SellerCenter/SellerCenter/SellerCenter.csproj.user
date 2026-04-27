@@ -19,6 +19,9 @@
     <Compile Update="Forms\frmCreateNewProduct.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmFacebook.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\frmHistoryScreen.cs">
       <SubType>Form</SubType>
     </Compile>

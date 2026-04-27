@@ -43,6 +43,10 @@
       {
         "title": "Danh sách bài viết",
         "form": "frmPostManager"
+      },
+      {
+        "title": "Đăng bài Facebook",
+        "form": "frmFacebook"
       }
     ]
   },
