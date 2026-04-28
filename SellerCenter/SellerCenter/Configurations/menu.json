@@ -1,5 +1,14 @@
 [
   {
+    "title": "Seller Center",
+    "children": [
+      {
+        "title": "Cài đặt",
+        "form": "frmSetting"
+      }
+    ]
+  },
+  {
     "title": "Sản phẩm",
     "children": [
       {
@@ -45,7 +54,7 @@
         "form": "frmPostManager"
       },
       {
-        "title": "Đăng bài Facebook",
+        "title": "Lấy token page Facebook",
         "form": "frmFacebook"
       }
     ]
@@ -56,6 +65,27 @@
       {
         "title": "Template prompt tạo bài viết",
         "form": "frmTemplatePrompt"
+      },
+      {
+        "title": "Danh sách ứng dụng facebook",
+        "form": "frmFacebookAppManager"
+      },
+      {
+        "title": "Quyền truy cập trang facebook",
+        "form": "frmFacebookAppPermission"
+      }
+    ]
+  },
+  {
+    "title": "Quản lý nhân viên",
+    "children": [
+      {
+        "title": "Danh sách nhân viên",
+        "form": "frmEmployeeManager"
+      },
+      {
+        "title": "Phân quyền truy cập",
+        "form": "frmEmployeeAccessControl"
       }
     ]
   }

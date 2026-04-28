@@ -14,28 +14,19 @@ namespace SellerCenter
 
         public void OpenForm(Form form)
         {
-            string key = form.GetType().Name;
-
-            if (formCache.ContainsKey(key))
+            if (currentForm != null)
             {
-                form = formCache[key];
-            }
-            else
-            {
-                formCache[key] = form;
+                currentForm.Close();
+                panelMain.Controls.Remove(currentForm);
             }
 
-            foreach (Control ctrl in panelMain.Controls)
-                ctrl.Visible = false;
+            currentForm = form;
 
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;
 
-            if (!panelMain.Controls.Contains(form))
-                panelMain.Controls.Add(form);
-            form.Text = "";
+            panelMain.Controls.Add(form);
             form.Show();
-            form.BringToFront();
         }
 
         private void Form1_Load(object sender, EventArgs e)

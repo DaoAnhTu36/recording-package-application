@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using SellerCenter.Commons;
 using SellerCenter.Helper;
 using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Models;
+using SellerCenter.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -38,11 +40,12 @@ namespace SellerCenter.Forms
 
         private void ConnectToChatGPT()
         {
-            var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-            var apiKey = config["OpenAI:ApiKey"];
-            _chatGpt = new ChatGPTRepository(apiKey!);
+            //var config = new ConfigurationBuilder()
+            //    .AddJsonFile("appsettings.json")
+            //    .Build();
+            //var apiKey = config["OpenAI:ApiKey"];
+            var openAiConfig = AppConfig.Get<OpenAIConfig>("OpenAI");
+            _chatGpt = new ChatGPTRepository(openAiConfig.ApiKey!);
         }
 
         private void txtProductCode_KeyUp(object sender, KeyEventArgs e)

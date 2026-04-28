@@ -1,18 +1,24 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json.Linq;
+using SellerCenter.Commons;
+using SellerCenter.Helper;
+using SellerCenter.Models;
 using System.Web;
 
 namespace SellerCenter.Forms
 {
     public partial class frmFacebook : Form
     {
-        private readonly string redirectUri = "https://localhost/";
-        private readonly string graphVersion = "v25.0";
+        private string? redirectUri;
+        private string? graphVersion;
+        private readonly FacebookConfig facebookConfig = AppConfig.Get<FacebookConfig>("Facebook");
 
         public frmFacebook()
         {
             InitializeComponent();
             InitWebView();
+            redirectUri = facebookConfig.RedirectUri;
+            graphVersion = facebookConfig.GraphVersion;
         }
 
         private async void InitWebView()
@@ -25,16 +31,13 @@ namespace SellerCenter.Forms
         {
             string url = e.Uri;
 
-            if (url.StartsWith(redirectUri) && url.Contains("access_token"))
+            if (url.StartsWith(redirectUri!) && url.Contains("access_token"))
             {
                 e.Cancel = true;
-
                 string userToken = ExtractTokenFromUrl(url);
-                txtUserToken.Text = userToken;
-
+                SessionManager.SetFacebookUserToken(userToken);
                 await GetPageTokenAsync(userToken);
-
-                MessageBox.Show("Lấy token thành công!");
+                this.Dispose();
             }
         }
 
@@ -45,7 +48,7 @@ namespace SellerCenter.Forms
 
             var query = HttpUtility.ParseQueryString(fragment);
 
-            return query["access_token"];
+            return query["access_token"]!;
         }
 
         private async Task GetPageTokenAsync(string userToken)
@@ -67,75 +70,29 @@ namespace SellerCenter.Forms
                 throw new Exception("Không tìm thấy Page. Kiểm tra tài khoản có phải Admin Page không.");
             }
 
-            txtPageId.Text = firstPage["id"]?.ToString();
-            txtPageToken.Text = firstPage["access_token"]?.ToString();
+            SessionManager.SetFacebookPageId(firstPage["id"]?.ToString()!);
+            SessionManager.SetFacebookPageToken(firstPage["access_token"]?.ToString()!);
         }
 
         private void frmFacebook_Load(object sender, EventArgs e)
         {
-        }
-
-        private async void btnPostFacebook_Click(object sender, EventArgs e)
-        {
-            try
+            if (!string.IsNullOrEmpty(SessionManager.FacebookPageToken) && !string.IsNullOrEmpty(SessionManager.FacebookPageId))
             {
-                btnPostFacebook.Enabled = false;
-                btnPostFacebook.Text = "Đang đăng...";
-
-                string pageId = txtPageId.Text.Trim();
-                string pageToken = txtPageToken.Text.Trim();
-                string content = txtContent.Text.Trim();
-
-                string result = await PostFacebookAsync(pageId, pageToken, content);
-
-                MessageBox.Show("Đăng Facebook thành công!\n" + result);
+                MessageBox.Show("Đã kết nối Facebook thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                return;
             }
-            catch (Exception ex)
+            if (!string.IsNullOrEmpty(SessionManager.AppId))
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                string scope = "pages_show_list,pages_read_engagement,pages_manage_posts";
+                string loginUrl =
+                    $"https://www.facebook.com/{graphVersion}/dialog/oauth" +
+                    $"?client_id={SessionManager.AppId}" +
+                    $"&redirect_uri={HttpUtility.UrlEncode(redirectUri)}" +
+                    $"&scope={HttpUtility.UrlEncode(scope)}" +
+                    $"&response_type=token";
+                webView21.Source = new Uri(loginUrl);
             }
-            finally
-            {
-                btnPostFacebook.Enabled = true;
-                btnPostFacebook.Text = "Đăng Facebook";
-            }
-        }
-
-        private async Task<string> PostFacebookAsync(string pageId, string pageToken, string message)
-        {
-            using var client = new HttpClient();
-
-            string url = $"https://graph.facebook.com/{graphVersion}/{pageId}/feed";
-
-            var data = new Dictionary<string, string>
-            {
-                { "message", message },
-                { "access_token", pageToken }
-            };
-
-            var response = await client.PostAsync(url, new FormUrlEncodedContent(data));
-            string result = await response.Content.ReadAsStringAsync();
-
-            if (!response.IsSuccessStatusCode)
-                throw new Exception(result);
-
-            return result;
-        }
-
-        private void btnGetToken_Click(object sender, EventArgs e)
-        {
-            string appId = txtAppId.Text.Trim();
-
-            string scope = "pages_show_list,pages_read_engagement,pages_manage_posts";
-
-            string loginUrl =
-                $"https://www.facebook.com/{graphVersion}/dialog/oauth" +
-                $"?client_id={appId}" +
-                $"&redirect_uri={HttpUtility.UrlEncode(redirectUri)}" +
-                $"&scope={HttpUtility.UrlEncode(scope)}" +
-                $"&response_type=token";
-
-            webView21.Source = new Uri(loginUrl);
         }
     }
 }

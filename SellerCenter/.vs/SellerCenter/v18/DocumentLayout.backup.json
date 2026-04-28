@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmfacebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmfacebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\configurations\\menu.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\configurations\\menu.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmpostmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter\\forms\\frmfacebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4EAB202A-6E40-450B-B4F6-406165C7D570}|SellerCenter\\SellerCenter.csproj|solutionrelative:sellercenter\\forms\\frmfacebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4A2D4513-9043-44D2-920B-923533948659}|SellerCenter.Service\\SellerCenter.Service.csproj|d:\\du-an-trieu-do\\recording-package-application\\sellercenter\\sellercenter.service\\facebookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A2D4513-9043-44D2-920B-923533948659}|SellerCenter.Service\\SellerCenter.Service.csproj|solutionrelative:sellercenter.service\\facebookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,40 +26,40 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "menu.json",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Configurations\\menu.json",
-              "RelativeDocumentMoniker": "SellerCenter\\Configurations\\menu.json",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Configurations\\menu.json",
-              "RelativeToolTip": "SellerCenter\\Configurations\\menu.json",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADAAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-24T18:59:11.14Z",
+              "DocumentIndex": 2,
+              "Title": "FacebookService.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter.Service\\FacebookService.cs",
+              "RelativeDocumentMoniker": "SellerCenter.Service\\FacebookService.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter.Service\\FacebookService.cs",
+              "RelativeToolTip": "SellerCenter.Service\\FacebookService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T11:10:01.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmFacebook.cs",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmFacebook.cs",
-              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmFacebook.cs",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmFacebook.cs",
-              "RelativeToolTip": "SellerCenter\\Forms\\frmFacebook.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Title": "frmPostManager.cs",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmPostManager.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmPostManager.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAQwGwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T18:58:27.788Z",
+              "WhenOpened": "2026-04-28T11:03:06.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmFacebook.cs [Design]",
-              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmFacebook.cs",
-              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmFacebook.cs",
-              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmFacebook.cs [Design]",
-              "RelativeToolTip": "SellerCenter\\Forms\\frmFacebook.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "frmPostManager.cs [Design]",
+              "DocumentMoniker": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs",
+              "RelativeDocumentMoniker": "SellerCenter\\Forms\\frmPostManager.cs",
+              "ToolTip": "D:\\du-an-trieu-do\\recording-package-application\\SellerCenter\\SellerCenter\\Forms\\frmPostManager.cs [Design]",
+              "RelativeToolTip": "SellerCenter\\Forms\\frmPostManager.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T18:57:55.779Z",
+              "WhenOpened": "2026-04-28T10:57:24.488Z",
               "EditorCaption": " [Design]"
             }
           ]

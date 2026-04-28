@@ -55,3 +55,5 @@ nunit-*.xml
 SellerCenter/SellerCenter/client_secret.json
 SellerCenter/SellerCenter/appsettings.json
 SellerCenter/.vs/
+SellerCenter/SellerCenter/appsettings.Development.json
+SellerCenter/SellerCenter/appsettings.Production.json

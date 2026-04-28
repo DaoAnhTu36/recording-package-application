@@ -1,4 +1,5 @@
-﻿using SellerCenter.Infrastructure.Models;
+﻿using SellerCenter.Helper;
+using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -8,11 +9,13 @@ namespace SellerCenter.Forms
         private readonly PostContentService? _postContentService;
         private int _idEditing = 0;
         private PostContentModel? _postContentModel = new();
+        private readonly FacebookService _facebookService;
 
         public frmPostManager()
         {
             InitializeComponent();
             _postContentService = new PostContentService();
+            _facebookService = new FacebookService();
         }
 
         private void MappingData()
@@ -70,7 +73,7 @@ namespace SellerCenter.Forms
             }
         }
 
-        private void dataGridViewPostContent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dataGridViewPostContent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
             int _idEditing = Convert.ToInt32(
@@ -91,6 +94,20 @@ namespace SellerCenter.Forms
             }
             else if (dataGridViewPostContent.Columns[e.ColumnIndex].Name == "btnPost")
             {
+                dataGridViewPostContent.Visible = false;
+                txtKeyword.Visible = false;
+                lblNotifyPost.Visible = true;
+                var pageId = SessionManager.FacebookPageId;
+                var pageToken = SessionManager.FacebookPageToken;
+                var message = dataGridViewPostContent.Rows[e.RowIndex].Cells["title"].Value.ToString();
+                message += "\n" + dataGridViewPostContent.Rows[e.RowIndex].Cells["hook"].Value.ToString();
+                message += "\n" + dataGridViewPostContent.Rows[e.RowIndex].Cells["content"].Value.ToString();
+                message += "\n" + dataGridViewPostContent.Rows[e.RowIndex].Cells["hashtag"].Value.ToString();
+                var postResult = await _facebookService.PostFacebookAsync(pageId!, pageToken!, message);
+                MessageBox.Show("Đăng bài thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridViewPostContent.Visible = true;
+                txtKeyword.Visible = true;
+                lblNotifyPost.Visible = false;
             }
         }
 
@@ -122,6 +139,16 @@ namespace SellerCenter.Forms
 
         private void frmPostManager_Load(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(SessionManager.FacebookPageId) || string.IsNullOrEmpty(SessionManager.FacebookPageToken))
+            {
+                MessageBox.Show("Vui lòng cấu hình Facebook Page ID và Token trước khi sử dụng chức năng này.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.BeginInvoke(new Action(() =>
+                {
+                    this.Close();
+                }));
+
+                return;
+            }
             GetData();
         }
 

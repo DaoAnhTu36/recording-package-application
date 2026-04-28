@@ -55,6 +55,7 @@
             panel1 = new Panel();
             btnSave = new Button();
             btnCancel = new Button();
+            lblNotifyPost = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPostContent).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -246,11 +247,24 @@
             btnCancel.Visible = false;
             btnCancel.Click += btnCancel_Click;
             // 
+            // lblNotifyPost
+            // 
+            lblNotifyPost.AutoSize = true;
+            lblNotifyPost.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblNotifyPost.ForeColor = Color.Red;
+            lblNotifyPost.Location = new Point(12, 71);
+            lblNotifyPost.Name = "lblNotifyPost";
+            lblNotifyPost.Size = new Size(247, 25);
+            lblNotifyPost.TabIndex = 12;
+            lblNotifyPost.Text = "Đang đăng bài facebook...";
+            lblNotifyPost.Visible = false;
+            // 
             // frmPostManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(lblNotifyPost);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(panel1);
@@ -298,5 +312,6 @@
         private Panel panel1;
         private Button btnSave;
         private Button btnCancel;
+        private Label lblNotifyPost;
     }
 }

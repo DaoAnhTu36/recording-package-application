@@ -1,4 +1,8 @@
-﻿namespace SellerCenter.Infrastructure
+﻿using SellerCenter.Helper;
+using SellerCenter.Infrastructure.Models;
+using System.Text.Json;
+
+namespace SellerCenter.Infrastructure
 {
     public class FacebookRepository
     {
@@ -18,7 +22,17 @@
             var result = await response.Content.ReadAsStringAsync();
 
             if (!response.IsSuccessStatusCode)
-                throw new Exception(result);
+            {
+                var error = JsonSerializer.Deserialize<FacebookErrorResponse>(result);
+
+                if (error?.error?.code == 190)
+                {
+                    SessionManager.ClearFacebookSession();
+                    throw new Exception("Token Facebook đã hết hạn. Vui lòng lấy lại token.");
+                }
+
+                throw new Exception(error?.error?.message ?? "Lỗi không xác định");
+            }
 
             return result;
         }

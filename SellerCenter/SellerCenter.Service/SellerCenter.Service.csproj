@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SellerCenter.Helper\SellerCenter.Helper.csproj" />
     <ProjectReference Include="..\SellerCenter.Infrastructure\SellerCenter.Infrastructure.csproj" />
   </ItemGroup>
 

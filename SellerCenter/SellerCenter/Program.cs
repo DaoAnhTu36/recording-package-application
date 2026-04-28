@@ -1,3 +1,6 @@
+using SellerCenter.Commons;
+using SellerCenter.Forms;
+
 namespace SellerCenter
 {
     internal static class Program
@@ -11,8 +14,13 @@ namespace SellerCenter
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             Logger.Init();
+            AppConfig.Init();
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            var loginForm = new frmLogin();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Form1());
+            }
             Application.ThreadException += (sender, args) =>
             {
                 Logger.Error(args.Exception);

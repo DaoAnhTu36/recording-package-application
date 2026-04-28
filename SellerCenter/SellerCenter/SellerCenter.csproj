@@ -15,6 +15,7 @@
     <None Remove="appsettings.json" />
     <None Remove="client_secret.json" />
     <None Remove="Configurations\menu.json" />
+    <None Remove="Forms\frmFacebookAppPermission.cs~RF1fa752be.TMP" />
     <None Remove="Forms\frmPostManager.resx~RFbe3fd0c.TMP" />
   </ItemGroup>
 
@@ -39,6 +40,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.Production.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -58,7 +65,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.7" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.7" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="10.0.7" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3912.50" />
     <PackageReference Include="MySql.Data" Version="9.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />

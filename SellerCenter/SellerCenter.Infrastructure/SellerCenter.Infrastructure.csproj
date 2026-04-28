@@ -10,5 +10,8 @@
 		<PackageReference Include="Google.Apis.YouTube.v3" Version="1.73.0.4099" />
 		<PackageReference Include="MySql.Data" Version="9.6.0" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\SellerCenter.Helper\SellerCenter.Helper.csproj" />
+	</ItemGroup>
 
 </Project>
