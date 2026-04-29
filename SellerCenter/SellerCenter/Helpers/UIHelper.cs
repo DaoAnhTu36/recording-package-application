@@ -43,7 +43,6 @@ namespace SellerCenter.Helpers
             dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgv.AutoGenerateColumns = false;
             dgv.RowTemplate.Height = 35;
-            dgv.AutoGenerateColumns = false;
         }
 
         public static void StyleTextBox(TextBox txt)

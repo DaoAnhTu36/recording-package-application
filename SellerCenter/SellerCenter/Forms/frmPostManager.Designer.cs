@@ -143,7 +143,7 @@
             // 
             // txtContent
             // 
-            txtContent.Location = new Point(117, 214);
+            txtContent.Location = new Point(117, 156);
             txtContent.Name = "txtContent";
             txtContent.Size = new Size(466, 427);
             txtContent.TabIndex = 5;
@@ -178,7 +178,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 211);
+            label4.Location = new Point(3, 153);
             label4.Name = "label4";
             label4.Size = new Size(57, 15);
             label4.TabIndex = 8;
@@ -186,6 +186,7 @@
             // 
             // btnSave
             // 
+            btnSave.Enabled = false;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Location = new Point(3, 865);
             btnSave.Name = "btnSave";
@@ -193,11 +194,11 @@
             btnSave.TabIndex = 6;
             btnSave.Text = "Lưu thay đổi";
             btnSave.UseVisualStyleBackColor = true;
-            btnSave.Visible = false;
             btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
+            btnCancel.Enabled = false;
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Location = new Point(117, 865);
             btnCancel.Name = "btnCancel";
@@ -205,7 +206,6 @@
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Hủy bỏ thay đổi";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Visible = false;
             btnCancel.Click += btnCancel_Click;
             // 
             // tableLayoutPanel1
@@ -235,19 +235,19 @@
             tableLayoutPanel1.RowCount = 8;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 88F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 433F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 218F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 437F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 272F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 135F));
             tableLayoutPanel1.Size = new Size(586, 1035);
             tableLayoutPanel1.TabIndex = 12;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(3, 123);
+            label5.Location = new Point(3, 105);
             label5.Name = "label5";
             label5.Size = new Size(51, 15);
             label5.TabIndex = 12;
@@ -256,15 +256,16 @@
             // txtHashtag
             // 
             txtHashtag.Dock = DockStyle.Fill;
-            txtHashtag.Location = new Point(117, 126);
+            txtHashtag.Location = new Point(117, 108);
             txtHashtag.Name = "txtHashtag";
-            txtHashtag.Size = new Size(466, 82);
+            txtHashtag.Size = new Size(466, 42);
             txtHashtag.TabIndex = 13;
             txtHashtag.Text = "";
             // 
             // btnPost
             // 
-            btnPost.Location = new Point(3, 927);
+            btnPost.Enabled = false;
+            btnPost.Location = new Point(3, 902);
             btnPost.Name = "btnPost";
             btnPost.Size = new Size(75, 23);
             btnPost.TabIndex = 14;
@@ -275,7 +276,7 @@
             // lblPostStatus
             // 
             lblPostStatus.AutoSize = true;
-            lblPostStatus.Location = new Point(117, 924);
+            lblPostStatus.Location = new Point(117, 899);
             lblPostStatus.Name = "lblPostStatus";
             lblPostStatus.Size = new Size(38, 15);
             lblPostStatus.TabIndex = 15;
@@ -285,7 +286,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(3, 644);
+            label6.Location = new Point(3, 590);
             label6.Name = "label6";
             label6.Size = new Size(37, 15);
             label6.TabIndex = 16;
@@ -294,9 +295,9 @@
             // videoPreviewControl1
             // 
             videoPreviewControl1.Dock = DockStyle.Fill;
-            videoPreviewControl1.Location = new Point(117, 647);
+            videoPreviewControl1.Location = new Point(117, 593);
             videoPreviewControl1.Name = "videoPreviewControl1";
-            videoPreviewControl1.Size = new Size(466, 212);
+            videoPreviewControl1.Size = new Size(466, 266);
             videoPreviewControl1.TabIndex = 17;
             // 
             // tableLayoutPanel2
@@ -324,6 +325,7 @@
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmPostManager";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Danh sách bài viết";
             Load += frmPostManager_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewPostContent).EndInit();

@@ -40,6 +40,9 @@
     <Compile Update="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\frmPostManager.cs">
       <SubType>Form</SubType>
     </Compile>

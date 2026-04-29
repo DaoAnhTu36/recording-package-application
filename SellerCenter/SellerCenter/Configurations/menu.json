@@ -73,6 +73,10 @@
       {
         "title": "Quyền truy cập trang facebook",
         "form": "frmFacebookAppPermission"
+      },
+      {
+        "title": "Menu",
+        "form": "frmMenu"
       }
     ]
   },

@@ -67,16 +67,18 @@ namespace SellerCenter.Forms
             _postContentModel.Hook = txtHook.Text.Trim();
             _postContentModel.Hashtag = txtHashtag.Text.Trim();
             _postContentService?.Update(_postContentModel);
-            btnCancel.Visible = false;
-            btnSave.Visible = false;
+            btnCancel.Enabled = false;
+            btnSave.Enabled = false;
+            btnPost.Enabled = false;
             GetData();
             ResetForm();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            btnCancel.Visible = false;
-            btnSave.Visible = false;
+            btnCancel.Enabled = false;
+            btnSave.Enabled = false;
+            btnPost.Enabled = false;
             ResetForm();
         }
 
@@ -87,6 +89,9 @@ namespace SellerCenter.Forms
             txtKeyword.Text = string.Empty;
             txtTitle.Text = string.Empty;
             txtHashtag.Text = string.Empty;
+            btnCancel.Enabled = false;
+            btnSave.Enabled = false;
+            btnPost.Enabled = false;
         }
 
         private void txtKeyword_TextChanged(object sender, EventArgs e)
@@ -130,8 +135,9 @@ namespace SellerCenter.Forms
                 txtHashtag.Text = postContent?.Hashtag;
                 videoPreviewControl1.PreviewVideo(postContent?.VideoUrl!);
                 videoUrl = postContent?.VideoUrl;
-                btnCancel.Visible = true;
-                btnSave.Visible = true;
+                btnCancel.Enabled = true;
+                btnSave.Enabled = true;
+                btnPost.Enabled = true;
             }
         }
 
@@ -156,6 +162,8 @@ namespace SellerCenter.Forms
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin trước khi đăng bài.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            btnCancel.Enabled = false;
+            btnSave.Enabled = false;
             btnPost.Enabled = false;
             lblPostStatus.Visible = true;
             lblPostStatus.Text = "Đang đăng bài...";
@@ -163,10 +171,26 @@ namespace SellerCenter.Forms
             message += "\n" + txtHook.Text;
             message += "\n" + txtContent.Text;
             message += "\n" + txtHashtag.Text;
-            var postResult = await _facebookService.PostFacebookAsync(pageId!, pageToken!, message);
+
+            try
+            {
+                //var postResult = await _facebookService.PostFacebookAsync(pageId!, pageToken!, message);
+                if (string.IsNullOrEmpty(videoUrl))
+                {
+                    await _facebookService.PostFacebookAsync(pageId!, pageToken!, message);
+                }
+                else
+                {
+                    await _facebookService.PostVideoToFacebookAsync(pageId!, pageToken!, videoUrl!, message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                MessageBox.Show("Đăng bài thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             lblPostStatus.Visible = false;
-            btnPost.Enabled = true;
-            MessageBox.Show("Đăng bài thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ResetForm();
         }
     }
 }

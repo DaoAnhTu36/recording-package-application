@@ -1,9 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using OpenCvSharp;
-using SellerCenter.Helper;
-using SellerCenter.Helpers;
-using SellerCenter.Service;
-using ZXing.Aztec.Internal;
+﻿using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
