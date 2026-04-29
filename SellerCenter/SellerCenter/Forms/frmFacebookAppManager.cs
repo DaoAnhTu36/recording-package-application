@@ -1,4 +1,5 @@
-﻿using SellerCenter.Service;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
@@ -14,6 +15,8 @@ namespace SellerCenter.Forms
 
         private void frmFacebookAppManager_Load(object sender, EventArgs e)
         {
+            UIHelper.ApplyAll(this);
+            LayoutHelper.EqualRows(tableLayoutPanel1, 3);
             onLoad();
         }
 
@@ -35,6 +38,7 @@ namespace SellerCenter.Forms
         private void onLoad()
         {
             var apps = _facebookAppService.GetAll();
+            MappingData();
             dataGridView1.DataSource = apps;
         }
 
@@ -44,6 +48,15 @@ namespace SellerCenter.Forms
             txtAppName.Text = "";
             btnSave.Enabled = true;
             btnUpdate.Visible = false;
+        }
+
+        private void MappingData()
+        {
+            id.DataPropertyName = "id";
+            app_id.DataPropertyName = "appId";
+            app_name.DataPropertyName = "appName";
+            app_secret.DataPropertyName = "appSecret";
+            is_active.DataPropertyName = "isActive";
         }
     }
 }

@@ -41,13 +41,17 @@
             app_name = new DataGridViewTextBoxColumn();
             permission_name = new DataGridViewTextBoxColumn();
             created_at = new DataGridViewTextBoxColumn();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(60, 15);
             label1.TabIndex = 0;
@@ -55,16 +59,17 @@
             // 
             // cbbAppId
             // 
+            cbbAppId.Dock = DockStyle.Fill;
             cbbAppId.FormattingEnabled = true;
-            cbbAppId.Location = new Point(12, 27);
+            cbbAppId.Location = new Point(126, 3);
             cbbAppId.Name = "cbbAppId";
-            cbbAppId.Size = new Size(245, 23);
+            cbbAppId.Size = new Size(263, 23);
             cbbAppId.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 53);
+            label2.Location = new Point(3, 33);
             label2.Name = "label2";
             label2.Size = new Size(88, 15);
             label2.TabIndex = 2;
@@ -72,17 +77,18 @@
             // 
             // txtPermissionName
             // 
-            txtPermissionName.Location = new Point(12, 71);
+            txtPermissionName.Dock = DockStyle.Fill;
+            txtPermissionName.Location = new Point(126, 36);
             txtPermissionName.Name = "txtPermissionName";
-            txtPermissionName.Size = new Size(245, 23);
+            txtPermissionName.Size = new Size(263, 23);
             txtPermissionName.TabIndex = 3;
             // 
             // btnSave
             // 
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Location = new Point(12, 100);
+            btnSave.Location = new Point(3, 69);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(75, 29);
+            btnSave.Size = new Size(75, 28);
             btnSave.TabIndex = 4;
             btnSave.Text = "Lưu";
             btnSave.UseVisualStyleBackColor = true;
@@ -91,9 +97,9 @@
             // btnUpdate
             // 
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Location = new Point(182, 100);
+            btnUpdate.Location = new Point(126, 69);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 29);
+            btnUpdate.Size = new Size(75, 28);
             btnUpdate.TabIndex = 5;
             btnUpdate.Text = "Cập nhật";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -107,10 +113,9 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, app_id, app_name, permission_name, created_at });
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(0, 194);
+            dataGridView1.Location = new Point(3, 173);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1902, 797);
+            dataGridView1.Size = new Size(1896, 797);
             dataGridView1.TabIndex = 6;
             // 
             // id
@@ -138,18 +143,47 @@
             created_at.HeaderText = "Thời gian tạo";
             created_at.Name = "created_at";
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.37755F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.62245F));
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(cbbAppId, 1, 0);
+            tableLayoutPanel1.Controls.Add(btnUpdate, 1, 2);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
+            tableLayoutPanel1.Controls.Add(btnSave, 0, 2);
+            tableLayoutPanel1.Controls.Add(txtPermissionName, 1, 1);
+            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            tableLayoutPanel1.Size = new Size(392, 100);
+            tableLayoutPanel1.TabIndex = 7;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(dataGridView1, 0, 1);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 17.15439F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 82.84561F));
+            tableLayoutPanel2.Size = new Size(1902, 991);
+            tableLayoutPanel2.TabIndex = 8;
+            // 
             // frmFacebookAppPermission
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1902, 991);
-            Controls.Add(dataGridView1);
-            Controls.Add(btnUpdate);
-            Controls.Add(btnSave);
-            Controls.Add(txtPermissionName);
-            Controls.Add(label2);
-            Controls.Add(cbbAppId);
-            Controls.Add(label1);
+            Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
@@ -157,8 +191,10 @@
             Text = "Quyền truy cập facebook";
             Load += frmFacebookAppPermission_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -175,5 +211,7 @@
         private DataGridViewTextBoxColumn app_name;
         private DataGridViewTextBoxColumn permission_name;
         private DataGridViewTextBoxColumn created_at;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }

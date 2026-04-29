@@ -1,5 +1,5 @@
-﻿using SellerCenter.Service;
-using SellerCenter.UserControls;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
@@ -15,6 +15,7 @@ namespace SellerCenter.Forms
 
         private void frmProductManager_Load(object sender, EventArgs e)
         {
+            UIHelper.ApplyAll(this);
             GetData();
         }
 

@@ -1,4 +1,5 @@
-﻿using SellerCenter.Service;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,8 @@ namespace SellerCenter.Forms
 
         private void frmFacebookAppPermission_Load(object sender, EventArgs e)
         {
+            UIHelper.ApplyAll(this);
+            LayoutHelper.EqualRows(tableLayoutPanel1, 3);
             var lstApp = _facebookAppsService.GetAll();
             cbbAppId.DisplayMember = "AppName";
             cbbAppId.ValueMember = "Id";

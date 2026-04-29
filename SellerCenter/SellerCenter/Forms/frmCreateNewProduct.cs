@@ -1,4 +1,5 @@
 ﻿using SellerCenter.Helper;
+using SellerCenter.Helpers;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
@@ -54,7 +55,7 @@ namespace SellerCenter.Forms
             var product = new ProductModel
             {
                 ProductName = txtProductName.Text.Trim(),
-                ProductCode = txtProductCode.Text.Trim(),
+                ProductCode = txtProductCode.Text.Trim().ToUpper(),
                 Description = txtProductDesc.Text.Trim(),
                 ImageUrl = string.Join(CharacterConstants.Separator, selectedImagePaths),
                 VideoUrl = selectedVideoPath
@@ -123,6 +124,11 @@ namespace SellerCenter.Forms
             }
 
             return true;
+        }
+
+        private void frmCreateNewProduct_Load(object sender, EventArgs e)
+        {
+            UIHelper.ApplyAll(this);
         }
     }
 }

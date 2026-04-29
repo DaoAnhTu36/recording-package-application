@@ -42,12 +42,16 @@
             label3 = new Label();
             multiImagePreviewControl1 = new SellerCenter.UserControls.MultiImagePreviewControl();
             videoPreviewControl1 = new SellerCenter.UserControls.VideoPreviewControl();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 67);
+            label1.Location = new Point(3, 50);
             label1.Name = "label1";
             label1.Size = new Size(81, 15);
             label1.TabIndex = 0;
@@ -55,15 +59,16 @@
             // 
             // txtProductName
             // 
-            txtProductName.Location = new Point(12, 85);
+            txtProductName.Dock = DockStyle.Fill;
+            txtProductName.Location = new Point(121, 53);
             txtProductName.Name = "txtProductName";
-            txtProductName.Size = new Size(297, 23);
+            txtProductName.Size = new Size(394, 23);
             txtProductName.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 133);
+            label2.Location = new Point(3, 0);
             label2.Name = "label2";
             label2.Size = new Size(93, 15);
             label2.TabIndex = 2;
@@ -71,16 +76,17 @@
             // 
             // txtProductDesc
             // 
-            txtProductDesc.Location = new Point(12, 151);
+            txtProductDesc.Dock = DockStyle.Fill;
+            txtProductDesc.Location = new Point(3, 38);
             txtProductDesc.Name = "txtProductDesc";
-            txtProductDesc.Size = new Size(539, 404);
+            txtProductDesc.Size = new Size(596, 360);
             txtProductDesc.TabIndex = 3;
             txtProductDesc.Text = "";
             // 
             // btnChooseImage
             // 
             btnChooseImage.FlatStyle = FlatStyle.Flat;
-            btnChooseImage.Location = new Point(634, 122);
+            btnChooseImage.Location = new Point(605, 3);
             btnChooseImage.Name = "btnChooseImage";
             btnChooseImage.Size = new Size(75, 23);
             btnChooseImage.TabIndex = 4;
@@ -91,7 +97,7 @@
             // btnSave
             // 
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Location = new Point(12, 575);
+            btnSave.Location = new Point(12, 525);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 6;
@@ -102,10 +108,10 @@
             // btnChooseVideo
             // 
             btnChooseVideo.FlatStyle = FlatStyle.Flat;
-            btnChooseVideo.Location = new Point(1333, 122);
+            btnChooseVideo.Location = new Point(1265, 3);
             btnChooseVideo.Name = "btnChooseVideo";
             btnChooseVideo.Size = new Size(113, 23);
-            btnChooseVideo.TabIndex = 7;
+            btnChooseVideo.TabIndex = 5;
             btnChooseVideo.Text = "Chọn video";
             btnChooseVideo.UseVisualStyleBackColor = true;
             btnChooseVideo.Click += btnChooseVideo_Click;
@@ -118,16 +124,17 @@
             // 
             // txtProductCode
             // 
-            txtProductCode.Location = new Point(12, 32);
+            txtProductCode.Dock = DockStyle.Fill;
+            txtProductCode.Location = new Point(121, 3);
             txtProductCode.Name = "txtProductCode";
-            txtProductCode.Size = new Size(297, 23);
+            txtProductCode.Size = new Size(394, 23);
             txtProductCode.TabIndex = 1;
             txtProductCode.Leave += txtProductCode_Leave;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 14);
+            label3.Location = new Point(3, 0);
             label3.Name = "label3";
             label3.Size = new Size(79, 15);
             label3.TabIndex = 10;
@@ -135,41 +142,76 @@
             // 
             // multiImagePreviewControl1
             // 
-            multiImagePreviewControl1.Location = new Point(634, 151);
+            multiImagePreviewControl1.Dock = DockStyle.Fill;
+            multiImagePreviewControl1.Location = new Point(605, 38);
             multiImagePreviewControl1.Name = "multiImagePreviewControl1";
-            multiImagePreviewControl1.Size = new Size(624, 404);
+            multiImagePreviewControl1.Size = new Size(654, 360);
             multiImagePreviewControl1.TabIndex = 11;
             // 
             // videoPreviewControl1
             // 
-            videoPreviewControl1.Location = new Point(1333, 151);
+            videoPreviewControl1.Dock = DockStyle.Fill;
+            videoPreviewControl1.Location = new Point(1265, 38);
             videoPreviewControl1.Name = "videoPreviewControl1";
-            videoPreviewControl1.Size = new Size(559, 404);
+            videoPreviewControl1.Size = new Size(612, 360);
             videoPreviewControl1.TabIndex = 12;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 47.7317543F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 52.2682457F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 617F));
+            tableLayoutPanel1.Controls.Add(btnChooseVideo, 2, 0);
+            tableLayoutPanel1.Controls.Add(multiImagePreviewControl1, 1, 1);
+            tableLayoutPanel1.Controls.Add(videoPreviewControl1, 2, 1);
+            tableLayoutPanel1.Controls.Add(btnChooseImage, 1, 0);
+            tableLayoutPanel1.Controls.Add(txtProductDesc, 0, 1);
+            tableLayoutPanel1.Controls.Add(label2, 0, 0);
+            tableLayoutPanel1.Location = new Point(12, 118);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.72818F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 91.27182F));
+            tableLayoutPanel1.Size = new Size(1880, 401);
+            tableLayoutPanel1.TabIndex = 13;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.7799225F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 77.22008F));
+            tableLayoutPanel2.Controls.Add(label3, 0, 0);
+            tableLayoutPanel2.Controls.Add(txtProductCode, 1, 0);
+            tableLayoutPanel2.Controls.Add(label1, 0, 1);
+            tableLayoutPanel2.Controls.Add(txtProductName, 1, 1);
+            tableLayoutPanel2.Location = new Point(12, 12);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(518, 100);
+            tableLayoutPanel2.TabIndex = 14;
             // 
             // frmCreateNewProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
-            Controls.Add(videoPreviewControl1);
-            Controls.Add(multiImagePreviewControl1);
-            Controls.Add(txtProductCode);
-            Controls.Add(label3);
-            Controls.Add(btnChooseVideo);
+            Controls.Add(tableLayoutPanel2);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(btnSave);
-            Controls.Add(btnChooseImage);
-            Controls.Add(txtProductDesc);
-            Controls.Add(label2);
-            Controls.Add(txtProductName);
-            Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmCreateNewProduct";
             Text = "Thêm sản phẩm mới";
+            Load += frmCreateNewProduct_Load;
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -186,5 +228,7 @@
         private Label label3;
         private UserControls.MultiImagePreviewControl multiImagePreviewControl1;
         private UserControls.VideoPreviewControl videoPreviewControl1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }

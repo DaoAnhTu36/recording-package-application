@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using OpenCvSharp;
 using SellerCenter.Helper;
+using SellerCenter.Helpers;
 using SellerCenter.Service;
 using ZXing.Aztec.Internal;
 
@@ -36,8 +37,9 @@ namespace SellerCenter.Forms
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            UIHelper.ApplyAll(this);
             txtUsername.Text = "admin";
-            txtPassword.Text = "123456";
+            txtPassword.Text = "123123";
         }
     }
 }

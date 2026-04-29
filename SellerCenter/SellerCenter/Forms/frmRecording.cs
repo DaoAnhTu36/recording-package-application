@@ -171,6 +171,7 @@ namespace SellerCenter.Forms
             btnCheckOrder.Enabled = true;
             btnStart.Enabled = false;
             btnEnd.Enabled = false;
+            btnUploadYoutube.Enabled = true;
             _cts?.Cancel();
 
             if (_recordTask != null)
@@ -244,6 +245,7 @@ namespace SellerCenter.Forms
             try
             {
                 btnUploadYoutube.Enabled = false;
+                progressBar1.Visible = true;
                 progressBar1.Value = 0;
                 lblStatus.Visible = true;
                 lblStatus.Text = "Đang xác thực Google...";
@@ -356,6 +358,13 @@ namespace SellerCenter.Forms
             lblStatus.Text = youtubeUrl;
             var packingSessionService = new PackingSessionService();
             packingSessionService.UpdateSession(_barcode!, youtubeUrl);
+        }
+
+        private void frmRecording_Load(object sender, EventArgs e)
+        {
+            btnCheckOrder.Enabled = true;
+            UIHelper.ApplyAll(this);
+            LayoutHelper.SetupEqualTable(tableLayoutPanel1, 4, 3);
         }
     }
 }

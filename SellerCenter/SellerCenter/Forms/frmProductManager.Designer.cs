@@ -40,23 +40,26 @@
             updated_at = new DataGridViewTextBoxColumn();
             label1 = new Label();
             txtKeyword = new TextBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, product_code, product_name, description, image_url, video_url, created_at, updated_at });
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(0, 91);
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(1904, 950);
+            dataGridView1.Size = new Size(1874, 960);
             dataGridView1.TabIndex = 0;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick; 
-            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // id
             // 
@@ -109,7 +112,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(57, 15);
             label1.TabIndex = 1;
@@ -117,20 +120,45 @@
             // 
             // txtKeyword
             // 
-            txtKeyword.Location = new Point(12, 37);
+            txtKeyword.Location = new Point(76, 3);
             txtKeyword.Name = "txtKeyword";
             txtKeyword.Size = new Size(490, 23);
             txtKeyword.TabIndex = 2;
             txtKeyword.TextChanged += txtKeyword_TextChanged;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 3.88297868F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 96.11702F));
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(txtKeyword, 1, 0);
+            tableLayoutPanel1.Location = new Point(12, 12);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1880, 45);
+            tableLayoutPanel1.TabIndex = 3;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(dataGridView1, 0, 0);
+            tableLayoutPanel2.Location = new Point(12, 63);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(1880, 966);
+            tableLayoutPanel2.TabIndex = 4;
             // 
             // frmProductManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
-            Controls.Add(txtKeyword);
-            Controls.Add(label1);
-            Controls.Add(dataGridView1);
+            Controls.Add(tableLayoutPanel2);
+            Controls.Add(tableLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
@@ -138,8 +166,10 @@
             Text = "Quản lý sản phẩm";
             Load += frmProductManager_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -155,5 +185,7 @@
         private DataGridViewTextBoxColumn updated_at;
         private Label label1;
         private TextBox txtKeyword;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }

@@ -33,25 +33,31 @@ namespace SellerCenter.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecording));
             pictureBoxCamera = new PictureBox();
             label1 = new Label();
-            label2 = new Label();
-            lblBarcodeScan = new Label();
-            lblRecordStatus = new Label();
             btnStart = new Button();
             btnEnd = new Button();
-            btnCheckOrder = new Button();
             historyScanBarcode = new ListBox();
-            label3 = new Label();
             btnUploadYoutube = new Button();
             lblStatus = new Label();
             progressBar1 = new ProgressBar();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            btnCheckOrder = new Button();
+            label2 = new Label();
+            lblBarcodeScan = new Label();
+            lblRecordStatus = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel3 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBoxCamera).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBoxCamera
             // 
-            pictureBoxCamera.Location = new Point(12, 250);
+            pictureBoxCamera.Dock = DockStyle.Fill;
+            pictureBoxCamera.Location = new Point(3, 230);
             pictureBoxCamera.Name = "pictureBoxCamera";
-            pictureBoxCamera.Size = new Size(900, 779);
+            pictureBoxCamera.Size = new Size(1896, 758);
             pictureBoxCamera.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxCamera.TabIndex = 1;
             pictureBoxCamera.TabStop = false;
@@ -60,53 +66,24 @@ namespace SellerCenter.Forms
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F);
-            label1.ForeColor = SystemColors.MenuHighlight;
-            label1.Location = new Point(12, 63);
+            label1.ForeColor = SystemColors.InactiveCaptionText;
+            label1.Location = new Point(150, 0);
             label1.Name = "label1";
             label1.Size = new Size(97, 20);
             label1.TabIndex = 4;
             label1.Text = "Mã đơn hàng";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F);
-            label2.ForeColor = SystemColors.MenuHighlight;
-            label2.Location = new Point(12, 98);
-            label2.Name = "label2";
-            label2.Size = new Size(75, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Trạng thái";
-            // 
-            // lblBarcodeScan
-            // 
-            lblBarcodeScan.AutoSize = true;
-            lblBarcodeScan.Font = new Font("Segoe UI", 11F);
-            lblBarcodeScan.Location = new Point(115, 63);
-            lblBarcodeScan.Name = "lblBarcodeScan";
-            lblBarcodeScan.Size = new Size(115, 20);
-            lblBarcodeScan.TabIndex = 6;
-            lblBarcodeScan.Text = "Đang chờ scan...";
-            // 
-            // lblRecordStatus
-            // 
-            lblRecordStatus.AutoSize = true;
-            lblRecordStatus.Font = new Font("Segoe UI", 11F);
-            lblRecordStatus.Location = new Point(115, 98);
-            lblRecordStatus.Name = "lblRecordStatus";
-            lblRecordStatus.Size = new Size(82, 20);
-            lblRecordStatus.TabIndex = 7;
-            lblRecordStatus.Text = "Đang chờ...";
-            // 
             // btnStart
             // 
-            btnStart.BackColor = Color.Bisque;
+            btnStart.BackColor = SystemColors.ControlLightLight;
+            btnStart.Dock = DockStyle.Fill;
             btnStart.Enabled = false;
             btnStart.FlatStyle = FlatStyle.Flat;
             btnStart.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnStart.Location = new Point(138, 12);
+            btnStart.ForeColor = SystemColors.ActiveCaptionText;
+            btnStart.Location = new Point(3, 46);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(93, 38);
+            btnStart.Size = new Size(141, 44);
             btnStart.TabIndex = 9;
             btnStart.Text = "Bắt đầu";
             btnStart.UseVisualStyleBackColor = false;
@@ -114,60 +91,42 @@ namespace SellerCenter.Forms
             // 
             // btnEnd
             // 
-            btnEnd.BackColor = Color.Bisque;
+            btnEnd.BackColor = SystemColors.ControlLightLight;
+            btnEnd.Dock = DockStyle.Fill;
             btnEnd.Enabled = false;
             btnEnd.FlatStyle = FlatStyle.Flat;
             btnEnd.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnEnd.Location = new Point(237, 12);
+            btnEnd.ForeColor = SystemColors.ActiveCaptionText;
+            btnEnd.Location = new Point(3, 96);
             btnEnd.Name = "btnEnd";
-            btnEnd.Size = new Size(93, 38);
+            btnEnd.Size = new Size(141, 37);
             btnEnd.TabIndex = 10;
             btnEnd.Text = "Kết thúc";
             btnEnd.UseVisualStyleBackColor = false;
             btnEnd.Click += btnEnd_Click;
             // 
-            // btnCheckOrder
-            // 
-            btnCheckOrder.BackColor = Color.Bisque;
-            btnCheckOrder.FlatStyle = FlatStyle.Flat;
-            btnCheckOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnCheckOrder.Location = new Point(12, 12);
-            btnCheckOrder.Name = "btnCheckOrder";
-            btnCheckOrder.Size = new Size(120, 38);
-            btnCheckOrder.TabIndex = 11;
-            btnCheckOrder.Text = "Kiểm tra đơn";
-            btnCheckOrder.UseVisualStyleBackColor = false;
-            btnCheckOrder.Click += btnCheckOrder_Click;
-            // 
             // historyScanBarcode
             // 
+            historyScanBarcode.Dock = DockStyle.Fill;
             historyScanBarcode.Font = new Font("Segoe UI", 10F);
             historyScanBarcode.FormattingEnabled = true;
             historyScanBarcode.ItemHeight = 17;
-            historyScanBarcode.Location = new Point(469, 42);
+            historyScanBarcode.Location = new Point(583, 3);
             historyScanBarcode.Name = "historyScanBarcode";
-            historyScanBarcode.Size = new Size(443, 191);
+            historyScanBarcode.Size = new Size(1310, 183);
             historyScanBarcode.TabIndex = 12;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F);
-            label3.Location = new Point(469, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(112, 20);
-            label3.TabIndex = 13;
-            label3.Text = "Lịch sử thao tác";
             // 
             // btnUploadYoutube
             // 
-            btnUploadYoutube.BackColor = Color.Red;
+            btnUploadYoutube.BackColor = SystemColors.ControlLightLight;
+            btnUploadYoutube.Dock = DockStyle.Fill;
+            btnUploadYoutube.Enabled = false;
             btnUploadYoutube.FlatStyle = FlatStyle.Flat;
             btnUploadYoutube.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUploadYoutube.ForeColor = SystemColors.ControlLightLight;
-            btnUploadYoutube.Location = new Point(12, 137);
+            btnUploadYoutube.ForeColor = SystemColors.ActiveCaptionText;
+            btnUploadYoutube.Location = new Point(3, 139);
             btnUploadYoutube.Name = "btnUploadYoutube";
-            btnUploadYoutube.Size = new Size(318, 38);
+            btnUploadYoutube.Size = new Size(141, 41);
             btnUploadYoutube.TabIndex = 14;
             btnUploadYoutube.Text = "Tải lên Youtube";
             btnUploadYoutube.UseVisualStyleBackColor = false;
@@ -177,7 +136,7 @@ namespace SellerCenter.Forms
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 11F);
-            lblStatus.Location = new Point(12, 183);
+            lblStatus.Location = new Point(150, 136);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(50, 20);
             lblStatus.TabIndex = 15;
@@ -186,52 +145,151 @@ namespace SellerCenter.Forms
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(12, 206);
+            progressBar1.Dock = DockStyle.Fill;
+            progressBar1.Location = new Point(309, 139);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(318, 38);
+            progressBar1.Size = new Size(262, 41);
             progressBar1.TabIndex = 16;
+            progressBar1.Visible = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.0769234F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.9230766F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 267F));
+            tableLayoutPanel1.Controls.Add(btnCheckOrder, 0, 0);
+            tableLayoutPanel1.Controls.Add(lblStatus, 1, 3);
+            tableLayoutPanel1.Controls.Add(btnStart, 0, 1);
+            tableLayoutPanel1.Controls.Add(btnEnd, 0, 2);
+            tableLayoutPanel1.Controls.Add(btnUploadYoutube, 0, 3);
+            tableLayoutPanel1.Controls.Add(label1, 1, 0);
+            tableLayoutPanel1.Controls.Add(label2, 1, 1);
+            tableLayoutPanel1.Controls.Add(lblBarcodeScan, 2, 0);
+            tableLayoutPanel1.Controls.Add(lblRecordStatus, 2, 1);
+            tableLayoutPanel1.Controls.Add(progressBar1, 2, 3);
+            tableLayoutPanel1.Dock = DockStyle.Top;
+            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 46.5116272F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 53.4883728F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
+            tableLayoutPanel1.Size = new Size(574, 183);
+            tableLayoutPanel1.TabIndex = 17;
+            // 
+            // btnCheckOrder
+            // 
+            btnCheckOrder.BackColor = SystemColors.ControlLightLight;
+            btnCheckOrder.Dock = DockStyle.Fill;
+            btnCheckOrder.Enabled = false;
+            btnCheckOrder.FlatStyle = FlatStyle.Flat;
+            btnCheckOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCheckOrder.ForeColor = SystemColors.ActiveCaptionText;
+            btnCheckOrder.Location = new Point(3, 3);
+            btnCheckOrder.Name = "btnCheckOrder";
+            btnCheckOrder.Size = new Size(141, 37);
+            btnCheckOrder.TabIndex = 11;
+            btnCheckOrder.Text = "Kiểm tra đơn";
+            btnCheckOrder.UseVisualStyleBackColor = false;
+            btnCheckOrder.Click += btnCheckOrder_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11F);
+            label2.ForeColor = SystemColors.InfoText;
+            label2.Location = new Point(150, 43);
+            label2.Name = "label2";
+            label2.Size = new Size(75, 20);
+            label2.TabIndex = 5;
+            label2.Text = "Trạng thái";
+            // 
+            // lblBarcodeScan
+            // 
+            lblBarcodeScan.AutoSize = true;
+            lblBarcodeScan.Font = new Font("Segoe UI", 11F);
+            lblBarcodeScan.Location = new Point(309, 0);
+            lblBarcodeScan.Name = "lblBarcodeScan";
+            lblBarcodeScan.Size = new Size(115, 20);
+            lblBarcodeScan.TabIndex = 6;
+            lblBarcodeScan.Text = "Đang chờ scan...";
+            // 
+            // lblRecordStatus
+            // 
+            lblRecordStatus.AutoSize = true;
+            lblRecordStatus.Font = new Font("Segoe UI", 11F);
+            lblRecordStatus.Location = new Point(309, 43);
+            lblRecordStatus.Name = "lblRecordStatus";
+            lblRecordStatus.Size = new Size(82, 20);
+            lblRecordStatus.TabIndex = 7;
+            lblRecordStatus.Text = "Đang chờ...";
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 1316F));
+            tableLayoutPanel2.Controls.Add(historyScanBarcode, 1, 0);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 0);
+            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(1896, 189);
+            tableLayoutPanel2.TabIndex = 18;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel3.Controls.Add(pictureBoxCamera, 0, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(0, 0);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 22.9061546F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 77.09384F));
+            tableLayoutPanel3.Size = new Size(1902, 991);
+            tableLayoutPanel3.TabIndex = 19;
             // 
             // frmRecording
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1902, 991);
-            Controls.Add(progressBar1);
-            Controls.Add(lblStatus);
-            Controls.Add(btnUploadYoutube);
-            Controls.Add(label3);
-            Controls.Add(historyScanBarcode);
-            Controls.Add(btnCheckOrder);
-            Controls.Add(btnEnd);
-            Controls.Add(btnStart);
-            Controls.Add(lblRecordStatus);
-            Controls.Add(lblBarcodeScan);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(pictureBoxCamera);
+            Controls.Add(tableLayoutPanel3);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmRecording";
             Text = "Quay video đóng gói hàng";
+            Load += frmRecording_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxCamera).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
         private PictureBox pictureBoxCamera;
         private Label label1;
-        private Label label2;
-        private Label lblBarcodeScan;
-        private Label lblRecordStatus;
         private Button btnStart;
         private Button btnEnd;
-        private Button btnCheckOrder;
         private ListBox historyScanBarcode;
-        private Label label3;
         private Button btnUploadYoutube;
         private Label lblStatus;
         private ProgressBar progressBar1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Button btnCheckOrder;
+        private Label label2;
+        private Label lblBarcodeScan;
+        private Label lblRecordStatus;
     }
 }

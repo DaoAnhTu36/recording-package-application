@@ -1,4 +1,5 @@
-﻿using SellerCenter.Infrastructure.Models;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -16,6 +17,8 @@ namespace SellerCenter.Forms
 
         private void frmEmployeeManager_Load(object sender, EventArgs e)
         {
+            LayoutHelper.EqualRows(formInfo, 7);
+            UIHelper.ApplyAll(this);
             cbbRole.Items.AddRange(_lstRole);
             initDataOnLoad();
         }
@@ -64,6 +67,7 @@ namespace SellerCenter.Forms
             txtPassword.Text = "";
             txtEmail.Text = "";
             txtPhone.Text = "";
+            txtFullName.Text = "";
             cbbRole.SelectedIndex = -1;
         }
 
