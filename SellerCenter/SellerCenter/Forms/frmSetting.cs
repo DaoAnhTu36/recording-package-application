@@ -1,4 +1,5 @@
 ﻿using SellerCenter.Helper;
+using SellerCenter.Helpers;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -58,6 +59,11 @@ namespace SellerCenter.Forms
                     Application.Exit();
                 }
             }
+        }
+
+        private void frmSetting_Load(object sender, EventArgs e)
+        {
+            UIHelper.ApplyAll(this);
         }
     }
 }

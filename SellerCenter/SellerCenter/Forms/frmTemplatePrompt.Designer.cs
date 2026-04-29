@@ -34,10 +34,8 @@
             label1 = new Label();
             label2 = new Label();
             articleTypeControl1 = new SellerCenter.UserControls.ArticleTypeControl();
-            tableLayoutPanel1 = new TableLayoutPanel();
             txtTemplateDesc = new RichTextBox();
             dataGridViewListTemplate = new DataGridView();
-            btnCancel = new Button();
             id = new DataGridViewTextBoxColumn();
             title = new DataGridViewTextBoxColumn();
             platform = new DataGridViewTextBoxColumn();
@@ -46,16 +44,22 @@
             is_active = new DataGridViewTextBoxColumn();
             created_at = new DataGridViewTextBoxColumn();
             updated_at = new DataGridViewTextBoxColumn();
-            tableLayoutPanel1.SuspendLayout();
+            btnCancel = new Button();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewListTemplate).BeginInit();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSave
             // 
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Location = new Point(12, 146);
+            btnSave.Location = new Point(3, 149);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(95, 38);
+            btnSave.Size = new Size(95, 15);
             btnSave.TabIndex = 1;
             btnSave.Text = "Lưu template";
             btnSave.UseVisualStyleBackColor = true;
@@ -64,15 +68,15 @@
             // socialMediaPlatformControl1
             // 
             socialMediaPlatformControl1.AutoScroll = true;
-            socialMediaPlatformControl1.Location = new Point(12, 38);
+            socialMediaPlatformControl1.Location = new Point(159, 3);
             socialMediaPlatformControl1.Name = "socialMediaPlatformControl1";
-            socialMediaPlatformControl1.Size = new Size(121, 83);
+            socialMediaPlatformControl1.Size = new Size(112, 76);
             socialMediaPlatformControl1.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 20);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(124, 15);
             label1.TabIndex = 3;
@@ -81,7 +85,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(168, 20);
+            label2.Location = new Point(3, 82);
             label2.Name = "label2";
             label2.Size = new Size(70, 15);
             label2.TabIndex = 4;
@@ -90,60 +94,32 @@
             // articleTypeControl1
             // 
             articleTypeControl1.AutoScroll = true;
-            articleTypeControl1.Location = new Point(168, 38);
+            articleTypeControl1.Location = new Point(159, 85);
             articleTypeControl1.Name = "articleTypeControl1";
-            articleTypeControl1.Size = new Size(82, 83);
+            articleTypeControl1.Size = new Size(82, 58);
             articleTypeControl1.TabIndex = 5;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(txtTemplateDesc, 0, 0);
-            tableLayoutPanel1.Controls.Add(dataGridViewListTemplate, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(0, 190);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1902, 801);
-            tableLayoutPanel1.TabIndex = 6;
             // 
             // txtTemplateDesc
             // 
             txtTemplateDesc.Dock = DockStyle.Fill;
-            txtTemplateDesc.Location = new Point(3, 3);
+            txtTemplateDesc.Location = new Point(287, 3);
             txtTemplateDesc.Name = "txtTemplateDesc";
-            txtTemplateDesc.Size = new Size(945, 795);
+            txtTemplateDesc.Size = new Size(1606, 483);
             txtTemplateDesc.TabIndex = 0;
             txtTemplateDesc.Text = "";
             // 
             // dataGridViewListTemplate
             // 
+            dataGridViewListTemplate.AllowUserToAddRows = false;
             dataGridViewListTemplate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewListTemplate.Columns.AddRange(new DataGridViewColumn[] { id, title, platform, post_type, template_content, is_active, created_at, updated_at });
             dataGridViewListTemplate.Dock = DockStyle.Fill;
-            dataGridViewListTemplate.Location = new Point(954, 3);
+            dataGridViewListTemplate.Location = new Point(3, 498);
             dataGridViewListTemplate.Name = "dataGridViewListTemplate";
             dataGridViewListTemplate.ReadOnly = true;
-            dataGridViewListTemplate.Size = new Size(945, 795);
+            dataGridViewListTemplate.Size = new Size(1896, 490);
             dataGridViewListTemplate.TabIndex = 1;
             dataGridViewListTemplate.CellContentClick += dataGridViewListTemplate_CellContentClick;
-            dataGridViewListTemplate.AllowUserToAddRows = false;
-            // 
-            // btnCancel
-            // 
-            btnCancel.BackColor = Color.Red;
-            btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.ForeColor = SystemColors.ControlLightLight;
-            btnCancel.Location = new Point(143, 146);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(95, 38);
-            btnCancel.TabIndex = 7;
-            btnCancel.Text = "Hủy thay đổi";
-            btnCancel.UseVisualStyleBackColor = false;
-            btnCancel.Click += btnCancel_Click;
             // 
             // id
             // 
@@ -193,18 +169,74 @@
             updated_at.Name = "updated_at";
             updated_at.ReadOnly = true;
             // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = SystemColors.Control;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.ForeColor = SystemColors.ActiveCaptionText;
+            btnCancel.Location = new Point(159, 149);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(95, 15);
+            btnCancel.TabIndex = 7;
+            btnCancel.Text = "Hủy thay đổi";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.03125F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42.96875F));
+            tableLayoutPanel2.Controls.Add(label1, 0, 0);
+            tableLayoutPanel2.Controls.Add(articleTypeControl1, 1, 1);
+            tableLayoutPanel2.Controls.Add(label2, 0, 1);
+            tableLayoutPanel2.Controls.Add(socialMediaPlatformControl1, 1, 0);
+            tableLayoutPanel2.Controls.Add(btnSave, 0, 2);
+            tableLayoutPanel2.Controls.Add(btnCancel, 1, 2);
+            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 3;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 55.90062F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 44.09938F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 336F));
+            tableLayoutPanel2.Size = new Size(274, 483);
+            tableLayoutPanel2.TabIndex = 8;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel1, 0, 0);
+            tableLayoutPanel3.Controls.Add(dataGridViewListTemplate, 0, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(0, 0);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(1902, 991);
+            tableLayoutPanel3.TabIndex = 9;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.9789028F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85.0210953F));
+            tableLayoutPanel1.Controls.Add(txtTemplateDesc, 1, 0);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1896, 489);
+            tableLayoutPanel1.TabIndex = 10;
+            // 
             // frmTemplatePrompt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1902, 991);
-            Controls.Add(btnCancel);
-            Controls.Add(tableLayoutPanel1);
-            Controls.Add(articleTypeControl1);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(socialMediaPlatformControl1);
-            Controls.Add(btnSave);
+            Controls.Add(tableLayoutPanel3);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
@@ -212,10 +244,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Template prompt AI";
             Load += frmTemplatePrompt_Load;
-            tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewListTemplate).EndInit();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -224,7 +258,6 @@
         private Label label1;
         private Label label2;
         private UserControls.ArticleTypeControl articleTypeControl1;
-        private TableLayoutPanel tableLayoutPanel1;
         private RichTextBox txtTemplateDesc;
         private DataGridView dataGridViewListTemplate;
         private Button btnCancel;
@@ -236,5 +269,8 @@
         private DataGridViewTextBoxColumn is_active;
         private DataGridViewTextBoxColumn created_at;
         private DataGridViewTextBoxColumn updated_at;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

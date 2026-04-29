@@ -1,4 +1,5 @@
-﻿using SellerCenter.Service;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
@@ -15,6 +16,8 @@ namespace SellerCenter.Forms
 
         private void frmHistoryScreen_Load(object sender, EventArgs e)
         {
+            UIHelper.ApplyAll(this);
+            GetListVideoFiles();
         }
 
         private void GetListVideoFiles()

@@ -105,6 +105,7 @@
             MinimumSize = new Size(400, 600);
             Name = "frmSetting";
             Text = "Cài đặt chung";
+            Load += frmSetting_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);

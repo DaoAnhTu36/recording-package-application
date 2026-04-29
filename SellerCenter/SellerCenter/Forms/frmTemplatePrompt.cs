@@ -1,4 +1,5 @@
-﻿using SellerCenter.Infrastructure.Models;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -17,6 +18,7 @@ namespace SellerCenter.Forms
 
         private void frmTemplatePrompt_Load(object sender, EventArgs e)
         {
+            UIHelper.ApplyAll(this);
             FillDataToGridView();
         }
 

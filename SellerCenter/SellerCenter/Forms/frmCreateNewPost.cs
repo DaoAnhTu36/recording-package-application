@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using SellerCenter.Commons;
 using SellerCenter.Helper;
+using SellerCenter.Helpers;
 using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Models;
 using SellerCenter.Service;
+using System.Data;
 
 namespace SellerCenter.Forms
 {
@@ -26,7 +27,10 @@ namespace SellerCenter.Forms
 
         private void frmCreateNewPost_Load(object sender, EventArgs e)
         {
+            UIHelper.ApplyAll(this);
+            LayoutHelper.EqualRows(tableLayoutPanel2, 5);
             GetListTemplates();
+            GetAllProducts();
             ConnectToChatGPT();
         }
 
@@ -36,6 +40,23 @@ namespace SellerCenter.Forms
             lstTemplate.DisplayMember = "title";
             lstTemplate.ValueMember = "id";
             lstTemplate.DataSource = listTemplates;
+        }
+
+        private void GetAllProducts()
+        {
+            var listProducts = _productService?.GetAll();
+            if (listProducts != null)
+            {
+                var source = new AutoCompleteStringCollection();
+                source.AddRange(
+                    listProducts.AsEnumerable()
+                             .Select(row => row["product_code"].ToString())
+                             .ToArray()!
+                );
+                txtProductCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtProductCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtProductCode.AutoCompleteCustomSource = source;
+            }
         }
 
         private void ConnectToChatGPT()
@@ -52,24 +73,7 @@ namespace SellerCenter.Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!string.IsNullOrEmpty(txtProductCode.Text))
-                {
-                    var productInfo = _productService?.GetByProductCode(txtProductCode.Text.Trim());
-                    if (productInfo != null)
-                    {
-                        txtProductName.Text = productInfo.ProductName ?? "";
-                        txtProductDesc.Text = productInfo.Description ?? "";
-                        _lstImageUrls = productInfo?.ImageUrl?.Split(CharacterConstants.Separator)?.ToList()!;
-                        _videoUrl = productInfo?.VideoUrl ?? "";
-                        lblNotify.Visible = false;
-                    }
-                    else
-                    {
-                        lblNotify.Text = "Không tìm thấy sản phẩm với mã đã nhập.";
-                        lblNotify.Visible = true;
-                        ResetForm();
-                    }
-                }
+                searchProduct();
             }
         }
 
@@ -83,7 +87,6 @@ namespace SellerCenter.Forms
         {
             if (string.IsNullOrEmpty(txtProductCode.Text))
             {
-                lblNotify.Visible = false;
                 ResetForm();
             }
         }
@@ -100,11 +103,8 @@ namespace SellerCenter.Forms
             var templateInfo = _promptTemplateService?.GetById((long)selectedTemplate!);
             if (templateInfo is null)
             {
-                lblNotifyTemplate.Text = "Vui lòng chọn mẫu bài đăng hợp lệ.";
-                lblNotifyTemplate.Visible = true;
                 return;
             }
-            lblNotifyTemplate.Visible = false;
             var content = templateInfo?.TemplateContent?
             .Replace("{{product_name}}", productName)
             .Replace("{{product_desc}}", productDesc)
@@ -148,6 +148,30 @@ namespace SellerCenter.Forms
                 };
                 var postContentService = new PostContentService();
                 postContentService?.Insert(post);
+            }
+        }
+
+        private void txtProductCode_Leave(object sender, EventArgs e)
+        {
+            searchProduct();
+        }
+
+        private void searchProduct()
+        {
+            if (!string.IsNullOrEmpty(txtProductCode.Text))
+            {
+                var productInfo = _productService?.GetByProductCode(txtProductCode.Text.Trim());
+                if (productInfo != null)
+                {
+                    txtProductName.Text = productInfo.ProductName ?? "";
+                    txtProductDesc.Text = productInfo.Description ?? "";
+                    _lstImageUrls = productInfo?.ImageUrl?.Split(CharacterConstants.Separator)?.ToList()!;
+                    _videoUrl = productInfo?.VideoUrl ?? "";
+                }
+                else
+                {
+                    ResetForm();
+                }
             }
         }
     }
