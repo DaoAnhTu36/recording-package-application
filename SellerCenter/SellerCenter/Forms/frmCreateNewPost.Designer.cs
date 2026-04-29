@@ -41,11 +41,15 @@
             btnCreatePost = new Button();
             txtResponseChatGPT = new RichTextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
+            btnVideo = new Button();
             tableLayoutPanel3 = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            videoPreviewControl1 = new SellerCenter.UserControls.VideoPreviewControl();
             tableLayoutPanel4 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)txtQuantitPost).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,9 +65,9 @@
             // txtProductCode
             // 
             txtProductCode.Dock = DockStyle.Fill;
-            txtProductCode.Location = new Point(140, 3);
+            txtProductCode.Location = new Point(248, 3);
             txtProductCode.Name = "txtProductCode";
-            txtProductCode.Size = new Size(383, 23);
+            txtProductCode.Size = new Size(691, 23);
             txtProductCode.TabIndex = 1;
             txtProductCode.TextChanged += txtProductCode_TextChanged;
             txtProductCode.KeyUp += txtProductCode_KeyUp;
@@ -72,7 +76,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 44);
+            label2.Location = new Point(3, 51);
             label2.Name = "label2";
             label2.Size = new Size(81, 15);
             label2.TabIndex = 2;
@@ -81,9 +85,9 @@
             // txtProductName
             // 
             txtProductName.Dock = DockStyle.Fill;
-            txtProductName.Location = new Point(140, 47);
+            txtProductName.Location = new Point(248, 54);
             txtProductName.Name = "txtProductName";
-            txtProductName.Size = new Size(383, 23);
+            txtProductName.Size = new Size(691, 23);
             txtProductName.TabIndex = 3;
             // 
             // txtProductDesc
@@ -91,14 +95,14 @@
             txtProductDesc.Dock = DockStyle.Fill;
             txtProductDesc.Location = new Point(3, 3);
             txtProductDesc.Name = "txtProductDesc";
-            txtProductDesc.Size = new Size(943, 829);
+            txtProductDesc.Size = new Size(943, 592);
             txtProductDesc.TabIndex = 5;
             txtProductDesc.Text = "";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 88);
+            label4.Location = new Point(3, 99);
             label4.Name = "label4";
             label4.Size = new Size(95, 15);
             label4.TabIndex = 6;
@@ -106,7 +110,7 @@
             // 
             // txtQuantitPost
             // 
-            txtQuantitPost.Location = new Point(140, 91);
+            txtQuantitPost.Location = new Point(248, 102);
             txtQuantitPost.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             txtQuantitPost.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             txtQuantitPost.Name = "txtQuantitPost";
@@ -118,15 +122,15 @@
             // 
             lstTemplate.Dock = DockStyle.Fill;
             lstTemplate.FormattingEnabled = true;
-            lstTemplate.Location = new Point(140, 131);
+            lstTemplate.Location = new Point(248, 148);
             lstTemplate.Name = "lstTemplate";
-            lstTemplate.Size = new Size(383, 23);
+            lstTemplate.Size = new Size(691, 23);
             lstTemplate.TabIndex = 11;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(3, 128);
+            label6.Location = new Point(3, 145);
             label6.Name = "label6";
             label6.Size = new Size(86, 15);
             label6.TabIndex = 12;
@@ -134,9 +138,9 @@
             // 
             // btnCreatePost
             // 
-            btnCreatePost.Location = new Point(3, 165);
+            btnCreatePost.Location = new Point(248, 189);
             btnCreatePost.Name = "btnCreatePost";
-            btnCreatePost.Size = new Size(113, 23);
+            btnCreatePost.Size = new Size(97, 23);
             btnCreatePost.TabIndex = 14;
             btnCreatePost.Text = "Tạo bài viết";
             btnCreatePost.UseVisualStyleBackColor = true;
@@ -147,7 +151,7 @@
             txtResponseChatGPT.Dock = DockStyle.Fill;
             txtResponseChatGPT.Location = new Point(952, 3);
             txtResponseChatGPT.Name = "txtResponseChatGPT";
-            txtResponseChatGPT.Size = new Size(943, 829);
+            txtResponseChatGPT.Size = new Size(943, 592);
             txtResponseChatGPT.TabIndex = 6;
             txtResponseChatGPT.Text = "";
             // 
@@ -156,40 +160,75 @@
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 26.0456276F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 73.95438F));
+            tableLayoutPanel2.Controls.Add(btnVideo, 0, 4);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Controls.Add(txtProductCode, 1, 0);
             tableLayoutPanel2.Controls.Add(label2, 0, 1);
-            tableLayoutPanel2.Controls.Add(btnCreatePost, 0, 4);
             tableLayoutPanel2.Controls.Add(txtProductName, 1, 1);
             tableLayoutPanel2.Controls.Add(label4, 0, 2);
             tableLayoutPanel2.Controls.Add(lstTemplate, 1, 3);
             tableLayoutPanel2.Controls.Add(label6, 0, 3);
             tableLayoutPanel2.Controls.Add(txtQuantitPost, 1, 2);
+            tableLayoutPanel2.Controls.Add(btnCreatePost, 1, 4);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 5;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutPanel2.Size = new Size(526, 194);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 51.40187F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 48.59813F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 238F));
+            tableLayoutPanel2.Size = new Size(942, 425);
             tableLayoutPanel2.TabIndex = 17;
+            // 
+            // btnVideo
+            // 
+            btnVideo.Location = new Point(3, 189);
+            btnVideo.Name = "btnVideo";
+            btnVideo.Size = new Size(95, 23);
+            btnVideo.TabIndex = 15;
+            btnVideo.Text = "Chọn video";
+            btnVideo.UseVisualStyleBackColor = true;
+            btnVideo.Click += btnVideo_Click;
             // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel1, 0, 0);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 0, 1);
-            tableLayoutPanel3.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(0, 0);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 19.2122955F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 80.7877045F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 41.9788666F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 58.0211334F));
             tableLayoutPanel3.Size = new Size(1904, 1041);
             tableLayoutPanel3.TabIndex = 18;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 950F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel1.Controls.Add(videoPreviewControl1, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1898, 431);
+            tableLayoutPanel1.TabIndex = 19;
+            // 
+            // videoPreviewControl1
+            // 
+            videoPreviewControl1.Dock = DockStyle.Fill;
+            videoPreviewControl1.Location = new Point(951, 3);
+            videoPreviewControl1.Name = "videoPreviewControl1";
+            videoPreviewControl1.Size = new Size(944, 425);
+            videoPreviewControl1.TabIndex = 18;
             // 
             // tableLayoutPanel4
             // 
@@ -199,11 +238,11 @@
             tableLayoutPanel4.Controls.Add(txtResponseChatGPT, 1, 0);
             tableLayoutPanel4.Controls.Add(txtProductDesc, 0, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 203);
+            tableLayoutPanel4.Location = new Point(3, 440);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(1898, 835);
+            tableLayoutPanel4.Size = new Size(1898, 598);
             tableLayoutPanel4.TabIndex = 19;
             // 
             // frmCreateNewPost
@@ -223,6 +262,7 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -244,5 +284,8 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel4;
+        private TableLayoutPanel tableLayoutPanel1;
+        private UserControls.VideoPreviewControl videoPreviewControl1;
+        private Button btnVideo;
     }
 }

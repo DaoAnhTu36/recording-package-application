@@ -4,11 +4,11 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmTemplatePrompt : Form
+    public partial class frmTemplatePrompt : BaseForm
     {
         private readonly PromptTemplateService _promptTemplateService;
-        private bool _isEditting = false;
         private long _idEditing = 0;
+        public PromptTemplateModel? promptTemplateModel;
 
         public frmTemplatePrompt()
         {
@@ -18,7 +18,6 @@ namespace SellerCenter.Forms
 
         private void frmTemplatePrompt_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
             FillDataToGridView();
         }
 
@@ -35,7 +34,6 @@ namespace SellerCenter.Forms
             title.DataPropertyName = "title";
             dataGridViewListTemplate.DataSource = null;
             dataGridViewListTemplate.DataSource = lstTemplate;
-            AddEditButtonColumn();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -57,10 +55,13 @@ namespace SellerCenter.Forms
                 TemplateContent = content,
                 title = title,
             };
-            if (_isEditting)
+            if (promptTemplateModel != null)
             {
-                template.Id = _idEditing;
-                _promptTemplateService.Update(template);
+                promptTemplateModel.Platform = platform;
+                promptTemplateModel.PostType = articleType;
+                promptTemplateModel.TemplateContent = content;
+                promptTemplateModel.title = title;
+                _promptTemplateService.Update(promptTemplateModel);
             }
             else
             {
@@ -70,53 +71,32 @@ namespace SellerCenter.Forms
             FillDataToGridView();
         }
 
-        private void AddEditButtonColumn()
-        {
-            if (dataGridViewListTemplate.Columns["btnEdit"] == null)
-            {
-                DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn
-                {
-                    Name = "btnEdit",
-                    HeaderText = "Chỉnh sửa",
-                    Text = "Sửa",
-                    UseColumnTextForButtonValue = true,
-                    FlatStyle = FlatStyle.Flat,
-                };
-
-                dataGridViewListTemplate.Columns.Add(btnEdit);
-            }
-        }
-
-        private void dataGridViewListTemplate_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || _isEditting) return;
-
-            if (dataGridViewListTemplate.Columns[e.ColumnIndex].Name == "btnEdit")
-            {
-                int id = Convert.ToInt32(
-                    dataGridViewListTemplate.Rows[e.RowIndex].Cells["id"].Value
-                );
-                _idEditing = id;
-                _isEditting = true;
-                var template = _promptTemplateService.GetById(id);
-                socialMediaPlatformControl1.SetSelectedPlatform(template?.Platform!);
-                articleTypeControl1.SetSelectedArticleType(template?.PostType!);
-                txtTemplateDesc.Text = template?.TemplateContent;
-            }
-        }
-
         private void ResetForm()
         {
             socialMediaPlatformControl1.ClearSelection();
             articleTypeControl1.ClearSelection();
             txtTemplateDesc.Text = string.Empty;
-            _isEditting = false;
-            _idEditing = 0;
+            promptTemplateModel = null;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ResetForm();
+        }
+
+        private void dataGridViewListTemplate_Click(object sender, EventArgs e)
+        {
+            var row = dataGridViewListTemplate.CurrentRow;
+
+            if (row != null)
+            {
+                _idEditing = Convert.ToInt32(row.Cells["id"].Value);
+                var template = _promptTemplateService.GetById(_idEditing);
+                promptTemplateModel = template;
+                socialMediaPlatformControl1.SetSelectedPlatform(template?.Platform!);
+                articleTypeControl1.SetSelectedArticleType(template?.PostType!);
+                txtTemplateDesc.Text = template?.TemplateContent;
+            }
         }
     }
 }

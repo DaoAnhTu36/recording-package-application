@@ -4,7 +4,7 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmSetting : Form
+    public partial class frmSetting : BaseForm
     {
         private readonly EmployeeService _employeeService;
 
@@ -63,7 +63,6 @@ namespace SellerCenter.Forms
 
         private void frmSetting_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
         }
     }
 }

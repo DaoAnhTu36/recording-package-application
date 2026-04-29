@@ -3,7 +3,7 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmFacebookAppManager : Form
+    public partial class frmFacebookAppManager : BaseForm
     {
         private readonly FacebookAppsService _facebookAppService;
 
@@ -15,7 +15,6 @@ namespace SellerCenter.Forms
 
         private void frmFacebookAppManager_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
             LayoutHelper.EqualRows(tableLayoutPanel1, 3);
             onLoad();
         }

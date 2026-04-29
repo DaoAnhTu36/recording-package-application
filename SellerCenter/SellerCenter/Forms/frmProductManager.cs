@@ -3,7 +3,7 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmProductManager : Form
+    public partial class frmProductManager : BaseForm
     {
         private readonly ProductService? _productService;
 
@@ -15,7 +15,6 @@ namespace SellerCenter.Forms
 
         private void frmProductManager_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
             GetData();
         }
 

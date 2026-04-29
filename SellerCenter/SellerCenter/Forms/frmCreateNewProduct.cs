@@ -1,11 +1,10 @@
 ﻿using SellerCenter.Helper;
-using SellerCenter.Helpers;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmCreateNewProduct : Form
+    public partial class frmCreateNewProduct : BaseForm
     {
         private List<string> selectedImagePaths = new List<string>();
         private string selectedVideoPath = string.Empty;
@@ -128,7 +127,6 @@ namespace SellerCenter.Forms
 
         private void frmCreateNewProduct_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
         }
     }
 }

@@ -20,5 +20,10 @@ namespace SellerCenter.Service
         {
             return await _facebookRepository.PostFacebookAsync(pageId, pageToken, message);
         }
+
+        public async Task<string> PostVideoToFacebookAsync(string pageId, string pageToken, string videoPath, string description)
+        {
+            return await _facebookRepository.PostVideoToFacebookAsync(pageId, pageToken, videoPath, description);
+        }
     }
 }

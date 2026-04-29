@@ -3,20 +3,19 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmHistoryScreen : Form
+    public partial class frmHistoryScreen : BaseForm
     {
-        private CancellationTokenSource cts;
+        private CancellationTokenSource? cts;
 
         public frmHistoryScreen()
         {
             InitializeComponent();
-            listRecord.CellDoubleClick += listRecord_CellDoubleClick;
+            listRecord.CellDoubleClick += listRecord_CellDoubleClick!;
             RegisterGlobalEvents(this);
         }
 
         private void frmHistoryScreen_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
             GetListVideoFiles();
         }
 

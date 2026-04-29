@@ -4,7 +4,7 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmEmployeeManager : Form
+    public partial class frmEmployeeManager : BaseForm
     {
         private readonly EmployeeService _employeeService;
         private readonly string[] _lstRole = new string[] { "ADMIN", "EMPLOYEE", "STAFF" };
@@ -18,7 +18,6 @@ namespace SellerCenter.Forms
         private void frmEmployeeManager_Load(object sender, EventArgs e)
         {
             LayoutHelper.EqualRows(formInfo, 7);
-            UIHelper.ApplyAll(this);
             cbbRole.Items.AddRange(_lstRole);
             initDataOnLoad();
         }

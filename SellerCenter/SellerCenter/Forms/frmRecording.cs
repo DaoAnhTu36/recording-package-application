@@ -13,7 +13,7 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmRecording : Form
+    public partial class frmRecording : BaseForm
     {
         private VideoCapture _camera;
         private VideoWriter? _writer;
@@ -363,7 +363,6 @@ namespace SellerCenter.Forms
         private void frmRecording_Load(object sender, EventArgs e)
         {
             btnCheckOrder.Enabled = true;
-            UIHelper.ApplyAll(this);
             LayoutHelper.SetupEqualTable(tableLayoutPanel1, 4, 3);
         }
     }

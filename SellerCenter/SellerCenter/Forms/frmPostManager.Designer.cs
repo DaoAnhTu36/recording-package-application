@@ -53,6 +53,8 @@
             txtHashtag = new RichTextBox();
             btnPost = new Button();
             lblPostStatus = new Label();
+            label6 = new Label();
+            videoPreviewControl1 = new SellerCenter.UserControls.VideoPreviewControl();
             tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPostContent).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -70,7 +72,6 @@
             dataGridViewPostContent.Name = "dataGridViewPostContent";
             dataGridViewPostContent.Size = new Size(1306, 1035);
             dataGridViewPostContent.TabIndex = 0;
-            dataGridViewPostContent.CellContentClick += dataGridViewPostContent_CellContentClick;
             dataGridViewPostContent.Click += dataGridViewPostContent_Click;
             // 
             // id
@@ -135,23 +136,23 @@
             // txtTitle
             // 
             txtTitle.Dock = DockStyle.Fill;
-            txtTitle.Location = new Point(117, 47);
+            txtTitle.Location = new Point(117, 37);
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(466, 23);
             txtTitle.TabIndex = 2;
             // 
             // txtContent
             // 
-            txtContent.Location = new Point(117, 234);
+            txtContent.Location = new Point(117, 214);
             txtContent.Name = "txtContent";
-            txtContent.Size = new Size(466, 492);
+            txtContent.Size = new Size(466, 427);
             txtContent.TabIndex = 5;
             txtContent.Text = "";
             // 
             // txtHook
             // 
             txtHook.Dock = DockStyle.Fill;
-            txtHook.Location = new Point(117, 91);
+            txtHook.Location = new Point(117, 71);
             txtHook.Name = "txtHook";
             txtHook.Size = new Size(466, 23);
             txtHook.TabIndex = 3;
@@ -159,7 +160,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 44);
+            label2.Location = new Point(3, 34);
             label2.Name = "label2";
             label2.Size = new Size(46, 15);
             label2.TabIndex = 6;
@@ -168,7 +169,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 88);
+            label3.Location = new Point(3, 68);
             label3.Name = "label3";
             label3.Size = new Size(58, 15);
             label3.TabIndex = 7;
@@ -177,7 +178,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 231);
+            label4.Location = new Point(3, 211);
             label4.Name = "label4";
             label4.Size = new Size(57, 15);
             label4.TabIndex = 8;
@@ -186,7 +187,7 @@
             // btnSave
             // 
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Location = new Point(3, 732);
+            btnSave.Location = new Point(3, 865);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(92, 31);
             btnSave.TabIndex = 6;
@@ -198,7 +199,7 @@
             // btnCancel
             // 
             btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Location = new Point(117, 732);
+            btnCancel.Location = new Point(117, 865);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(110, 31);
             btnCancel.TabIndex = 7;
@@ -219,31 +220,34 @@
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(label3, 0, 2);
             tableLayoutPanel1.Controls.Add(txtHook, 1, 2);
-            tableLayoutPanel1.Controls.Add(btnSave, 0, 5);
-            tableLayoutPanel1.Controls.Add(btnCancel, 1, 5);
             tableLayoutPanel1.Controls.Add(txtContent, 1, 4);
             tableLayoutPanel1.Controls.Add(label4, 0, 4);
             tableLayoutPanel1.Controls.Add(txtHashtag, 1, 3);
-            tableLayoutPanel1.Controls.Add(btnPost, 0, 6);
-            tableLayoutPanel1.Controls.Add(lblPostStatus, 1, 6);
+            tableLayoutPanel1.Controls.Add(btnPost, 0, 7);
+            tableLayoutPanel1.Controls.Add(lblPostStatus, 1, 7);
+            tableLayoutPanel1.Controls.Add(btnSave, 0, 6);
+            tableLayoutPanel1.Controls.Add(btnCancel, 1, 6);
+            tableLayoutPanel1.Controls.Add(label6, 0, 5);
+            tableLayoutPanel1.Controls.Add(videoPreviewControl1, 1, 5);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowCount = 8;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 88F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 498F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 255F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 433F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 218F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel1.Size = new Size(586, 1035);
             tableLayoutPanel1.TabIndex = 12;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(3, 143);
+            label5.Location = new Point(3, 123);
             label5.Name = "label5";
             label5.Size = new Size(51, 15);
             label5.TabIndex = 12;
@@ -252,7 +256,7 @@
             // txtHashtag
             // 
             txtHashtag.Dock = DockStyle.Fill;
-            txtHashtag.Location = new Point(117, 146);
+            txtHashtag.Location = new Point(117, 126);
             txtHashtag.Name = "txtHashtag";
             txtHashtag.Size = new Size(466, 82);
             txtHashtag.TabIndex = 13;
@@ -260,7 +264,7 @@
             // 
             // btnPost
             // 
-            btnPost.Location = new Point(3, 782);
+            btnPost.Location = new Point(3, 927);
             btnPost.Name = "btnPost";
             btnPost.Size = new Size(75, 23);
             btnPost.TabIndex = 14;
@@ -271,20 +275,37 @@
             // lblPostStatus
             // 
             lblPostStatus.AutoSize = true;
-            lblPostStatus.Location = new Point(117, 779);
+            lblPostStatus.Location = new Point(117, 924);
             lblPostStatus.Name = "lblPostStatus";
             lblPostStatus.Size = new Size(38, 15);
             lblPostStatus.TabIndex = 15;
             lblPostStatus.Text = "label6";
             lblPostStatus.Visible = false;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(3, 644);
+            label6.Name = "label6";
+            label6.Size = new Size(37, 15);
+            label6.TabIndex = 16;
+            label6.Text = "Video";
+            // 
+            // videoPreviewControl1
+            // 
+            videoPreviewControl1.Dock = DockStyle.Fill;
+            videoPreviewControl1.Location = new Point(117, 647);
+            videoPreviewControl1.Name = "videoPreviewControl1";
+            videoPreviewControl1.Size = new Size(466, 212);
+            videoPreviewControl1.TabIndex = 17;
+            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.0924377F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.90756F));
-            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 0);
             tableLayoutPanel2.Controls.Add(dataGridViewPostContent, 1, 0);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -339,5 +360,7 @@
         private RichTextBox txtHashtag;
         private Button btnPost;
         private Label lblPostStatus;
+        private Label label6;
+        private UserControls.VideoPreviewControl videoPreviewControl1;
     }
 }

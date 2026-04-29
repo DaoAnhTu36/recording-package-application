@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Google.Apis.YouTube.v3.Data;
+using Newtonsoft.Json;
 using SellerCenter.Commons;
 using SellerCenter.Helper;
 using SellerCenter.Helpers;
@@ -6,17 +7,19 @@ using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Models;
 using SellerCenter.Service;
+using SellerCenter.UserControls;
 using System.Data;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmCreateNewPost : Form
+    public partial class frmCreateNewPost : BaseForm
     {
         private ChatGPTRepository? _chatGpt;
         private PromptTemplateService? _promptTemplateService;
         private ProductService? _productService;
         private List<string>? _lstImageUrls;
         private string? _videoUrl;
+        private string? selectedVideoPath;
 
         public frmCreateNewPost()
         {
@@ -27,8 +30,6 @@ namespace SellerCenter.Forms
 
         private void frmCreateNewPost_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
-            LayoutHelper.EqualRows(tableLayoutPanel2, 5);
             GetListTemplates();
             GetAllProducts();
             ConnectToChatGPT();
@@ -143,7 +144,7 @@ namespace SellerCenter.Forms
                     ImageUrl3 = item.Image_Url_3,
                     ImageUrl4 = item.Image_Url_4,
                     ImageUrl5 = item.Image_Url_5,
-                    VideoUrl = item.Video_Url,
+                    VideoUrl = selectedVideoPath,
                     Hashtag = item.Hashtag
                 };
                 var postContentService = new PostContentService();
@@ -171,6 +172,21 @@ namespace SellerCenter.Forms
                 else
                 {
                     ResetForm();
+                }
+            }
+        }
+
+        private void btnVideo_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "Chọn video";
+                ofd.Filter = "Video Files|*.mp4;*.avi;*.mov;*.mkv;*.wmv";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    selectedVideoPath = ofd.FileName;
+                    videoPreviewControl1.PreviewVideo(selectedVideoPath);
                 }
             }
         }

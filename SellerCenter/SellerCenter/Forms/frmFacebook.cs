@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmFacebook : Form
+    public partial class frmFacebook : BaseForm
     {
         private string? redirectUri;
         private string? graphVersion;

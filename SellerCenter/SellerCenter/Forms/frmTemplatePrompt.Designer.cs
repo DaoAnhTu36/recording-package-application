@@ -59,7 +59,7 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Location = new Point(3, 149);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(95, 15);
+            btnSave.Size = new Size(95, 33);
             btnSave.TabIndex = 1;
             btnSave.Text = "Lưu template";
             btnSave.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             dataGridViewListTemplate.ReadOnly = true;
             dataGridViewListTemplate.Size = new Size(1896, 490);
             dataGridViewListTemplate.TabIndex = 1;
-            dataGridViewListTemplate.CellContentClick += dataGridViewListTemplate_CellContentClick;
+            dataGridViewListTemplate.Click += dataGridViewListTemplate_Click;
             // 
             // id
             // 
@@ -176,7 +176,7 @@
             btnCancel.ForeColor = SystemColors.ActiveCaptionText;
             btnCancel.Location = new Point(159, 149);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(95, 15);
+            btnCancel.Size = new Size(95, 33);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Hủy thay đổi";
             btnCancel.UseVisualStyleBackColor = false;

@@ -7,7 +7,7 @@ using ZXing.Aztec.Internal;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : BaseForm
     {
         private readonly EmployeeService _employeeService;
 
@@ -37,7 +37,6 @@ namespace SellerCenter.Forms
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
             txtUsername.Text = "admin";
             txtPassword.Text = "123123";
         }

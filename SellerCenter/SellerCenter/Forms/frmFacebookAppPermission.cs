@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmFacebookAppPermission : Form
+    public partial class frmFacebookAppPermission : BaseForm
     {
         private readonly FacebookAppsService _facebookAppsService;
         private readonly FacebookAppPermissionsService _facebookAppPermissionsService;
@@ -26,7 +26,6 @@ namespace SellerCenter.Forms
 
         private void frmFacebookAppPermission_Load(object sender, EventArgs e)
         {
-            UIHelper.ApplyAll(this);
             LayoutHelper.EqualRows(tableLayoutPanel1, 3);
             var lstApp = _facebookAppsService.GetAll();
             cbbAppId.DisplayMember = "AppName";
