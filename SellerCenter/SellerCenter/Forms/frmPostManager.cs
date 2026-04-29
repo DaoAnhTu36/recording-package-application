@@ -1,4 +1,5 @@
 ﻿using SellerCenter.Helper;
+using SellerCenter.Helpers;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
@@ -25,12 +26,12 @@ namespace SellerCenter.Forms
             title.DataPropertyName = "title";
             content.DataPropertyName = "content";
             hook.DataPropertyName = "hook";
-            image_url_1.DataPropertyName = "image_url_1";
-            image_url_2.DataPropertyName = "image_url_2";
-            image_url_3.DataPropertyName = "image_url_3";
-            image_url_4.DataPropertyName = "image_url_4";
-            image_url_5.DataPropertyName = "image_url_5";
-            video_url.DataPropertyName = "video_url";
+            //image_url_1.DataPropertyName = "image_url_1";
+            //image_url_2.DataPropertyName = "image_url_2";
+            //image_url_3.DataPropertyName = "image_url_3";
+            //image_url_4.DataPropertyName = "image_url_4";
+            //image_url_5.DataPropertyName = "image_url_5";
+            //video_url.DataPropertyName = "video_url";
             hashtag.DataPropertyName = "hashtag";
             created_at.DataPropertyName = "created_at";
             updated_at.DataPropertyName = "updated_at";
@@ -96,7 +97,6 @@ namespace SellerCenter.Forms
             {
                 dataGridViewPostContent.Visible = false;
                 txtKeyword.Visible = false;
-                lblNotifyPost.Visible = true;
                 var pageId = SessionManager.FacebookPageId;
                 var pageToken = SessionManager.FacebookPageToken;
                 var message = dataGridViewPostContent.Rows[e.RowIndex].Cells["title"].Value.ToString();
@@ -107,11 +107,96 @@ namespace SellerCenter.Forms
                 MessageBox.Show("Đăng bài thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridViewPostContent.Visible = true;
                 txtKeyword.Visible = true;
-                lblNotifyPost.Visible = false;
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void GetData()
+        {
+            var products = _postContentService?.GetAll();
+            txtKeyword.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtKeyword.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtKeyword.AutoCompleteCustomSource =
+                DataHelper.ToAutoCompleteSource(products!, "product_code");
+            if (products == null || products.Rows.Count == 0)
+            {
+                dataGridViewPostContent.DataSource = null;
+                return;
+            }
+            MappingData();
+            dataGridViewPostContent.DataSource = products;
+            //AddEditButtonColumn();
+        }
+
+        private void frmPostManager_Load(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrEmpty(SessionManager.FacebookPageId) || string.IsNullOrEmpty(SessionManager.FacebookPageToken))
+            //{
+            //    MessageBox.Show("Vui lòng cấu hình Facebook Page ID và Token trước khi sử dụng chức năng này.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    this.BeginInvoke(new Action(() =>
+            //    {
+            //        this.Close();
+            //    }));
+
+            //    return;
+            //}
+            UIHelper.ApplyAll(this);
+            GetData();
+        }
+
+        private void ProcessBtnEdit(int id)
+        {
+            var postContent = _postContentService?.GetById(id);
+            _postContentModel = postContent;
+            txtTitle.Text = postContent?.Title;
+            txtContent.Text = postContent?.Content;
+            txtHook.Text = postContent?.Hook;
+            btnCancel.Visible = true;
+            btnSave.Visible = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _postContentModel!.Content = txtContent.Text.Trim();
+            _postContentModel.Title = txtTitle.Text.Trim();
+            _postContentModel.Hook = txtHook.Text.Trim();
+            _postContentModel.Hashtag = txtHashtag.Text.Trim();
+            _postContentService?.Update(_postContentModel);
+            btnCancel.Visible = false;
+            btnSave.Visible = false;
+            GetData();
+            ResetForm();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnCancel.Visible = false;
+            btnSave.Visible = false;
+            ResetForm();
+        }
+
+        private void ResetForm()
+        {
+            txtContent.Text = string.Empty;
+            txtHook.Text = string.Empty;
+            txtKeyword.Text = string.Empty;
+            txtTitle.Text = string.Empty;
+            txtHashtag.Text = string.Empty;
+        }
+
+        private void txtKeyword_TextChanged(object sender, EventArgs e)
+        {
+            //var keyword = txtKeyword.Text.Trim();
+            //if (string.IsNullOrEmpty(keyword))
+            //{
+            //    GetData();
+            //    return;
+            //}
+            //var dataSearch = _postContentService?.Search(keyword);
+            //MappingData();
+            //dataGridViewPostContent.DataSource = dataSearch;
+        }
+
+        private void txtKeyword_Leave(object sender, EventArgs e)
         {
             var keyword = txtKeyword.Text.Trim();
             if (string.IsNullOrEmpty(keyword))
@@ -124,63 +209,56 @@ namespace SellerCenter.Forms
             dataGridViewPostContent.DataSource = dataSearch;
         }
 
-        private void GetData()
+        private void dataGridViewPostContent_Click(object sender, EventArgs e)
         {
-            var products = _postContentService?.GetAll();
-            if (products == null || products.Rows.Count == 0)
+            var row = dataGridViewPostContent.CurrentRow;
+
+            if (row != null)
             {
-                dataGridViewPostContent.DataSource = null;
-                return;
+                _idEditing = Convert.ToInt32(row.Cells["id"].Value);
+                var postContent = _postContentService?.GetById(_idEditing);
+                _postContentModel = postContent;
+                txtTitle.Text = postContent?.Title;
+                txtHook.Text = postContent?.Hook;
+                txtContent.Text = postContent?.Content;
+                txtHashtag.Text = postContent?.Hashtag;
+                btnCancel.Visible = true;
+                btnSave.Visible = true;
             }
-            MappingData();
-            dataGridViewPostContent.DataSource = products;
-            AddEditButtonColumn();
         }
 
-        private void frmPostManager_Load(object sender, EventArgs e)
+        private async void btnPost_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(SessionManager.FacebookPageId) || string.IsNullOrEmpty(SessionManager.FacebookPageToken))
+            var pageId = SessionManager.FacebookPageId;
+            var pageToken = SessionManager.FacebookPageToken;
+            if (string.IsNullOrEmpty(pageId) || string.IsNullOrEmpty(pageToken))
             {
-                MessageBox.Show("Vui lòng cấu hình Facebook Page ID và Token trước khi sử dụng chức năng này.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.BeginInvoke(new Action(() =>
+                if (MessageBox.Show("Bạn có muốn đăng nhập Facebook ngay bây giờ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    this.Close();
-                }));
+                    {
+                        var frmLoginFacebook = new frmFacebook();
+                        frmLoginFacebook.ShowDialog();
+                    }
+                    return;
+                }
+            }
 
+            if (string.IsNullOrEmpty(txtTitle.Text) || string.IsNullOrEmpty(txtContent.Text) || string.IsNullOrEmpty(txtHook.Text) || string.IsNullOrEmpty(txtHashtag.Text))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin trước khi đăng bài.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            GetData();
-        }
-
-        private void ProcessBtnEdit(int id)
-        {
-            var postContent = _postContentService?.GetById(id);
-            _postContentModel = postContent;
-            txtTitle.Text = postContent?.Title;
-            txtContent.Text = postContent?.Content;
-            txtHook.Text = postContent?.Hook;
-            panel1.Visible = true;
-            btnCancel.Visible = true;
-            btnSave.Visible = true;
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            _postContentModel.Content = txtContent.Text.Trim();
-            _postContentModel.Title = txtTitle.Text.Trim();
-            _postContentModel.Hook = txtHook.Text.Trim();
-            _postContentService?.Update(_postContentModel);
-            panel1.Visible = false;
-            btnCancel.Visible = false;
-            btnSave.Visible = false;
-            GetData();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
-            btnCancel.Visible = false;
-            btnSave.Visible = false;
+            btnPost.Enabled = false;
+            lblPostStatus.Visible = true;
+            lblPostStatus.Text = "Đang đăng bài...";
+            var message = txtTitle.Text;
+            message += "\n" + txtHook.Text;
+            message += "\n" + txtContent.Text;
+            message += "\n" + txtHashtag.Text;
+            var postResult = await _facebookService.PostFacebookAsync(pageId!, pageToken!, message);
+            lblPostStatus.Visible = false;
+            btnPost.Enabled = true;
+            MessageBox.Show("Đăng bài thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

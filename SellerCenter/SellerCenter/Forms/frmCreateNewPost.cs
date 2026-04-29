@@ -113,8 +113,8 @@ namespace SellerCenter.Forms
             {
                 var question = content?.Trim()!;
                 var answer = await _chatGpt?.AskAsync(question, [])!;
-                txtResponseChatGPT.Text = Utilities.FormatJson(answer);
                 ChatGPTModel result = JsonConvert.DeserializeObject<ChatGPTModel>(answer)!;
+                txtResponseChatGPT.Text = result.Data!.ToString();
                 InsertResultToDatabase(result);
                 btnCreatePost.Enabled = true;
                 btnCreatePost.Text = "Tạo bài đăng";

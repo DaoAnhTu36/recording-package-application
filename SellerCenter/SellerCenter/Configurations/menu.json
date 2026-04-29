@@ -82,10 +82,6 @@
       {
         "title": "Danh sách nhân viên",
         "form": "frmEmployeeManager"
-      },
-      {
-        "title": "Phân quyền truy cập",
-        "form": "frmEmployeeAccessControl"
       }
     ]
   }

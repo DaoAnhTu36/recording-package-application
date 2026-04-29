@@ -38,12 +38,6 @@
             hashtag = new DataGridViewTextBoxColumn();
             created_at = new DataGridViewTextBoxColumn();
             updated_at = new DataGridViewTextBoxColumn();
-            image_url_1 = new DataGridViewTextBoxColumn();
-            image_url_2 = new DataGridViewTextBoxColumn();
-            image_url_3 = new DataGridViewTextBoxColumn();
-            image_url_4 = new DataGridViewTextBoxColumn();
-            image_url_5 = new DataGridViewTextBoxColumn();
-            video_url = new DataGridViewTextBoxColumn();
             label1 = new Label();
             txtKeyword = new TextBox();
             txtTitle = new TextBox();
@@ -52,12 +46,17 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            panel1 = new Panel();
             btnSave = new Button();
             btnCancel = new Button();
-            lblNotifyPost = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            label5 = new Label();
+            txtHashtag = new RichTextBox();
+            btnPost = new Button();
+            lblPostStatus = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPostContent).BeginInit();
-            panel1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewPostContent
@@ -65,13 +64,14 @@
             dataGridViewPostContent.AllowUserToAddRows = false;
             dataGridViewPostContent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPostContent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPostContent.Columns.AddRange(new DataGridViewColumn[] { id, product_code, title, content, hook, hashtag, created_at, updated_at, image_url_1, image_url_2, image_url_3, image_url_4, image_url_5, video_url });
-            dataGridViewPostContent.Dock = DockStyle.Bottom;
-            dataGridViewPostContent.Location = new Point(0, 362);
+            dataGridViewPostContent.Columns.AddRange(new DataGridViewColumn[] { id, product_code, title, content, hook, hashtag, created_at, updated_at });
+            dataGridViewPostContent.Dock = DockStyle.Fill;
+            dataGridViewPostContent.Location = new Point(595, 3);
             dataGridViewPostContent.Name = "dataGridViewPostContent";
-            dataGridViewPostContent.Size = new Size(1904, 679);
+            dataGridViewPostContent.Size = new Size(1306, 1035);
             dataGridViewPostContent.TabIndex = 0;
             dataGridViewPostContent.CellContentClick += dataGridViewPostContent_CellContentClick;
+            dataGridViewPostContent.Click += dataGridViewPostContent_Click;
             // 
             // id
             // 
@@ -113,40 +113,10 @@
             updated_at.HeaderText = "Thời gian cập nhật";
             updated_at.Name = "updated_at";
             // 
-            // image_url_1
-            // 
-            image_url_1.HeaderText = "Ảnh 1";
-            image_url_1.Name = "image_url_1";
-            // 
-            // image_url_2
-            // 
-            image_url_2.HeaderText = "Ảnh 2";
-            image_url_2.Name = "image_url_2";
-            // 
-            // image_url_3
-            // 
-            image_url_3.HeaderText = "Ảnh 3";
-            image_url_3.Name = "image_url_3";
-            // 
-            // image_url_4
-            // 
-            image_url_4.HeaderText = "Anh 4";
-            image_url_4.Name = "image_url_4";
-            // 
-            // image_url_5
-            // 
-            image_url_5.HeaderText = "Ảnh 5";
-            image_url_5.Name = "image_url_5";
-            // 
-            // video_url
-            // 
-            video_url.HeaderText = "Video";
-            video_url.Name = "video_url";
-            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(57, 15);
             label1.TabIndex = 1;
@@ -154,38 +124,42 @@
             // 
             // txtKeyword
             // 
-            txtKeyword.Location = new Point(12, 27);
+            txtKeyword.Dock = DockStyle.Fill;
+            txtKeyword.Location = new Point(117, 3);
             txtKeyword.Name = "txtKeyword";
-            txtKeyword.Size = new Size(456, 23);
-            txtKeyword.TabIndex = 2;
-            txtKeyword.TextChanged += textBox1_TextChanged;
+            txtKeyword.Size = new Size(466, 23);
+            txtKeyword.TabIndex = 1;
+            txtKeyword.TextChanged += txtKeyword_TextChanged;
+            txtKeyword.Leave += txtKeyword_Leave;
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(3, 29);
+            txtTitle.Dock = DockStyle.Fill;
+            txtTitle.Location = new Point(117, 47);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(1412, 23);
-            txtTitle.TabIndex = 3;
+            txtTitle.Size = new Size(466, 23);
+            txtTitle.TabIndex = 2;
             // 
             // txtContent
             // 
-            txtContent.Location = new Point(3, 117);
+            txtContent.Location = new Point(117, 234);
             txtContent.Name = "txtContent";
-            txtContent.Size = new Size(1412, 231);
-            txtContent.TabIndex = 4;
+            txtContent.Size = new Size(466, 492);
+            txtContent.TabIndex = 5;
             txtContent.Text = "";
             // 
             // txtHook
             // 
-            txtHook.Location = new Point(3, 73);
+            txtHook.Dock = DockStyle.Fill;
+            txtHook.Location = new Point(117, 91);
             txtHook.Name = "txtHook";
-            txtHook.Size = new Size(1412, 23);
-            txtHook.TabIndex = 5;
+            txtHook.Size = new Size(466, 23);
+            txtHook.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 11);
+            label2.Location = new Point(3, 44);
             label2.Name = "label2";
             label2.Size = new Size(46, 15);
             label2.TabIndex = 6;
@@ -194,7 +168,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 55);
+            label3.Location = new Point(3, 88);
             label3.Name = "label3";
             label3.Size = new Size(58, 15);
             label3.TabIndex = 7;
@@ -203,33 +177,19 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 99);
+            label4.Location = new Point(3, 231);
             label4.Name = "label4";
             label4.Size = new Size(57, 15);
             label4.TabIndex = 8;
             label4.Text = "Nội dung";
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(txtContent);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(txtTitle);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(txtHook);
-            panel1.Controls.Add(label2);
-            panel1.Location = new Point(474, -2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1418, 351);
-            panel1.TabIndex = 9;
-            panel1.Visible = false;
-            // 
             // btnSave
             // 
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Location = new Point(235, 318);
+            btnSave.Location = new Point(3, 732);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(108, 31);
-            btnSave.TabIndex = 10;
+            btnSave.Size = new Size(92, 31);
+            btnSave.TabIndex = 6;
             btnSave.Text = "Lưu thay đổi";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Visible = false;
@@ -238,39 +198,107 @@
             // btnCancel
             // 
             btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Location = new Point(349, 318);
+            btnCancel.Location = new Point(117, 732);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(110, 31);
-            btnCancel.TabIndex = 11;
+            btnCancel.TabIndex = 7;
             btnCancel.Text = "Hủy bỏ thay đổi";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Visible = false;
             btnCancel.Click += btnCancel_Click;
             // 
-            // lblNotifyPost
+            // tableLayoutPanel1
             // 
-            lblNotifyPost.AutoSize = true;
-            lblNotifyPost.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblNotifyPost.ForeColor = Color.Red;
-            lblNotifyPost.Location = new Point(12, 71);
-            lblNotifyPost.Name = "lblNotifyPost";
-            lblNotifyPost.Size = new Size(247, 25);
-            lblNotifyPost.TabIndex = 12;
-            lblNotifyPost.Text = "Đang đăng bài facebook...";
-            lblNotifyPost.Visible = false;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.4539242F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80.5460739F));
+            tableLayoutPanel1.Controls.Add(label5, 0, 3);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
+            tableLayoutPanel1.Controls.Add(txtTitle, 1, 1);
+            tableLayoutPanel1.Controls.Add(txtKeyword, 1, 0);
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(label3, 0, 2);
+            tableLayoutPanel1.Controls.Add(txtHook, 1, 2);
+            tableLayoutPanel1.Controls.Add(btnSave, 0, 5);
+            tableLayoutPanel1.Controls.Add(btnCancel, 1, 5);
+            tableLayoutPanel1.Controls.Add(txtContent, 1, 4);
+            tableLayoutPanel1.Controls.Add(label4, 0, 4);
+            tableLayoutPanel1.Controls.Add(txtHashtag, 1, 3);
+            tableLayoutPanel1.Controls.Add(btnPost, 0, 6);
+            tableLayoutPanel1.Controls.Add(lblPostStatus, 1, 6);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 88F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 498F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 255F));
+            tableLayoutPanel1.Size = new Size(586, 1035);
+            tableLayoutPanel1.TabIndex = 12;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(3, 143);
+            label5.Name = "label5";
+            label5.Size = new Size(51, 15);
+            label5.TabIndex = 12;
+            label5.Text = "Hashtag";
+            // 
+            // txtHashtag
+            // 
+            txtHashtag.Dock = DockStyle.Fill;
+            txtHashtag.Location = new Point(117, 146);
+            txtHashtag.Name = "txtHashtag";
+            txtHashtag.Size = new Size(466, 82);
+            txtHashtag.TabIndex = 13;
+            txtHashtag.Text = "";
+            // 
+            // btnPost
+            // 
+            btnPost.Location = new Point(3, 782);
+            btnPost.Name = "btnPost";
+            btnPost.Size = new Size(75, 23);
+            btnPost.TabIndex = 14;
+            btnPost.Text = "Đăng bài";
+            btnPost.UseVisualStyleBackColor = true;
+            btnPost.Click += btnPost_Click;
+            // 
+            // lblPostStatus
+            // 
+            lblPostStatus.AutoSize = true;
+            lblPostStatus.Location = new Point(117, 779);
+            lblPostStatus.Name = "lblPostStatus";
+            lblPostStatus.Size = new Size(38, 15);
+            lblPostStatus.TabIndex = 15;
+            lblPostStatus.Text = "label6";
+            lblPostStatus.Visible = false;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.0924377F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.90756F));
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 0);
+            tableLayoutPanel2.Controls.Add(dataGridViewPostContent, 1, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(1904, 1041);
+            tableLayoutPanel2.TabIndex = 13;
             // 
             // frmPostManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
-            Controls.Add(lblNotifyPost);
-            Controls.Add(btnCancel);
-            Controls.Add(btnSave);
-            Controls.Add(panel1);
-            Controls.Add(txtKeyword);
-            Controls.Add(label1);
-            Controls.Add(dataGridViewPostContent);
+            Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
@@ -278,10 +306,10 @@
             Text = "Danh sách bài viết";
             Load += frmPostManager_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewPostContent).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -289,6 +317,17 @@
         private DataGridView dataGridViewPostContent;
         private Label label1;
         private TextBox txtKeyword;
+        private TextBox txtTitle;
+        private RichTextBox txtContent;
+        private TextBox txtHook;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Button btnSave;
+        private Button btnCancel;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label label5;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn product_code;
         private DataGridViewTextBoxColumn title;
@@ -297,21 +336,8 @@
         private DataGridViewTextBoxColumn hashtag;
         private DataGridViewTextBoxColumn created_at;
         private DataGridViewTextBoxColumn updated_at;
-        private DataGridViewTextBoxColumn image_url_1;
-        private DataGridViewTextBoxColumn image_url_2;
-        private DataGridViewTextBoxColumn image_url_3;
-        private DataGridViewTextBoxColumn image_url_4;
-        private DataGridViewTextBoxColumn image_url_5;
-        private DataGridViewTextBoxColumn video_url;
-        private TextBox txtTitle;
-        private RichTextBox txtContent;
-        private TextBox txtHook;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Panel panel1;
-        private Button btnSave;
-        private Button btnCancel;
-        private Label lblNotifyPost;
+        private RichTextBox txtHashtag;
+        private Button btnPost;
+        private Label lblPostStatus;
     }
 }
