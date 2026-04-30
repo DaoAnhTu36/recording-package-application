@@ -1,6 +1,6 @@
 ﻿namespace SellerCenter.Infrastructure.Models
 {
-    public class MenuModel
+    public class MenuModel : IEntity
     {
         public long Id { get; set; }
         public string? MenuCode { get; set; }

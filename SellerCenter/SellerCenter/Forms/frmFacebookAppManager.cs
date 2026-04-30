@@ -27,6 +27,7 @@ namespace SellerCenter.Forms
             if (string.IsNullOrEmpty(appId) || string.IsNullOrEmpty(appName))
             {
                 MessageBox.Show("Mã ứng dụng, tên ứng dụng không được để trống.");
+                btnSave.Enabled = true;
                 return;
             }
             _facebookAppService.Create(appName, appId, "", true);

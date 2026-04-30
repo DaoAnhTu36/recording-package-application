@@ -1,6 +1,7 @@
 ﻿using FontAwesome.Sharp;
 using SellerCenter.Commons;
 using SellerCenter.Configurations;
+using System.Drawing.Drawing2D;
 
 namespace SellerCenter.Helpers
 {
@@ -169,6 +170,23 @@ namespace SellerCenter.Helpers
             if (onClick != null)
                 btn.Click += onClick;
             return btn;
+        }
+
+        private static void SetButtonRadius(Button btn, int radius)
+        {
+            var path = new GraphicsPath();
+
+            int r = radius * 2;
+            var rect = btn.ClientRectangle;
+
+            path.AddArc(rect.X, rect.Y, r, r, 180, 90);
+            path.AddArc(rect.Right - r, rect.Y, r, r, 270, 90);
+            path.AddArc(rect.Right - r, rect.Bottom - r, r, r, 0, 90);
+            path.AddArc(rect.X, rect.Bottom - r, r, r, 90, 90);
+
+            path.CloseFigure();
+
+            btn.Region = new Region(path);
         }
     }
 }
