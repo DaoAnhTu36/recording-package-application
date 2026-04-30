@@ -1,10 +1,10 @@
 ﻿using SellerCenter.Helper;
-using SellerCenter.Infrastructure;
+using SellerCenter.Infrastructure.Implementation;
 using SellerCenter.Infrastructure.Models;
 
-namespace SellerCenter.Service
+namespace SellerCenter.Service.Implementation
 {
-    public class EmployeeService
+    public class EmployeeService : IEmployeeService
     {
         private readonly EmployeeRepository _employeeRepository;
 

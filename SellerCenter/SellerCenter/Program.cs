@@ -1,18 +1,35 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SellerCenter.Commons;
 using SellerCenter.Forms;
+using SellerCenter.Helpers;
+using SellerCenter.Infrastructure;
+using SellerCenter.Infrastructure.Implementation;
+using SellerCenter.Service;
+using SellerCenter.Service.Implementation;
+using System.Reflection;
 
 namespace SellerCenter
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        public static IHost? AppHost;
+
         [STAThread]
         private static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            AppHost = Host.CreateDefaultBuilder()
+            .ConfigureServices((context, services) =>
+            {
+                services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+                services.AddScoped(typeof(IService<>), typeof(Service<>));
+                services.AddAutoDI(
+                    Assembly.GetExecutingAssembly(),
+                    type => type.Name.EndsWith("Service")
+                         || type.Name.EndsWith("Repository")
+                );
+            })
+            .Build();
             Logger.Init();
             AppConfig.Init();
             ApplicationConfiguration.Initialize();

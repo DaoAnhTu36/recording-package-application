@@ -3,7 +3,7 @@ using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Service
 {
-    public class MenuService
+    public class MenuService1
     {
         private readonly MenuRepository _repo;
 

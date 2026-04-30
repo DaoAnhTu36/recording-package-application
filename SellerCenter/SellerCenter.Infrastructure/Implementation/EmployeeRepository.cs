@@ -2,9 +2,9 @@
 using SellerCenter.Helper;
 using SellerCenter.Infrastructure.Models;
 
-namespace SellerCenter.Infrastructure
+namespace SellerCenter.Infrastructure.Implementation
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : IRepository<EmployeeModel>, IEmployeeRepository
     {
         private DatabaseRepository _db;
 

@@ -1,6 +1,6 @@
 ﻿namespace SellerCenter.Infrastructure.Models
 {
-    public class EmployeeModel
+    public class EmployeeModel : IEntity
     {
         public long Id { get; set; }
         public string? Username { get; set; }
