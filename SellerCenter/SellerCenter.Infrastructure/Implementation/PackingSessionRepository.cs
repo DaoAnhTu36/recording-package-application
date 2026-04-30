@@ -1,16 +1,18 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Extensions.Options;
+using MySql.Data.MySqlClient;
+using SellerCenter.Infrastructure.Configs.Model;
 using SellerCenter.Infrastructure.Models;
 using System.Data;
 
 namespace SellerCenter.Infrastructure.Implementation
 {
-    public class PackingSessionRepository : Repository<PackingSessionModel>, IPackingSessionRepository
+    public class PackingSessionRepository1 : Repository<PackingSessionModel>, IPackingSessionRepository
     {
         private readonly string _conn;
 
-        public PackingSessionRepository(string conn) : base(conn)
+        public PackingSessionRepository1(IOptionsSnapshot<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
         {
-            _conn = conn;
+            _conn = dbConfig.Value.ConnectionString!;
         }
 
         public DataTable GetAllSessions()

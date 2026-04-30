@@ -1,10 +1,12 @@
-﻿using SellerCenter.Infrastructure;
+﻿using SellerCenter.Helper;
+using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service.DTO;
 using System.Data;
 
 namespace SellerCenter.Service.Implementation
 {
+    [Scoped]
     public class PackingSessionService : Service<PackingSessionModel>, IPackingSessionService
     {
         private readonly IPackingSessionRepository _packingSessionRepository;

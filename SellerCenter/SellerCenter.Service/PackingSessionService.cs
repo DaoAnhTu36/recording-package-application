@@ -3,11 +3,11 @@ using System.Data;
 
 namespace SellerCenter.Service
 {
-    public class PackingSessionService
+    public class PackingSessionService1
     {
         private PackingSessionRepository _instance;
 
-        public PackingSessionService()
+        public PackingSessionService1()
         {
             _instance = new PackingSessionRepository();
         }

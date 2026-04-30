@@ -1,4 +1,5 @@
-﻿using SellerCenter.Service;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
@@ -20,7 +21,10 @@ namespace SellerCenter.Forms
 
         private void GetListVideoFiles()
         {
-            var packingSessionService = new PackingSessionService();
+            var service = Program.AppHost!.Services.GetRequiredService<IPackingSessionService>();
+            var dataSession = service.GetAll();
+
+            var packingSessionService = new PackingSessionService1();
             var videos = packingSessionService.GetAllSessions();
             listRecord.Invoke((MethodInvoker)(() =>
             {
@@ -41,7 +45,7 @@ namespace SellerCenter.Forms
                 await Task.Delay(300, cts.Token);
 
                 var keyword = txtBarcode.Text.Trim();
-                var packingSessionService = new PackingSessionService();
+                var packingSessionService = new PackingSessionService1();
                 var dt = await packingSessionService.GetHistoryRecordByBarcode(barcode, dateFrom, dateTo);
                 listRecord.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 listRecord.DataSource = dt;
@@ -67,7 +71,7 @@ namespace SellerCenter.Forms
                 var keyword = txtBarcode.Text.Trim();
                 if (string.IsNullOrEmpty(keyword)) return;
 
-                var packingSessionService = new PackingSessionService();
+                var packingSessionService = new PackingSessionService1();
                 var dt = await packingSessionService.GetHistoryRecordByBarcode(barcode, null, null);
                 listRecord.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 listRecord.DataSource = dt;

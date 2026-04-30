@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using SellerCenter.Commons;
 using SellerCenter.Helper;
+using SellerCenter.Infrastructure.Configs;
 using SellerCenter.Models;
 using System.Web;
 

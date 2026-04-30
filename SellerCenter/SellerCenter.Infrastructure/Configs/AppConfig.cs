@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace SellerCenter.Commons
+namespace SellerCenter.Infrastructure.Configs
 {
     public class AppConfig
     {

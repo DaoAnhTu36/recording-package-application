@@ -2,6 +2,7 @@
 using SellerCenter.Commons;
 using SellerCenter.Helper;
 using SellerCenter.Infrastructure;
+using SellerCenter.Infrastructure.Configs;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Models;
 using SellerCenter.Service;

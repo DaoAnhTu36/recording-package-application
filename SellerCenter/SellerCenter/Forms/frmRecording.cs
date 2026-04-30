@@ -225,7 +225,7 @@ namespace SellerCenter.Forms
                     if (barcode != null)
                     {
                         _barcode = barcode;
-                        var packingSessionService = new PackingSessionService();
+                        var packingSessionService = new PackingSessionService1();
                         packingSessionService.InsertSession(barcode, _fullPathFile!);
                     }
                 }
@@ -356,7 +356,7 @@ namespace SellerCenter.Forms
 
             string youtubeUrl = $"https://www.youtube.com/watch?v={video.Id}";
             lblStatus.Text = youtubeUrl;
-            var packingSessionService = new PackingSessionService();
+            var packingSessionService = new PackingSessionService1();
             packingSessionService.UpdateSession(_barcode!, youtubeUrl);
         }
 

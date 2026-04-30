@@ -4,6 +4,7 @@ using SellerCenter.Commons;
 using SellerCenter.Forms;
 using SellerCenter.Helpers;
 using SellerCenter.Infrastructure;
+using SellerCenter.Infrastructure.Configs;
 using SellerCenter.Infrastructure.Implementation;
 using SellerCenter.Service;
 using SellerCenter.Service.Implementation;
@@ -23,11 +24,14 @@ namespace SellerCenter
             {
                 services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                 services.AddScoped(typeof(IService<>), typeof(Service<>));
-                services.AddAutoDI(
-                    Assembly.GetExecutingAssembly(),
-                    type => type.Name.EndsWith("Service")
-                         || type.Name.EndsWith("Repository")
-                );
+                //services.AddAutoDI(
+                //    Assembly.GetExecutingAssembly(),
+                //    type => type.Name.EndsWith("Service")
+                //         || type.Name.EndsWith("Repository")
+                //);
+
+                services.AddScoped<IPackingSessionRepository, PackingSessionRepository1>();
+                services.AddScoped<IPackingSessionService, PackingSessionService>();
             })
             .Build();
             Logger.Init();
