@@ -187,11 +187,10 @@
             // btnSave
             // 
             btnSave.Enabled = false;
-            btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Location = new Point(3, 865);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(92, 31);
-            btnSave.TabIndex = 6;
+            btnSave.TabIndex = 7;
             btnSave.Text = "Lưu thay đổi";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -199,11 +198,10 @@
             // btnCancel
             // 
             btnCancel.Enabled = false;
-            btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Location = new Point(117, 865);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(110, 31);
-            btnCancel.TabIndex = 7;
+            btnCancel.TabIndex = 8;
             btnCancel.Text = "Hủy bỏ thay đổi";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -259,7 +257,7 @@
             txtHashtag.Location = new Point(117, 108);
             txtHashtag.Name = "txtHashtag";
             txtHashtag.Size = new Size(466, 42);
-            txtHashtag.TabIndex = 13;
+            txtHashtag.TabIndex = 4;
             txtHashtag.Text = "";
             // 
             // btnPost
@@ -268,7 +266,7 @@
             btnPost.Location = new Point(3, 902);
             btnPost.Name = "btnPost";
             btnPost.Size = new Size(75, 23);
-            btnPost.TabIndex = 14;
+            btnPost.TabIndex = 9;
             btnPost.Text = "Đăng bài";
             btnPost.UseVisualStyleBackColor = true;
             btnPost.Click += btnPost_Click;
@@ -298,7 +296,7 @@
             videoPreviewControl1.Location = new Point(117, 593);
             videoPreviewControl1.Name = "videoPreviewControl1";
             videoPreviewControl1.Size = new Size(466, 266);
-            videoPreviewControl1.TabIndex = 17;
+            videoPreviewControl1.TabIndex = 6;
             // 
             // tableLayoutPanel2
             // 

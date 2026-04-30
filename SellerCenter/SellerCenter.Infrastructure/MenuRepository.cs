@@ -74,6 +74,39 @@ namespace SellerCenter.Infrastructure
             return result;
         }
 
+        public List<MenuViewModel> GetAllWithParentName()
+        {
+            var result = new List<MenuViewModel>();
+
+            using var conn = _db.GetConnection();
+            conn.Open();
+            var cmdString = "SELECT m.id" +
+                ", m.menu_code" +
+                ", m.menu_name" +
+                ", m.parent_id" +
+                ", p.menu_name AS parent_name" +
+                ", m.form_name" +
+                ", m.route_key" +
+                ", m.icon_name" +
+                ", m.sort_order" +
+                ", m.permission_code" +
+                ", m.is_active" +
+                ", m.is_visible" +
+                ", m.created_at" +
+                ", m.updated_at " +
+                "FROM menus m " +
+                "LEFT JOIN menus p ON m.parent_id = p.id " +
+                "ORDER BY m.created_at DESC;";
+            var cmd = new MySqlCommand(cmdString, conn);
+
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+                result.Add(MapWithParent(reader));
+
+            return result;
+        }
+
         public List<MenuModel> GetActiveVisible()
         {
             var result = new List<MenuModel>();
@@ -264,6 +297,31 @@ namespace SellerCenter.Infrastructure
                 IsVisible = Convert.ToBoolean(reader["is_visible"]),
                 CreatedAt = Convert.ToDateTime(reader["created_at"]),
                 UpdatedAt = reader["updated_at"] == DBNull.Value ? null : Convert.ToDateTime(reader["updated_at"])
+            };
+        }
+
+        private MenuViewModel MapWithParent(MySqlDataReader reader)
+        {
+            return new MenuViewModel
+            {
+                Id = reader.GetInt64("id"),
+                MenuCode = reader["menu_code"]?.ToString(),
+                MenuName = reader["menu_name"]?.ToString(),
+                ParentId = reader["parent_id"] == DBNull.Value
+                    ? null
+                    : Convert.ToInt64(reader["parent_id"]),
+                ParentName = reader["parent_name"]?.ToString(),
+                FormName = reader["form_name"]?.ToString(),
+                RouteKey = reader["route_key"]?.ToString(),
+                IconName = reader["icon_name"]?.ToString(),
+                SortOrder = Convert.ToInt32(reader["sort_order"]),
+                PermissionCode = reader["permission_code"]?.ToString(),
+                IsActive = Convert.ToBoolean(reader["is_active"]),
+                IsVisible = Convert.ToBoolean(reader["is_visible"]),
+                CreatedAt = Convert.ToDateTime(reader["created_at"]),
+                UpdatedAt = reader["updated_at"] == DBNull.Value
+                    ? null
+                    : Convert.ToDateTime(reader["updated_at"])
             };
         }
     }

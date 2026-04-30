@@ -123,7 +123,7 @@
             txtKeyword.Location = new Point(76, 3);
             txtKeyword.Name = "txtKeyword";
             txtKeyword.Size = new Size(490, 23);
-            txtKeyword.TabIndex = 2;
+            txtKeyword.TabIndex = 1;
             txtKeyword.TextChanged += txtKeyword_TextChanged;
             // 
             // tableLayoutPanel1
@@ -163,6 +163,7 @@
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmProductManager";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý sản phẩm";
             Load += frmProductManager_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

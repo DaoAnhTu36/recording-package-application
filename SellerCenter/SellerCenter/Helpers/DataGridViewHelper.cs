@@ -18,5 +18,21 @@
                 onRowSelected?.Invoke(item);
             }
         }
+
+        public static void HandleCellClick<T>(
+            DataGridView dgv,
+            DataGridViewCellEventArgs e,
+            Action<T> onRowSelected
+        )
+        {
+            if (e.RowIndex < 0) return;
+
+            var row = dgv.Rows[e.RowIndex];
+
+            if (row.DataBoundItem is T item)
+            {
+                onRowSelected?.Invoke(item);
+            }
+        }
     }
 }

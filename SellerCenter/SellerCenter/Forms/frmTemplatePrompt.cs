@@ -1,4 +1,5 @@
-﻿using SellerCenter.Infrastructure.Models;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -76,6 +77,7 @@ namespace SellerCenter.Forms
             articleTypeControl1.ClearSelection();
             txtTemplateDesc.Text = string.Empty;
             promptTemplateModel = null;
+            FormHelper.ClearForm(this);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

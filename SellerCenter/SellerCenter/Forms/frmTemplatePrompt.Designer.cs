@@ -60,7 +60,7 @@
             btnSave.Location = new Point(3, 149);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(95, 33);
-            btnSave.TabIndex = 1;
+            btnSave.TabIndex = 4;
             btnSave.Text = "Lưu template";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -71,7 +71,7 @@
             socialMediaPlatformControl1.Location = new Point(159, 3);
             socialMediaPlatformControl1.Name = "socialMediaPlatformControl1";
             socialMediaPlatformControl1.Size = new Size(112, 76);
-            socialMediaPlatformControl1.TabIndex = 2;
+            socialMediaPlatformControl1.TabIndex = 1;
             // 
             // label1
             // 
@@ -97,7 +97,7 @@
             articleTypeControl1.Location = new Point(159, 85);
             articleTypeControl1.Name = "articleTypeControl1";
             articleTypeControl1.Size = new Size(82, 58);
-            articleTypeControl1.TabIndex = 5;
+            articleTypeControl1.TabIndex = 2;
             // 
             // txtTemplateDesc
             // 
@@ -105,7 +105,7 @@
             txtTemplateDesc.Location = new Point(287, 3);
             txtTemplateDesc.Name = "txtTemplateDesc";
             txtTemplateDesc.Size = new Size(1606, 483);
-            txtTemplateDesc.TabIndex = 0;
+            txtTemplateDesc.TabIndex = 3;
             txtTemplateDesc.Text = "";
             // 
             // dataGridViewListTemplate
@@ -177,7 +177,7 @@
             btnCancel.Location = new Point(159, 149);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(95, 33);
-            btnCancel.TabIndex = 7;
+            btnCancel.TabIndex = 5;
             btnCancel.Text = "Hủy thay đổi";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;

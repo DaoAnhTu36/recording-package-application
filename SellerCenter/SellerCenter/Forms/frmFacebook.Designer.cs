@@ -51,12 +51,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1902, 991);
+            ClientSize = new Size(1902, 806);
             Controls.Add(webView21);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(1920, 1080);
-            MinimumSize = new Size(1918, 1030);
+            MaximumSize = new Size(1920, 845);
+            MinimumSize = new Size(1918, 845);
             Name = "frmFacebook";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập facebook";
             Load += frmFacebook_Load;
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();

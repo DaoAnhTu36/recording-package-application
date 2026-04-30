@@ -84,11 +84,7 @@ namespace SellerCenter.Forms
 
         private void ResetForm()
         {
-            txtContent.Text = string.Empty;
-            txtHook.Text = string.Empty;
-            txtKeyword.Text = string.Empty;
-            txtTitle.Text = string.Empty;
-            txtHashtag.Text = string.Empty;
+            FormHelper.ClearForm(this);
             btnCancel.Enabled = false;
             btnSave.Enabled = false;
             btnPost.Enabled = false;

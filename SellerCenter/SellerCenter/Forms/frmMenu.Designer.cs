@@ -30,10 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             dataGridView1 = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            menuName = new DataGridViewTextBoxColumn();
-            formName = new DataGridViewTextBoxColumn();
-            iconName = new DataGridViewTextBoxColumn();
+            IdMenuChild = new DataGridViewTextBoxColumn();
+            menuChildName = new DataGridViewTextBoxColumn();
+            MenuParentName = new DataGridViewTextBoxColumn();
+            menuChildForm = new DataGridViewTextBoxColumn();
+            SortOrder = new DataGridViewTextBoxColumn();
+            menuChildIcon = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -63,7 +65,7 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, menuName, formName, iconName });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IdMenuChild, menuChildName, MenuParentName, menuChildForm, SortOrder, menuChildIcon });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
@@ -72,29 +74,41 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
-            // id
+            // IdMenuChild
             // 
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
+            IdMenuChild.HeaderText = "ID";
+            IdMenuChild.Name = "IdMenuChild";
+            IdMenuChild.ReadOnly = true;
             // 
-            // menuName
+            // menuChildName
             // 
-            menuName.HeaderText = "Tên menu";
-            menuName.Name = "menuName";
-            menuName.ReadOnly = true;
+            menuChildName.HeaderText = "Tên menu";
+            menuChildName.Name = "menuChildName";
+            menuChildName.ReadOnly = true;
             // 
-            // formName
+            // MenuParentName
             // 
-            formName.HeaderText = "Form";
-            formName.Name = "formName";
-            formName.ReadOnly = true;
+            MenuParentName.HeaderText = "Menu cha";
+            MenuParentName.Name = "MenuParentName";
+            MenuParentName.ReadOnly = true;
             // 
-            // iconName
+            // menuChildForm
             // 
-            iconName.HeaderText = "Icon";
-            iconName.Name = "iconName";
-            iconName.ReadOnly = true;
+            menuChildForm.HeaderText = "Form";
+            menuChildForm.Name = "menuChildForm";
+            menuChildForm.ReadOnly = true;
+            // 
+            // SortOrder
+            // 
+            SortOrder.HeaderText = "Thứ tự sắp xếp";
+            SortOrder.Name = "SortOrder";
+            SortOrder.ReadOnly = true;
+            // 
+            // menuChildIcon
+            // 
+            menuChildIcon.HeaderText = "Icon";
+            menuChildIcon.Name = "menuChildIcon";
+            menuChildIcon.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -161,7 +175,7 @@
             btnCancel.Location = new Point(116, 222);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
-            btnCancel.TabIndex = 13;
+            btnCancel.TabIndex = 8;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -181,7 +195,7 @@
             txtIconName.Location = new Point(116, 152);
             txtIconName.Name = "txtIconName";
             txtIconName.Size = new Size(380, 23);
-            txtIconName.TabIndex = 9;
+            txtIconName.TabIndex = 5;
             // 
             // label5
             // 
@@ -198,7 +212,7 @@
             txtFormName.Location = new Point(116, 110);
             txtFormName.Name = "txtFormName";
             txtFormName.Size = new Size(380, 23);
-            txtFormName.TabIndex = 7;
+            txtFormName.TabIndex = 4;
             // 
             // label4
             // 
@@ -224,7 +238,7 @@
             txtMenuName.Location = new Point(116, 38);
             txtMenuName.Name = "txtMenuName";
             txtMenuName.Size = new Size(380, 23);
-            txtMenuName.TabIndex = 3;
+            txtMenuName.TabIndex = 2;
             // 
             // label1
             // 
@@ -259,7 +273,7 @@
             cbbMenuParent.Location = new Point(116, 73);
             cbbMenuParent.Name = "cbbMenuParent";
             cbbMenuParent.Size = new Size(380, 23);
-            cbbMenuParent.TabIndex = 5;
+            cbbMenuParent.TabIndex = 3;
             // 
             // txtSortOrder
             // 
@@ -267,14 +281,14 @@
             txtSortOrder.Location = new Point(116, 193);
             txtSortOrder.Name = "txtSortOrder";
             txtSortOrder.Size = new Size(380, 23);
-            txtSortOrder.TabIndex = 11;
+            txtSortOrder.TabIndex = 6;
             // 
             // btnSave
             // 
             btnSave.Location = new Point(3, 222);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
-            btnSave.TabIndex = 12;
+            btnSave.TabIndex = 7;
             btnSave.Text = "Lưu";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -304,10 +318,6 @@
         private DataGridView dataGridView1;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn menuName;
-        private DataGridViewTextBoxColumn formName;
-        private DataGridViewTextBoxColumn iconName;
         private TableLayoutPanel tableLayoutPanel3;
         private Label label1;
         private TextBox txtMenuCode;
@@ -323,5 +333,11 @@
         private NumericUpDown txtSortOrder;
         private Button btnCancel;
         private Button btnSave;
+        private DataGridViewTextBoxColumn IdMenuChild;
+        private DataGridViewTextBoxColumn menuChildName;
+        private DataGridViewTextBoxColumn MenuParentName;
+        private DataGridViewTextBoxColumn menuChildForm;
+        private DataGridViewTextBoxColumn SortOrder;
+        private DataGridViewTextBoxColumn menuChildIcon;
     }
 }

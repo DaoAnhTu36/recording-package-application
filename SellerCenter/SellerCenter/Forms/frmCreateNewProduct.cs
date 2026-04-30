@@ -1,4 +1,5 @@
 ﻿using SellerCenter.Helper;
+using SellerCenter.Helpers;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
@@ -127,6 +128,11 @@ namespace SellerCenter.Forms
 
         private void frmCreateNewProduct_Load(object sender, EventArgs e)
         {
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ResetProductForm();
         }
     }
 }

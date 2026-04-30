@@ -60,7 +60,7 @@
             btnClearCache.Location = new Point(195, 54);
             btnClearCache.Name = "btnClearCache";
             btnClearCache.Size = new Size(186, 28);
-            btnClearCache.TabIndex = 3;
+            btnClearCache.TabIndex = 2;
             btnClearCache.Text = "Xóa bộ nhớ đệm";
             btnClearCache.UseVisualStyleBackColor = true;
             btnClearCache.Click += btnClearCache_Click;
@@ -104,6 +104,7 @@
             MaximumSize = new Size(400, 600);
             MinimumSize = new Size(400, 600);
             Name = "frmSetting";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cài đặt chung";
             Load += frmSetting_Load;
             tableLayoutPanel1.ResumeLayout(false);

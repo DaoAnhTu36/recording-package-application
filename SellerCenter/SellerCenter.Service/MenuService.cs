@@ -40,6 +40,11 @@ namespace SellerCenter.Service
             return _repo.GetAll();
         }
 
+        public List<MenuViewModel> GetAllWithParentName()
+        {
+            return _repo.GetAllWithParentName();
+        }
+
         public List<MenuModel> GetActiveVisible()
         {
             return _repo.GetActiveVisible();

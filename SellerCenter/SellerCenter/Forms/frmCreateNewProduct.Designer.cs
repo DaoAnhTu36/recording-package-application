@@ -44,6 +44,7 @@
             videoPreviewControl1 = new SellerCenter.UserControls.VideoPreviewControl();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
+            btnCancel = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -96,7 +97,6 @@
             // 
             // btnSave
             // 
-            btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Location = new Point(12, 525);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
@@ -193,11 +193,22 @@
             tableLayoutPanel2.Size = new Size(518, 100);
             tableLayoutPanel2.TabIndex = 14;
             // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(93, 525);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 15;
+            btnCancel.Text = "Hủy bỏ";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
             // frmCreateNewProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(btnCancel);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(btnSave);
@@ -205,6 +216,7 @@
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmCreateNewProduct";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Thêm sản phẩm mới";
             Load += frmCreateNewProduct_Load;
             tableLayoutPanel1.ResumeLayout(false);
@@ -230,5 +242,6 @@
         private UserControls.VideoPreviewControl videoPreviewControl1;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
+        private Button btnCancel;
     }
 }

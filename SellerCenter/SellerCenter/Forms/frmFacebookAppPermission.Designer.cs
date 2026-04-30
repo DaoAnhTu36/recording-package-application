@@ -81,7 +81,7 @@
             txtPermissionName.Location = new Point(126, 36);
             txtPermissionName.Name = "txtPermissionName";
             txtPermissionName.Size = new Size(263, 23);
-            txtPermissionName.TabIndex = 3;
+            txtPermissionName.TabIndex = 2;
             // 
             // btnSave
             // 
@@ -89,7 +89,7 @@
             btnSave.Location = new Point(3, 69);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 28);
-            btnSave.TabIndex = 4;
+            btnSave.TabIndex = 3;
             btnSave.Text = "Lưu";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -100,7 +100,7 @@
             btnUpdate.Location = new Point(126, 69);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 28);
-            btnUpdate.TabIndex = 5;
+            btnUpdate.TabIndex = 4;
             btnUpdate.Text = "Cập nhật";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Visible = false;
@@ -188,6 +188,7 @@
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmFacebookAppPermission";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quyền truy cập facebook";
             Load += frmFacebookAppPermission_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

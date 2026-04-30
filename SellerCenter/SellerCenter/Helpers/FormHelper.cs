@@ -43,10 +43,34 @@
                     num.Value = num.Minimum;
                 else if (ctrl is DateTimePicker dt)
                     dt.Value = DateTime.Now;
+                else if (ctrl is AxWMPLib.AxWindowsMediaPlayer wmp)
+                {
+                    wmp.Ctlcontrols.stop();
+                    wmp.URL = string.Empty;
+                }
 
                 if (ctrl.HasChildren)
                     ClearForm(ctrl);
             }
+            var focusCtrl = FindControlByTabIndex(parent, 1);
+            focusCtrl?.Focus();
+        }
+
+        public static Control FindControlByTabIndex(Control parent, int tabIndex)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (ctrl.TabIndex == tabIndex && ctrl.CanFocus)
+                    return ctrl;
+
+                if (ctrl.HasChildren)
+                {
+                    var child = FindControlByTabIndex(ctrl, tabIndex);
+                    if (child != null)
+                        return child;
+                }
+            }
+            return null;
         }
     }
 }

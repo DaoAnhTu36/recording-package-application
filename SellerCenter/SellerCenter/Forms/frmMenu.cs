@@ -23,34 +23,39 @@ namespace SellerCenter.Forms
 
         private void LoadData()
         {
-            var data = _menuService.GetAll();
+            var data = _menuService.GetAllWithParentName();
             dataGridView1.DataSource = data;
             MappingData();
-            cbbMenuParent.DataSource = data.Select(x => new
+            var dataMenuParent = data.Select(x => new
             {
-                x.Id,
-                x.MenuName
-            });
-            cbbMenuParent.DisplayMember = "menuName";
-            cbbMenuParent.ValueMember = "id";
+                IdMenuParent = x.Id,
+                MenuParent = x.MenuName
+            }).ToList();
+            dataMenuParent.Insert(0, new { IdMenuParent = 0L, MenuParent = "None" }!);
+            cbbMenuParent.DataSource = dataMenuParent;
+            cbbMenuParent.DisplayMember = "MenuParent";
+            cbbMenuParent.ValueMember = "IdMenuParent";
         }
 
         private void MappingData()
         {
-            id.DataPropertyName = "id";
-            menuName.DataPropertyName = "menuName";
-            formName.DataPropertyName = "formName";
-            iconName.DataPropertyName = "iconName";
+            IdMenuChild.DataPropertyName = "Id";
+            menuChildName.DataPropertyName = "MenuName";
+            menuChildForm.DataPropertyName = "FormName";
+            menuChildIcon.DataPropertyName = "IconName";
+            MenuParentName.DataPropertyName = "ParentName";
+            SortOrder.DataPropertyName = "SortOrder";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            var parentId = (long?)cbbMenuParent.SelectedValue == 0 ? null : (long?)cbbMenuParent.SelectedValue;
             var menu = new MenuModel
             {
                 MenuName = txtMenuName.Text,
                 FormName = txtFormName.Text,
                 IconName = txtIconName.Text,
-                ParentId = (long)cbbMenuParent.SelectedValue!,
+                ParentId = parentId,
                 IsActive = true,
                 IsVisible = true,
                 MenuCode = txtMenuCode.Text,
@@ -82,26 +87,28 @@ namespace SellerCenter.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            FormReset();
         }
 
         private void FormReset()
         {
             FormHelper.ClearForm(this);
+            _idEditing = 0;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
-            var row = dataGridView1.Rows[e.RowIndex];
-            var item = (MenuModel)row.DataBoundItem;
-            _idEditing = item.Id;
-            _menuModel = _menuService.GetById(_idEditing);
-            txtMenuCode.Text = item.MenuCode;
-            txtMenuName.Text = item.MenuName;
-            txtFormName.Text = item.FormName;
-            txtIconName.Text = item.IconName;
-            txtSortOrder.Text = item.SortOrder.ToString();
-            cbbMenuParent.SelectedValue = item.ParentId ?? 0;
+            DataGridViewHelper.HandleCellClick<MenuViewModel>(dataGridView1, e, item =>
+            {
+                _idEditing = item.Id;
+                _menuModel = _menuService.GetById(_idEditing);
+                txtMenuCode.Text = item.MenuCode;
+                txtMenuName.Text = item.MenuName;
+                txtFormName.Text = item.FormName;
+                txtIconName.Text = item.IconName;
+                txtSortOrder.Text = item.SortOrder.ToString();
+                cbbMenuParent.SelectedValue = item.ParentId ?? 0;
+            });
         }
     }
 }

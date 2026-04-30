@@ -291,6 +291,7 @@
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmEmployeeManager";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý nhân viên";
             Load += frmEmployeeManager_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

@@ -87,7 +87,7 @@
             toDate.Location = new Point(125, 85);
             toDate.Name = "toDate";
             toDate.Size = new Size(319, 31);
-            toDate.TabIndex = 3;
+            toDate.TabIndex = 2;
             // 
             // label4
             // 
@@ -131,7 +131,7 @@
             btnSearch.Location = new Point(3, 125);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 36);
-            btnSearch.TabIndex = 4;
+            btnSearch.TabIndex = 3;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
@@ -145,7 +145,7 @@
             btnReset.Location = new Point(125, 125);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(94, 36);
-            btnReset.TabIndex = 5;
+            btnReset.TabIndex = 4;
             btnReset.Text = "Đặt lại";
             btnReset.UseVisualStyleBackColor = false;
             // 
@@ -223,6 +223,7 @@
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmHistoryScreen";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Lịch sử video";
             Load += frmHistoryScreen_Load;
             ((System.ComponentModel.ISupportInitialize)listRecord).EndInit();

@@ -71,7 +71,7 @@
             txtAppId.Location = new Point(111, 49);
             txtAppId.Name = "txtAppId";
             txtAppId.Size = new Size(405, 23);
-            txtAppId.TabIndex = 3;
+            txtAppId.TabIndex = 2;
             // 
             // label2
             // 
@@ -88,7 +88,7 @@
             btnSave.Location = new Point(3, 95);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 31);
-            btnSave.TabIndex = 4;
+            btnSave.TabIndex = 3;
             btnSave.Text = "Lưu";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -99,7 +99,7 @@
             btnUpdate.Location = new Point(111, 95);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 31);
-            btnUpdate.TabIndex = 5;
+            btnUpdate.TabIndex = 4;
             btnUpdate.Text = "Cập nhật";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Visible = false;
@@ -184,6 +184,7 @@
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(1918, 1030);
             Name = "frmFacebookAppManager";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Danh sách ứng dụng facebook";
             Load += frmFacebookAppManager_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
