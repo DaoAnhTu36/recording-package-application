@@ -6,14 +6,14 @@ namespace SellerCenter.Forms
 {
     public partial class frmMenu : BaseForm
     {
-        private readonly MenuService _menuService;
+        private readonly MenuService1 _menuService;
         private long _idEditing;
         private MenuModel? _menuModel;
 
         public frmMenu()
         {
             InitializeComponent();
-            _menuService = new MenuService();
+            _menuService = new MenuService1();
         }
 
         private void frmMenu_Load(object sender, EventArgs e)

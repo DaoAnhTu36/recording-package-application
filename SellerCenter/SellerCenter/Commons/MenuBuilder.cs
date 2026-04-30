@@ -10,13 +10,13 @@ namespace SellerCenter.Commons
     {
         private readonly Form _parentForm;
         private readonly Panel _mainPanel;
-        private readonly MenuService _menuService;
+        private readonly MenuService1 _menuService;
 
         public MenuBuilder(Form parentForm, Panel mainPanel)
         {
             _parentForm = parentForm;
             _mainPanel = mainPanel;
-            _menuService = new MenuService();
+            _menuService = new MenuService1();
         }
 
         public MenuStrip BuildFromJson()

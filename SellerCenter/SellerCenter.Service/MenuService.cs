@@ -7,7 +7,7 @@ namespace SellerCenter.Service
     {
         private readonly MenuRepository _repo;
 
-        public MenuService()
+        public MenuService1()
         {
             _repo = new MenuRepository();
         }

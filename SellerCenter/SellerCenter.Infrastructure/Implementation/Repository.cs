@@ -69,7 +69,7 @@ namespace SellerCenter.Infrastructure.Implementation
 
             using var rd = cmd.ExecuteReader();
 
-            if (!rd.Read()) return null;
+            if (!rd.Read()) return null!;
 
             return Map(rd);
         }
