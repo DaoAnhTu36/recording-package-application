@@ -1,16 +1,17 @@
 ﻿using SellerCenter.Helper;
-using SellerCenter.Service.Implementation;
+using SellerCenter.Helpers;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
     public partial class frmSetting : BaseForm
     {
-        private readonly EmployeeService _employeeService;
+        private readonly IEmployeeService _employeeService;
 
         public frmSetting()
         {
             InitializeComponent();
-            _employeeService = new EmployeeService();
+            _employeeService = ServiceLocator.Get<IEmployeeService>();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

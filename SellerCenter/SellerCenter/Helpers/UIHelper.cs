@@ -42,8 +42,13 @@ namespace SellerCenter.Helpers
             dgv.AllowUserToDeleteRows = false;
             dgv.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgv.AutoGenerateColumns = false;
             dgv.RowTemplate.Height = 35;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.AutoGenerateColumns = false;
+            dgv.DataBindingComplete += (s, e) =>
+            {
+                dgv.AutoGenerateColumns = false;
+            };
         }
 
         public static void StyleTextBox(TextBox txt)

@@ -1,64 +1,39 @@
 ﻿using SellerCenter.Helper;
-using SellerCenter.Infrastructure.Implementation;
+using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Service.Implementation
 {
-    public class EmployeeService : IEmployeeService
+    public class EmployeeService : Service<EmployeeModel>, IEmployeeService
     {
-        private readonly EmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public EmployeeService()
+        public EmployeeService(IEmployeeRepository employeeRepository) : base(employeeRepository)
         {
-            _employeeRepository = new EmployeeRepository();
+            _employeeRepository = employeeRepository;
         }
 
-        public EmployeeModel Login(string login, string password)
+        public async Task<EmployeeModel> Login(string login, string password)
         {
-            var user = _employeeRepository.Login(login);
+            var user = await _employeeRepository.Login(login);
             if (user == null)
                 return null!;
             if (!PasswordHelper.VerifyPassword(password, user.PasswordHash!))
                 return null!;
-            var token = _employeeRepository.CreateSession(user.Id, IPHelper.GetLocalIp());
+            var token = await _employeeRepository.CreateSession(user.Id, IPHelper.GetLocalIp());
             SessionManager.SetSession(user, token);
             SessionManager.SetAppId("1220008870022055");
             return user;
         }
 
-        public void Logout()
+        public async Task Logout()
         {
-            _employeeRepository.Logout();
+            await _employeeRepository.Logout();
         }
 
-        public long Create(EmployeeModel item)
+        public async Task<bool> UpdatePassword(long id, string newPassword)
         {
-            return _employeeRepository.Create(item);
-        }
-
-        public List<EmployeeModel> GetAll()
-        {
-            return _employeeRepository.GetAll();
-        }
-
-        public EmployeeModel GetById(long id)
-        {
-            return _employeeRepository.GetById(id);
-        }
-
-        public bool Update(EmployeeModel item)
-        {
-            return _employeeRepository.Update(item);
-        }
-
-        public bool UpdatePassword(long id, string newPassword)
-        {
-            return _employeeRepository.UpdatePassword(id, newPassword);
-        }
-
-        public bool Delete(long id)
-        {
-            return _employeeRepository.Delete(id);
+            return await _employeeRepository.UpdatePassword(id, newPassword);
         }
     }
 }

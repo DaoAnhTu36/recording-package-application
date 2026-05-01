@@ -6,11 +6,11 @@ using System.Data;
 
 namespace SellerCenter.Infrastructure.Implementation
 {
-    public class PackingSessionRepository1 : Repository<PackingSessionModel>, IPackingSessionRepository
+    public class PackingSessionRepository : Repository<PackingSessionModel>, IPackingSessionRepository
     {
         private readonly string _conn;
 
-        public PackingSessionRepository1(IOptionsSnapshot<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
+        public PackingSessionRepository(IOptions<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
         {
             _conn = dbConfig.Value.ConnectionString!;
         }

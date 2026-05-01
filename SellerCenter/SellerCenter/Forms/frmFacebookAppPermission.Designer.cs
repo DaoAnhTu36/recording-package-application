@@ -36,11 +36,6 @@
             btnSave = new Button();
             btnUpdate = new Button();
             dataGridView1 = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            app_id = new DataGridViewTextBoxColumn();
-            app_name = new DataGridViewTextBoxColumn();
-            permission_name = new DataGridViewTextBoxColumn();
-            created_at = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -108,40 +103,10 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, app_id, app_name, permission_name, created_at });
-            dataGridView1.Location = new Point(3, 173);
+            dataGridView1.Location = new Point(3, 174);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1896, 797);
             dataGridView1.TabIndex = 6;
-            // 
-            // id
-            // 
-            id.HeaderText = "Mã quyền";
-            id.Name = "id";
-            // 
-            // app_id
-            // 
-            app_id.HeaderText = "Mã ứng dụng";
-            app_id.Name = "app_id";
-            // 
-            // app_name
-            // 
-            app_name.HeaderText = "Tên ứng dụng";
-            app_name.Name = "app_name";
-            // 
-            // permission_name
-            // 
-            permission_name.HeaderText = "Tên quyền";
-            permission_name.Name = "permission_name";
-            // 
-            // created_at
-            // 
-            created_at.HeaderText = "Thời gian tạo";
-            created_at.Name = "created_at";
             // 
             // tableLayoutPanel1
             // 
@@ -175,14 +140,14 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 17.15439F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 82.84561F));
-            tableLayoutPanel2.Size = new Size(1902, 991);
+            tableLayoutPanel2.Size = new Size(1910, 999);
             tableLayoutPanel2.TabIndex = 8;
             // 
             // frmFacebookAppPermission
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1902, 991);
+            ClientSize = new Size(1910, 999);
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
@@ -207,11 +172,6 @@
         private Button btnSave;
         private Button btnUpdate;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn app_id;
-        private DataGridViewTextBoxColumn app_name;
-        private DataGridViewTextBoxColumn permission_name;
-        private DataGridViewTextBoxColumn created_at;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -6,12 +7,14 @@ namespace SellerCenter.Forms
     public partial class frmHistoryScreen : BaseForm
     {
         private CancellationTokenSource? cts;
+        private readonly IPackingSessionService _sessionService;
 
         public frmHistoryScreen()
         {
             InitializeComponent();
             listRecord.CellDoubleClick += listRecord_CellDoubleClick!;
             RegisterGlobalEvents(this);
+            _sessionService = ServiceLocator.Get<IPackingSessionService>();
         }
 
         private void frmHistoryScreen_Load(object sender, EventArgs e)
@@ -21,15 +24,8 @@ namespace SellerCenter.Forms
 
         private void GetListVideoFiles()
         {
-            var service = Program.AppHost!.Services.GetRequiredService<IPackingSessionService>();
-            var dataSession = service.GetAll();
-
-            var packingSessionService = new PackingSessionService1();
-            var videos = packingSessionService.GetAllSessions();
-            listRecord.Invoke((MethodInvoker)(() =>
-            {
-                listRecord.DataSource = videos;
-            }));
+            List<PackingSessionModel> dataSession = _sessionService.GetAll();
+            listRecord.DataSource = dataSession;
         }
 
         private async void btnSearch_Click(object sender, EventArgs e)
@@ -43,12 +39,16 @@ namespace SellerCenter.Forms
             try
             {
                 await Task.Delay(300, cts.Token);
-
                 var keyword = txtBarcode.Text.Trim();
-                var packingSessionService = new PackingSessionService1();
-                var dt = await packingSessionService.GetHistoryRecordByBarcode(barcode, dateFrom, dateTo);
-                listRecord.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                listRecord.DataSource = dt;
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    GetListVideoFiles();
+                }
+                else
+                {
+                    var dt = await _sessionService.GetHistoryRecordByBarcode(barcode, dateFrom, dateTo);
+                    listRecord.DataSource = dt;
+                }
             }
             catch (TaskCanceledException) { }
         }
@@ -69,12 +69,15 @@ namespace SellerCenter.Forms
                 await Task.Delay(300, cts.Token);
 
                 var keyword = txtBarcode.Text.Trim();
-                if (string.IsNullOrEmpty(keyword)) return;
-
-                var packingSessionService = new PackingSessionService1();
-                var dt = await packingSessionService.GetHistoryRecordByBarcode(barcode, null, null);
-                listRecord.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                listRecord.DataSource = dt;
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    GetListVideoFiles();
+                }
+                else
+                {
+                    var dt = await _sessionService.GetHistoryRecordByBarcode(barcode, null, null);
+                    listRecord.DataSource = dt;
+                }
             }
             catch (TaskCanceledException) { }
         }

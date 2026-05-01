@@ -20,24 +20,6 @@ namespace SellerCenter.Forms
             _facebookService = new FacebookService();
         }
 
-        private void MappingData()
-        {
-            id.DataPropertyName = "id";
-            product_code.DataPropertyName = "product_code";
-            title.DataPropertyName = "title";
-            content.DataPropertyName = "content";
-            hook.DataPropertyName = "hook";
-            //image_url_1.DataPropertyName = "image_url_1";
-            //image_url_2.DataPropertyName = "image_url_2";
-            //image_url_3.DataPropertyName = "image_url_3";
-            //image_url_4.DataPropertyName = "image_url_4";
-            //image_url_5.DataPropertyName = "image_url_5";
-            //video_url.DataPropertyName = "video_url";
-            hashtag.DataPropertyName = "hashtag";
-            created_at.DataPropertyName = "created_at";
-            updated_at.DataPropertyName = "updated_at";
-        }
-
         private void GetData()
         {
             var products = _postContentService?.GetAll();
@@ -50,9 +32,7 @@ namespace SellerCenter.Forms
                 dataGridViewPostContent.DataSource = null;
                 return;
             }
-            MappingData();
             dataGridViewPostContent.DataSource = products;
-            //AddEditButtonColumn();
         }
 
         private void frmPostManager_Load(object sender, EventArgs e)
@@ -112,7 +92,6 @@ namespace SellerCenter.Forms
                 return;
             }
             var dataSearch = _postContentService?.Search(keyword);
-            MappingData();
             dataGridViewPostContent.DataSource = dataSearch;
         }
 

@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using SellerCenter.Infrastructure.Extensions;
 using SellerCenter.Infrastructure.Models;
+using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace SellerCenter.Infrastructure.Implementation
 {
@@ -12,7 +14,7 @@ namespace SellerCenter.Infrastructure.Implementation
         public Repository(string conn)
         {
             _conn = conn;
-            _tableName = typeof(T).Name.Replace("Model", "").ToLower() + "s";
+            _tableName = ReflectionHelper.GetTableName<T>();
         }
 
         public long Create(T entity)
@@ -23,14 +25,18 @@ namespace SellerCenter.Infrastructure.Implementation
             var props = typeof(T).GetProperties()
                 .Where(p => p.Name != "Id");
 
-            var columns = string.Join(",", props.Select(p => p.Name.ToLower()));
-            var values = string.Join(",", props.Select(p => "@" + p.Name));
+            var columns = string.Join(", ", props.Select(p =>
+            {
+                var attr = p.GetCustomAttribute<JsonPropertyNameAttribute>();
+                return attr != null ? attr.Name : p.Name;
+            }));
+
+            var values = string.Join(", ", props.Select(p => "@" + p.Name));
 
             var cmd = new MySqlCommand($@"
-            INSERT INTO {_tableName} ({columns})
-            VALUES ({values});
-            SELECT LAST_INSERT_ID();
-        ", conn);
+                INSERT INTO {_tableName} ({columns})
+                VALUES ({values});
+                SELECT LAST_INSERT_ID();", conn);
 
             foreach (var prop in props)
             {
@@ -53,7 +59,7 @@ namespace SellerCenter.Infrastructure.Implementation
 
             while (rd.Read())
             {
-                list.Add(Map(rd));
+                list.Add(MapWithJsonProperty(rd));
             }
 
             return list;
@@ -71,7 +77,7 @@ namespace SellerCenter.Infrastructure.Implementation
 
             if (!rd.Read()) return null!;
 
-            return Map(rd);
+            return MapWithJsonProperty(rd);
         }
 
         public bool Update(T entity)
@@ -127,6 +133,30 @@ namespace SellerCenter.Infrastructure.Implementation
                 if (value == DBNull.Value) continue;
 
                 prop.SetValue(obj, value);
+            }
+
+            return obj;
+        }
+
+        private T MapWithJsonProperty(MySqlDataReader rd)
+        {
+            var obj = new T();
+
+            foreach (var prop in typeof(T).GetProperties())
+            {
+                var attr = prop.GetCustomAttribute<JsonPropertyNameAttribute>();
+
+                var columnName = attr != null
+                    ? attr.Name
+                    : prop.Name;
+
+                if (!rd.HasColumn(columnName)) continue;
+
+                var value = rd[columnName];
+
+                if (value == DBNull.Value) continue;
+
+                prop.SetValue(obj, Convert.ChangeType(value, prop.PropertyType));
             }
 
             return obj;

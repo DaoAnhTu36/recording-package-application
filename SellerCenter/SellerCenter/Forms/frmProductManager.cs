@@ -26,7 +26,6 @@ namespace SellerCenter.Forms
                 return;
             }
             var dataSearch = _productService?.Search(keyword);
-            MappingData();
             dataGridView1.DataSource = dataSearch;
         }
 
@@ -38,21 +37,8 @@ namespace SellerCenter.Forms
                 dataGridView1.DataSource = null;
                 return;
             }
-            MappingData();
             dataGridView1.DataSource = products;
             AddEditButtonColumn();
-        }
-
-        private void MappingData()
-        {
-            id.DataPropertyName = "id";
-            product_code.DataPropertyName = "product_code";
-            product_name.DataPropertyName = "product_name";
-            description.DataPropertyName = "description";
-            image_url.DataPropertyName = "image_url";
-            video_url.DataPropertyName = "video_url";
-            created_at.DataPropertyName = "created_at";
-            updated_at.DataPropertyName = "updated_at";
         }
 
         private void AddEditButtonColumn()

@@ -42,13 +42,6 @@
             btnSave = new Button();
             btnUpdate = new Button();
             dataGridView1 = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            username = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            full_name = new DataGridViewTextBoxColumn();
-            phone = new DataGridViewTextBoxColumn();
-            role = new DataGridViewTextBoxColumn();
-            is_active = new DataGridViewTextBoxColumn();
             txtFullName = new TextBox();
             label6 = new Label();
             formInfo = new TableLayoutPanel();
@@ -170,52 +163,10 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, username, Email, full_name, phone, role, is_active });
-            dataGridView1.Location = new Point(3, 288);
+            dataGridView1.Location = new Point(3, 290);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridView1.Size = new Size(1896, 617);
             dataGridView1.TabIndex = 12;
-            // 
-            // id
-            // 
-            id.HeaderText = "ID";
-            id.Name = "id";
-            // 
-            // username
-            // 
-            username.HeaderText = "Username";
-            username.Name = "username";
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            // 
-            // full_name
-            // 
-            full_name.HeaderText = "Full name";
-            full_name.Name = "full_name";
-            // 
-            // phone
-            // 
-            phone.HeaderText = "Phone";
-            phone.Name = "phone";
-            // 
-            // role
-            // 
-            role.HeaderText = "Role";
-            role.Name = "role";
-            // 
-            // is_active
-            // 
-            is_active.HeaderText = "Active";
-            is_active.Name = "is_active";
             // 
             // txtFullName
             // 
@@ -278,14 +229,14 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 28.75883F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 71.24117F));
-            tableLayoutPanel2.Size = new Size(1902, 991);
+            tableLayoutPanel2.Size = new Size(1910, 999);
             tableLayoutPanel2.TabIndex = 16;
             // 
             // frmEmployeeManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1902, 991);
+            ClientSize = new Size(1910, 999);
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
@@ -316,13 +267,6 @@
         private Button btnSave;
         private Button btnUpdate;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn username;
-        private DataGridViewTextBoxColumn Email;
-        private DataGridViewTextBoxColumn full_name;
-        private DataGridViewTextBoxColumn phone;
-        private DataGridViewTextBoxColumn role;
-        private DataGridViewTextBoxColumn is_active;
         private TextBox txtFullName;
         private Label label6;
         private TableLayoutPanel formInfo;

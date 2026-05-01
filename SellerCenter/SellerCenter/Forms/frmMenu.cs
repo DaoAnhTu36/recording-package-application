@@ -25,7 +25,6 @@ namespace SellerCenter.Forms
         {
             var data = _menuService.GetAllWithParentName();
             dataGridView1.DataSource = data;
-            MappingData();
             var dataMenuParent = data.Select(x => new
             {
                 IdMenuParent = x.Id,
@@ -35,16 +34,6 @@ namespace SellerCenter.Forms
             cbbMenuParent.DataSource = dataMenuParent;
             cbbMenuParent.DisplayMember = "MenuParent";
             cbbMenuParent.ValueMember = "IdMenuParent";
-        }
-
-        private void MappingData()
-        {
-            IdMenuChild.DataPropertyName = "Id";
-            menuChildName.DataPropertyName = "MenuName";
-            menuChildForm.DataPropertyName = "FormName";
-            menuChildIcon.DataPropertyName = "IconName";
-            MenuParentName.DataPropertyName = "ParentName";
-            SortOrder.DataPropertyName = "SortOrder";
         }
 
         private void btnSave_Click(object sender, EventArgs e)

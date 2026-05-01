@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             dataGridView1 = new DataGridView();
-            IdMenuChild = new DataGridViewTextBoxColumn();
-            menuChildName = new DataGridViewTextBoxColumn();
-            MenuParentName = new DataGridViewTextBoxColumn();
-            menuChildForm = new DataGridViewTextBoxColumn();
-            SortOrder = new DataGridViewTextBoxColumn();
-            menuChildIcon = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -65,50 +59,13 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IdMenuChild, menuChildName, MenuParentName, menuChildForm, SortOrder, menuChildIcon });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(788, 140);
+            dataGridView1.Size = new Size(1898, 692);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
-            // 
-            // IdMenuChild
-            // 
-            IdMenuChild.HeaderText = "ID";
-            IdMenuChild.Name = "IdMenuChild";
-            IdMenuChild.ReadOnly = true;
-            // 
-            // menuChildName
-            // 
-            menuChildName.HeaderText = "Tên menu";
-            menuChildName.Name = "menuChildName";
-            menuChildName.ReadOnly = true;
-            // 
-            // MenuParentName
-            // 
-            MenuParentName.HeaderText = "Menu cha";
-            MenuParentName.Name = "MenuParentName";
-            MenuParentName.ReadOnly = true;
-            // 
-            // menuChildForm
-            // 
-            menuChildForm.HeaderText = "Form";
-            menuChildForm.Name = "menuChildForm";
-            menuChildForm.ReadOnly = true;
-            // 
-            // SortOrder
-            // 
-            SortOrder.HeaderText = "Thứ tự sắp xếp";
-            SortOrder.Name = "SortOrder";
-            SortOrder.ReadOnly = true;
-            // 
-            // menuChildIcon
-            // 
-            menuChildIcon.HeaderText = "Icon";
-            menuChildIcon.Name = "menuChildIcon";
-            menuChildIcon.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -116,11 +73,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(dataGridView1, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 301);
+            tableLayoutPanel1.Location = new Point(3, 298);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(794, 146);
+            tableLayoutPanel1.Size = new Size(1904, 698);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -133,9 +90,9 @@
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 66.22222F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.77778F));
-            tableLayoutPanel2.Size = new Size(800, 450);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 29.52953F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 70.4704742F));
+            tableLayoutPanel2.Size = new Size(1910, 999);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -167,12 +124,12 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
-            tableLayoutPanel3.Size = new Size(499, 292);
+            tableLayoutPanel3.Size = new Size(499, 289);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(116, 222);
+            btnCancel.Location = new Point(116, 220);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 8;
@@ -183,7 +140,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(3, 190);
+            label6.Location = new Point(3, 188);
             label6.Name = "label6";
             label6.Size = new Size(59, 15);
             label6.TabIndex = 10;
@@ -192,7 +149,7 @@
             // txtIconName
             // 
             txtIconName.Dock = DockStyle.Fill;
-            txtIconName.Location = new Point(116, 152);
+            txtIconName.Location = new Point(116, 150);
             txtIconName.Name = "txtIconName";
             txtIconName.Size = new Size(380, 23);
             txtIconName.TabIndex = 5;
@@ -200,7 +157,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(3, 149);
+            label5.Location = new Point(3, 147);
             label5.Name = "label5";
             label5.Size = new Size(63, 15);
             label5.TabIndex = 8;
@@ -209,7 +166,7 @@
             // txtFormName
             // 
             txtFormName.Dock = DockStyle.Fill;
-            txtFormName.Location = new Point(116, 110);
+            txtFormName.Location = new Point(116, 108);
             txtFormName.Name = "txtFormName";
             txtFormName.Size = new Size(380, 23);
             txtFormName.TabIndex = 4;
@@ -217,7 +174,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 107);
+            label4.Location = new Point(3, 105);
             label4.Name = "label4";
             label4.Size = new Size(49, 15);
             label4.TabIndex = 6;
@@ -226,7 +183,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 70);
+            label3.Location = new Point(3, 68);
             label3.Name = "label3";
             label3.Size = new Size(60, 15);
             label3.TabIndex = 4;
@@ -235,7 +192,7 @@
             // txtMenuName
             // 
             txtMenuName.Dock = DockStyle.Fill;
-            txtMenuName.Location = new Point(116, 38);
+            txtMenuName.Location = new Point(116, 37);
             txtMenuName.Name = "txtMenuName";
             txtMenuName.Size = new Size(380, 23);
             txtMenuName.TabIndex = 2;
@@ -260,7 +217,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 35);
+            label2.Location = new Point(3, 34);
             label2.Name = "label2";
             label2.Size = new Size(60, 15);
             label2.TabIndex = 2;
@@ -270,7 +227,7 @@
             // 
             cbbMenuParent.Dock = DockStyle.Fill;
             cbbMenuParent.FormattingEnabled = true;
-            cbbMenuParent.Location = new Point(116, 73);
+            cbbMenuParent.Location = new Point(116, 71);
             cbbMenuParent.Name = "cbbMenuParent";
             cbbMenuParent.Size = new Size(380, 23);
             cbbMenuParent.TabIndex = 3;
@@ -278,14 +235,14 @@
             // txtSortOrder
             // 
             txtSortOrder.Dock = DockStyle.Fill;
-            txtSortOrder.Location = new Point(116, 193);
+            txtSortOrder.Location = new Point(116, 191);
             txtSortOrder.Name = "txtSortOrder";
             txtSortOrder.Size = new Size(380, 23);
             txtSortOrder.TabIndex = 6;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(3, 222);
+            btnSave.Location = new Point(3, 220);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 7;
@@ -297,9 +254,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1910, 999);
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1918, 1030);
             Name = "frmMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cấu hình menu";
@@ -333,11 +292,5 @@
         private NumericUpDown txtSortOrder;
         private Button btnCancel;
         private Button btnSave;
-        private DataGridViewTextBoxColumn IdMenuChild;
-        private DataGridViewTextBoxColumn menuChildName;
-        private DataGridViewTextBoxColumn MenuParentName;
-        private DataGridViewTextBoxColumn menuChildForm;
-        private DataGridViewTextBoxColumn SortOrder;
-        private DataGridViewTextBoxColumn menuChildIcon;
     }
 }

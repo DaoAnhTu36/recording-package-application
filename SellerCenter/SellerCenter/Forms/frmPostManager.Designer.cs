@@ -30,14 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPostManager));
             dataGridViewPostContent = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            product_code = new DataGridViewTextBoxColumn();
-            title = new DataGridViewTextBoxColumn();
-            content = new DataGridViewTextBoxColumn();
-            hook = new DataGridViewTextBoxColumn();
-            hashtag = new DataGridViewTextBoxColumn();
-            created_at = new DataGridViewTextBoxColumn();
-            updated_at = new DataGridViewTextBoxColumn();
             label1 = new Label();
             txtKeyword = new TextBox();
             txtTitle = new TextBox();
@@ -63,56 +55,12 @@
             // 
             // dataGridViewPostContent
             // 
-            dataGridViewPostContent.AllowUserToAddRows = false;
-            dataGridViewPostContent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewPostContent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPostContent.Columns.AddRange(new DataGridViewColumn[] { id, product_code, title, content, hook, hashtag, created_at, updated_at });
             dataGridViewPostContent.Dock = DockStyle.Fill;
-            dataGridViewPostContent.Location = new Point(595, 3);
+            dataGridViewPostContent.Location = new Point(596, 3);
             dataGridViewPostContent.Name = "dataGridViewPostContent";
-            dataGridViewPostContent.Size = new Size(1306, 1035);
+            dataGridViewPostContent.Size = new Size(1311, 1035);
             dataGridViewPostContent.TabIndex = 0;
             dataGridViewPostContent.Click += dataGridViewPostContent_Click;
-            // 
-            // id
-            // 
-            id.HeaderText = "ID";
-            id.Name = "id";
-            // 
-            // product_code
-            // 
-            product_code.HeaderText = "Mã sản phẩm";
-            product_code.Name = "product_code";
-            // 
-            // title
-            // 
-            title.HeaderText = "Tiêu đề";
-            title.Name = "title";
-            // 
-            // content
-            // 
-            content.HeaderText = "Nội dung";
-            content.Name = "content";
-            // 
-            // hook
-            // 
-            hook.HeaderText = "Câu hook";
-            hook.Name = "hook";
-            // 
-            // hashtag
-            // 
-            hashtag.HeaderText = "Hashtag";
-            hashtag.Name = "hashtag";
-            // 
-            // created_at
-            // 
-            created_at.HeaderText = "Thời gian tạo";
-            created_at.Name = "created_at";
-            // 
-            // updated_at
-            // 
-            updated_at.HeaderText = "Thời gian cập nhật";
-            updated_at.Name = "updated_at";
             // 
             // label1
             // 
@@ -128,7 +76,7 @@
             txtKeyword.Dock = DockStyle.Fill;
             txtKeyword.Location = new Point(117, 3);
             txtKeyword.Name = "txtKeyword";
-            txtKeyword.Size = new Size(466, 23);
+            txtKeyword.Size = new Size(467, 23);
             txtKeyword.TabIndex = 1;
             txtKeyword.TextChanged += txtKeyword_TextChanged;
             txtKeyword.Leave += txtKeyword_Leave;
@@ -138,7 +86,7 @@
             txtTitle.Dock = DockStyle.Fill;
             txtTitle.Location = new Point(117, 37);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(466, 23);
+            txtTitle.Size = new Size(467, 23);
             txtTitle.TabIndex = 2;
             // 
             // txtContent
@@ -154,7 +102,7 @@
             txtHook.Dock = DockStyle.Fill;
             txtHook.Location = new Point(117, 71);
             txtHook.Name = "txtHook";
-            txtHook.Size = new Size(466, 23);
+            txtHook.Size = new Size(467, 23);
             txtHook.TabIndex = 3;
             // 
             // label2
@@ -239,7 +187,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 272F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 135F));
-            tableLayoutPanel1.Size = new Size(586, 1035);
+            tableLayoutPanel1.Size = new Size(587, 1035);
             tableLayoutPanel1.TabIndex = 12;
             // 
             // label5
@@ -256,7 +204,7 @@
             txtHashtag.Dock = DockStyle.Fill;
             txtHashtag.Location = new Point(117, 108);
             txtHashtag.Name = "txtHashtag";
-            txtHashtag.Size = new Size(466, 42);
+            txtHashtag.Size = new Size(467, 42);
             txtHashtag.TabIndex = 4;
             txtHashtag.Text = "";
             // 
@@ -295,7 +243,7 @@
             videoPreviewControl1.Dock = DockStyle.Fill;
             videoPreviewControl1.Location = new Point(117, 593);
             videoPreviewControl1.Name = "videoPreviewControl1";
-            videoPreviewControl1.Size = new Size(466, 266);
+            videoPreviewControl1.Size = new Size(467, 266);
             videoPreviewControl1.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -310,14 +258,14 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1904, 1041);
+            tableLayoutPanel2.Size = new Size(1910, 1041);
             tableLayoutPanel2.TabIndex = 13;
             // 
             // frmPostManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1910, 1041);
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
@@ -349,14 +297,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label5;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn product_code;
-        private DataGridViewTextBoxColumn title;
-        private DataGridViewTextBoxColumn content;
-        private DataGridViewTextBoxColumn hook;
-        private DataGridViewTextBoxColumn hashtag;
-        private DataGridViewTextBoxColumn created_at;
-        private DataGridViewTextBoxColumn updated_at;
         private RichTextBox txtHashtag;
         private Button btnPost;
         private Label lblPostStatus;

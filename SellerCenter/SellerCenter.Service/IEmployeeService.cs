@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Service
 {
-    public interface IEmployeeService
+    public interface IEmployeeService : IService<EmployeeModel>
     {
+        public Task<EmployeeModel> Login(string login, string password);
+
+        public Task Logout();
+
+        public Task<bool> UpdatePassword(long id, string newPassword);
     }
 }

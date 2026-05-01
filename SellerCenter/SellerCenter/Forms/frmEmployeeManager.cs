@@ -1,18 +1,18 @@
 ﻿using SellerCenter.Helpers;
 using SellerCenter.Infrastructure.Models;
-using SellerCenter.Service.Implementation;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
     public partial class frmEmployeeManager : BaseForm
     {
-        private readonly EmployeeService _employeeService;
+        private readonly IEmployeeService _employeeService;
         private readonly string[] _lstRole = new string[] { "ADMIN", "EMPLOYEE", "STAFF" };
 
         public frmEmployeeManager()
         {
             InitializeComponent();
-            _employeeService = new EmployeeService();
+            _employeeService = ServiceLocator.Get<IEmployeeService>();
         }
 
         private void frmEmployeeManager_Load(object sender, EventArgs e)
@@ -74,18 +74,6 @@ namespace SellerCenter.Forms
         {
             var employees = _employeeService.GetAll();
             dataGridView1.DataSource = employees;
-            MappingData();
-        }
-
-        private void MappingData()
-        {
-            id.DataPropertyName = "Id";
-            username.DataPropertyName = "Username";
-            full_name.DataPropertyName = "FullName";
-            Email.DataPropertyName = "Email";
-            phone.DataPropertyName = "Phone";
-            role.DataPropertyName = "Role";
-            is_active.DataPropertyName = "IsActive";
         }
 
         private void label3_Click(object sender, EventArgs e)

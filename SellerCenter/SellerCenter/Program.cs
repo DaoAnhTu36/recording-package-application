@@ -5,8 +5,11 @@ using SellerCenter.Forms;
 using SellerCenter.Helpers;
 using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Configs;
+using SellerCenter.Infrastructure.Configs.Model;
+using SellerCenter.Infrastructure.Extensions;
 using SellerCenter.Infrastructure.Implementation;
 using SellerCenter.Service;
+using SellerCenter.Service.Extentions;
 using SellerCenter.Service.Implementation;
 using System.Reflection;
 
@@ -22,16 +25,11 @@ namespace SellerCenter
             AppHost = Host.CreateDefaultBuilder()
             .ConfigureServices((context, services) =>
             {
+                services.Configure<DatabaseConfig>(context.Configuration.GetSection("DatabaseConfig"));
                 services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                 services.AddScoped(typeof(IService<>), typeof(Service<>));
-                //services.AddAutoDI(
-                //    Assembly.GetExecutingAssembly(),
-                //    type => type.Name.EndsWith("Service")
-                //         || type.Name.EndsWith("Repository")
-                //);
-
-                services.AddScoped<IPackingSessionRepository, PackingSessionRepository1>();
-                services.AddScoped<IPackingSessionService, PackingSessionService>();
+                RegisterDIInfrastructure.AddInfrastructure(services);
+                RegisterDIService.AddService(services);
             })
             .Build();
             Logger.Init();

@@ -76,7 +76,7 @@
             fromDate.Font = new Font("Segoe UI", 13F);
             fromDate.Location = new Point(125, 44);
             fromDate.Name = "fromDate";
-            fromDate.Size = new Size(319, 31);
+            fromDate.Size = new Size(320, 31);
             fromDate.TabIndex = 2;
             // 
             // toDate
@@ -86,7 +86,7 @@
             toDate.Font = new Font("Segoe UI", 13F);
             toDate.Location = new Point(125, 85);
             toDate.Name = "toDate";
-            toDate.Size = new Size(319, 31);
+            toDate.Size = new Size(320, 31);
             toDate.TabIndex = 2;
             // 
             // label4
@@ -107,7 +107,7 @@
             txtBarcode.Font = new Font("Segoe UI", 13F);
             txtBarcode.Location = new Point(125, 3);
             txtBarcode.Name = "txtBarcode";
-            txtBarcode.Size = new Size(319, 31);
+            txtBarcode.Size = new Size(320, 31);
             txtBarcode.TabIndex = 1;
             txtBarcode.WordWrap = false;
             txtBarcode.TextChanged += txtBarcode_TextChanged;
@@ -119,7 +119,7 @@
             listRecord.Location = new Point(3, 523);
             listRecord.Name = "listRecord";
             listRecord.ReadOnly = true;
-            listRecord.Size = new Size(1898, 515);
+            listRecord.Size = new Size(1904, 515);
             listRecord.TabIndex = 7;
             // 
             // btnSearch
@@ -153,10 +153,10 @@
             // 
             axWindowsMediaPlayer1.Dock = DockStyle.Fill;
             axWindowsMediaPlayer1.Enabled = true;
-            axWindowsMediaPlayer1.Location = new Point(456, 3);
+            axWindowsMediaPlayer1.Location = new Point(457, 3);
             axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             axWindowsMediaPlayer1.OcxState = (AxHost.State)resources.GetObject("axWindowsMediaPlayer1.OcxState");
-            axWindowsMediaPlayer1.Size = new Size(1439, 508);
+            axWindowsMediaPlayer1.Size = new Size(1444, 508);
             axWindowsMediaPlayer1.TabIndex = 10;
             // 
             // tableLayoutPanel1
@@ -180,7 +180,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 385F));
-            tableLayoutPanel1.Size = new Size(447, 508);
+            tableLayoutPanel1.Size = new Size(448, 508);
             tableLayoutPanel1.TabIndex = 11;
             // 
             // tableLayoutPanel2
@@ -195,7 +195,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1898, 514);
+            tableLayoutPanel2.Size = new Size(1904, 514);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -210,14 +210,14 @@
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(1904, 1041);
+            tableLayoutPanel3.Size = new Size(1910, 1041);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // frmHistoryScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1910, 1041);
             Controls.Add(tableLayoutPanel3);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);

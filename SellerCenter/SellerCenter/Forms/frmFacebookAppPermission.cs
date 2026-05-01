@@ -21,10 +21,7 @@ namespace SellerCenter.Forms
             var lstApp = _facebookAppsService.GetAll();
             cbbAppId.DisplayMember = "AppName";
             cbbAppId.ValueMember = "Id";
-
             var lstPermission = _facebookAppPermissionsService.GetWithAppName();
-            MappingData();
-
             dataGridView1.DataSource = lstPermission;
             cbbAppId.DataSource = lstApp;
         }
@@ -53,15 +50,6 @@ namespace SellerCenter.Forms
                 dataGridView1.DataSource = lstPermission;
                 resetForm();
             }
-        }
-
-        private void MappingData()
-        {
-            id.DataPropertyName = "id";
-            permission_name.DataPropertyName = "permissionName";
-            created_at.DataPropertyName = "createdAt";
-            app_name.DataPropertyName = "appName";
-            app_id.DataPropertyName = "appId";
         }
 
         private void resetForm()

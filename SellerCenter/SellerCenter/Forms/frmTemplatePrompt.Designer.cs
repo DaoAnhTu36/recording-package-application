@@ -36,14 +36,6 @@
             articleTypeControl1 = new SellerCenter.UserControls.ArticleTypeControl();
             txtTemplateDesc = new RichTextBox();
             dataGridViewListTemplate = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            title = new DataGridViewTextBoxColumn();
-            platform = new DataGridViewTextBoxColumn();
-            post_type = new DataGridViewTextBoxColumn();
-            template_content = new DataGridViewTextBoxColumn();
-            is_active = new DataGridViewTextBoxColumn();
-            created_at = new DataGridViewTextBoxColumn();
-            updated_at = new DataGridViewTextBoxColumn();
             btnCancel = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -110,64 +102,13 @@
             // 
             // dataGridViewListTemplate
             // 
-            dataGridViewListTemplate.AllowUserToAddRows = false;
-            dataGridViewListTemplate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewListTemplate.Columns.AddRange(new DataGridViewColumn[] { id, title, platform, post_type, template_content, is_active, created_at, updated_at });
             dataGridViewListTemplate.Dock = DockStyle.Fill;
-            dataGridViewListTemplate.Location = new Point(3, 498);
+            dataGridViewListTemplate.Location = new Point(3, 502);
             dataGridViewListTemplate.Name = "dataGridViewListTemplate";
             dataGridViewListTemplate.ReadOnly = true;
-            dataGridViewListTemplate.Size = new Size(1896, 490);
+            dataGridViewListTemplate.Size = new Size(1904, 494);
             dataGridViewListTemplate.TabIndex = 1;
             dataGridViewListTemplate.Click += dataGridViewListTemplate_Click;
-            // 
-            // id
-            // 
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            // 
-            // title
-            // 
-            title.HeaderText = "Tiêu đề";
-            title.Name = "title";
-            title.ReadOnly = true;
-            // 
-            // platform
-            // 
-            platform.HeaderText = "Nền tảng";
-            platform.Name = "platform";
-            platform.ReadOnly = true;
-            // 
-            // post_type
-            // 
-            post_type.HeaderText = "Loại bài viết";
-            post_type.Name = "post_type";
-            post_type.ReadOnly = true;
-            // 
-            // template_content
-            // 
-            template_content.HeaderText = "Nội dung";
-            template_content.Name = "template_content";
-            template_content.ReadOnly = true;
-            // 
-            // is_active
-            // 
-            is_active.HeaderText = "Trạng thái";
-            is_active.Name = "is_active";
-            is_active.ReadOnly = true;
-            // 
-            // created_at
-            // 
-            created_at.HeaderText = "Thời gian tạo";
-            created_at.Name = "created_at";
-            created_at.ReadOnly = true;
-            // 
-            // updated_at
-            // 
-            updated_at.HeaderText = "Thời gian cập nhật";
-            updated_at.Name = "updated_at";
-            updated_at.ReadOnly = true;
             // 
             // btnCancel
             // 
@@ -214,7 +155,7 @@
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(1902, 991);
+            tableLayoutPanel3.Size = new Size(1910, 999);
             tableLayoutPanel3.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -235,7 +176,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1902, 991);
+            ClientSize = new Size(1910, 999);
             Controls.Add(tableLayoutPanel3);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
@@ -261,14 +202,6 @@
         private RichTextBox txtTemplateDesc;
         private DataGridView dataGridViewListTemplate;
         private Button btnCancel;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn title;
-        private DataGridViewTextBoxColumn platform;
-        private DataGridViewTextBoxColumn post_type;
-        private DataGridViewTextBoxColumn template_content;
-        private DataGridViewTextBoxColumn is_active;
-        private DataGridViewTextBoxColumn created_at;
-        private DataGridViewTextBoxColumn updated_at;
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel1;

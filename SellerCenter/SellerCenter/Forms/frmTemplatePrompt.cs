@@ -24,14 +24,6 @@ namespace SellerCenter.Forms
         private void FillDataToGridView()
         {
             var lstTemplate = _promptTemplateService.GetAll();
-            id.DataPropertyName = "id";
-            platform.DataPropertyName = "platform";
-            post_type.DataPropertyName = "post_type";
-            template_content.DataPropertyName = "template_content";
-            is_active.DataPropertyName = "is_active";
-            created_at.DataPropertyName = "created_at";
-            updated_at.DataPropertyName = "updated_at";
-            title.DataPropertyName = "title";
             dataGridViewListTemplate.DataSource = null;
             dataGridViewListTemplate.DataSource = lstTemplate;
         }

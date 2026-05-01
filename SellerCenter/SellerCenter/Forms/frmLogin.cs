@@ -1,15 +1,16 @@
-﻿using SellerCenter.Service.Implementation;
+﻿using SellerCenter.Helpers;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
     public partial class frmLogin : BaseForm
     {
-        private readonly EmployeeService _employeeService;
+        private readonly IEmployeeService _employeeService;
 
         public frmLogin()
         {
             InitializeComponent();
-            _employeeService = new EmployeeService();
+            _employeeService = ServiceLocator.Get<IEmployeeService>();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
