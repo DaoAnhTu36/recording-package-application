@@ -1,24 +1,27 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SellerCenter.Service.DTO;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace SellerCenter.Infrastructure
+namespace SellerCenter.Service.Implementation
 {
-    public class ChatGPTRepository
+    public class ChatGPTService : IChatGPTService
     {
         private readonly string _apiKey;
         private readonly HttpClient _httpClient;
+        private readonly IOptions<ChatGPTConfig> config;
 
-        public ChatGPTRepository(string apiKey)
+        public ChatGPTService()
         {
-            _apiKey = apiKey;
+            _apiKey = config!.Value.ApiKey!;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", _apiKey);
         }
 
-        public async Task<string> AskAsync(string message, List<string> imagePaths)
+        public async Task<string> SendRequest(string message, List<string> imagePaths)
         {
             var contentList = new List<object>
             {

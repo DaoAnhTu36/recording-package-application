@@ -35,20 +35,23 @@ namespace SellerCenter
             Logger.Init();
             AppConfig.Init();
             ApplicationConfiguration.Initialize();
+            Application.ThreadException += (sender, args) =>
+            {
+                Logger.Error(args.Exception);
+                MessageBox.Show(args.Exception.Message, "Error");
+            };
+
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                var ex = args.ExceptionObject as Exception;
+                MessageBox.Show(ex?.Message ?? "Unknown error", "Error");
+                Logger.Error(ex?.Message!);
+            };
             var loginForm = new frmLogin();
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
                 Application.Run(new Form1());
             }
-            Application.ThreadException += (sender, args) =>
-            {
-                Logger.Error(args.Exception);
-            };
-
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
-            {
-                Logger.Error(args.ExceptionObject as Exception);
-            };
         }
     }
 }

@@ -1,10 +1,21 @@
-﻿namespace SellerCenter.Infrastructure.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace SellerCenter.Infrastructure.Models
 {
-    public class FacebookAppPermissionModel
+    [Table("facebook_app_permissions")]
+    public class FacebookAppPermissionModel : IEntity
     {
+        [JsonPropertyName("id")]
         public long Id { get; set; }
+
+        [JsonPropertyName("facebook_app_id")]
         public long FacebookAppId { get; set; }
+
+        [JsonPropertyName("permission_name")]
         public string? PermissionName { get; set; }
+
+        [JsonPropertyName("created_at")]
         public DateTime? CreatedAt { get; set; }
     }
 

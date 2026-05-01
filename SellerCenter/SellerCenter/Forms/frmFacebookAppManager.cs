@@ -5,12 +5,12 @@ namespace SellerCenter.Forms
 {
     public partial class frmFacebookAppManager : BaseForm
     {
-        private readonly FacebookAppsService _facebookAppService;
+        private readonly IFacebookAppService _facebookAppService;
 
         public frmFacebookAppManager()
         {
             InitializeComponent();
-            _facebookAppService = new FacebookAppsService();
+            _facebookAppService = ServiceLocator.Get<IFacebookAppService>();
         }
 
         private void frmFacebookAppManager_Load(object sender, EventArgs e)
@@ -30,7 +30,15 @@ namespace SellerCenter.Forms
                 btnSave.Enabled = true;
                 return;
             }
-            _facebookAppService.Create(appName, appId, "", true);
+            _facebookAppService.Create(new Infrastructure.Models.FacebookAppModel
+            {
+                AppId = appId,
+                AppName = appName,
+                AppSecret = string.Empty,
+                CreatedAt = DateTime.Now,
+                IsActive = true,
+                UpdatedAt = DateTime.Now,
+            });
             reset();
             onLoad();
         }

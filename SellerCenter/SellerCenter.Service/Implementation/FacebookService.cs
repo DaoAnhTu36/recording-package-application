@@ -1,10 +1,16 @@
 ﻿using SellerCenter.Helper;
+using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
-namespace SellerCenter.Infrastructure
+namespace SellerCenter.Service.Implementation
 {
-    public class FacebookRepository
+    public class FacebookService : IFacebookService
     {
         public async Task<string> PostFacebookAsync(string pageId, string pageToken, string message)
         {

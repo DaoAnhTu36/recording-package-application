@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
-using SellerCenter.Commons;
 using SellerCenter.Helper;
-using SellerCenter.Infrastructure;
-using SellerCenter.Infrastructure.Configs;
+using SellerCenter.Helpers;
 using SellerCenter.Infrastructure.Models;
-using SellerCenter.Models;
 using SellerCenter.Service;
 using System.Data;
 
@@ -12,25 +9,25 @@ namespace SellerCenter.Forms
 {
     public partial class frmCreateNewPost : BaseForm
     {
-        private ChatGPTRepository? _chatGpt;
         private PromptTemplateService? _promptTemplateService;
         private ProductService? _productService;
         private List<string>? _lstImageUrls;
         private string? _videoUrl;
         private string? selectedVideoPath;
+        private readonly IChatGPTService _chatGPTService;
 
         public frmCreateNewPost()
         {
             InitializeComponent();
             _promptTemplateService = new PromptTemplateService();
             _productService = new ProductService();
+            _chatGPTService = ServiceLocator.Get<IChatGPTService>();
         }
 
         private void frmCreateNewPost_Load(object sender, EventArgs e)
         {
             GetListTemplates();
             GetAllProducts();
-            ConnectToChatGPT();
         }
 
         private void GetListTemplates()
@@ -56,16 +53,6 @@ namespace SellerCenter.Forms
                 txtProductCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txtProductCode.AutoCompleteCustomSource = source;
             }
-        }
-
-        private void ConnectToChatGPT()
-        {
-            //var config = new ConfigurationBuilder()
-            //    .AddJsonFile("appsettings.json")
-            //    .Build();
-            //var apiKey = config["OpenAI:ApiKey"];
-            var openAiConfig = AppConfig.Get<OpenAIConfig>("OpenAI");
-            _chatGpt = new ChatGPTRepository(openAiConfig.ApiKey!);
         }
 
         private void txtProductCode_KeyUp(object sender, KeyEventArgs e)
@@ -111,7 +98,7 @@ namespace SellerCenter.Forms
             try
             {
                 var question = content?.Trim()!;
-                var answer = await _chatGpt?.AskAsync(question, [])!;
+                var answer = await _chatGPTService.SendRequest(question, [])!;
                 ChatGPTModel result = JsonConvert.DeserializeObject<ChatGPTModel>(answer)!;
                 txtResponseChatGPT.Text = result.Data!.ToString();
                 InsertResultToDatabase(result);

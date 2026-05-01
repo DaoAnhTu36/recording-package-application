@@ -43,8 +43,19 @@ namespace SellerCenter.Infrastructure.Implementation
                 cmd.Parameters.AddWithValue("@" + prop.Name,
                     prop.GetValue(entity) ?? DBNull.Value);
             }
+            try
+            {
+                return Convert.ToInt64(cmd.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1062)
+                {
+                    throw new Exception("Dữ liệu đã tồn tại (duplicate key).");
+                }
 
-            return Convert.ToInt64(cmd.ExecuteScalar());
+                throw;
+            }
         }
 
         public List<T> GetAll()
@@ -55,13 +66,19 @@ namespace SellerCenter.Infrastructure.Implementation
             conn.Open();
 
             var cmd = new MySqlCommand($"SELECT * FROM {_tableName}", conn);
-            using var rd = cmd.ExecuteReader();
 
-            while (rd.Read())
+            try
             {
-                list.Add(MapWithJsonProperty(rd));
+                using var rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    list.Add(MapWithJsonProperty(rd));
+                }
             }
-
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             return list;
         }
 
@@ -73,11 +90,16 @@ namespace SellerCenter.Infrastructure.Implementation
             var cmd = new MySqlCommand($"SELECT * FROM {_tableName} WHERE id=@id", conn);
             cmd.Parameters.AddWithValue("@id", id);
 
-            using var rd = cmd.ExecuteReader();
-
-            if (!rd.Read()) return null!;
-
-            return MapWithJsonProperty(rd);
+            try
+            {
+                using var rd = cmd.ExecuteReader();
+                if (!rd.Read()) return null!;
+                return MapWithJsonProperty(rd);
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public bool Update(T entity)
@@ -92,10 +114,10 @@ namespace SellerCenter.Infrastructure.Implementation
                 props.Select(p => $"{p.Name.ToLower()}=@{p.Name}"));
 
             var cmd = new MySqlCommand($@"
-            UPDATE {_tableName}
-            SET {setClause}
-            WHERE id=@Id
-        ", conn);
+                UPDATE {_tableName}
+                SET {setClause}
+                WHERE id=@Id
+            ", conn);
 
             cmd.Parameters.AddWithValue("@Id", entity.Id);
 
@@ -105,7 +127,14 @@ namespace SellerCenter.Infrastructure.Implementation
                     prop.GetValue(entity) ?? DBNull.Value);
             }
 
-            return cmd.ExecuteNonQuery() > 0;
+            try
+            {
+                return cmd.ExecuteNonQuery() > 0;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public bool Delete(long id)
@@ -118,7 +147,14 @@ namespace SellerCenter.Infrastructure.Implementation
 
             cmd.Parameters.AddWithValue("@id", id);
 
-            return cmd.ExecuteNonQuery() > 0;
+            try
+            {
+                return cmd.ExecuteNonQuery() > 0;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         private T Map(MySqlDataReader rd)
@@ -140,26 +176,33 @@ namespace SellerCenter.Infrastructure.Implementation
 
         private T MapWithJsonProperty(MySqlDataReader rd)
         {
-            var obj = new T();
-
-            foreach (var prop in typeof(T).GetProperties())
+            try
             {
-                var attr = prop.GetCustomAttribute<JsonPropertyNameAttribute>();
+                var obj = new T();
 
-                var columnName = attr != null
-                    ? attr.Name
-                    : prop.Name;
+                foreach (var prop in typeof(T).GetProperties())
+                {
+                    var attr = prop.GetCustomAttribute<JsonPropertyNameAttribute>();
 
-                if (!rd.HasColumn(columnName)) continue;
+                    var columnName = attr != null
+                        ? attr.Name
+                        : prop.Name;
 
-                var value = rd[columnName];
+                    if (!rd.HasColumn(columnName)) continue;
 
-                if (value == DBNull.Value) continue;
+                    var value = rd[columnName];
 
-                prop.SetValue(obj, Convert.ChangeType(value, prop.PropertyType));
+                    if (value == DBNull.Value) continue;
+
+                    prop.SetValue(obj, Convert.ChangeType(value, prop.PropertyType));
+                }
+
+                return obj;
             }
-
-            return obj;
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

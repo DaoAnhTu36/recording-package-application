@@ -10,14 +10,14 @@ namespace SellerCenter.Forms
         private readonly PostContentService? _postContentService;
         private int _idEditing = 0;
         private PostContentModel? _postContentModel = new();
-        private readonly FacebookService _facebookService;
+        private readonly IFacebookService _facebookService;
         private string? videoUrl;
 
         public frmPostManager()
         {
             InitializeComponent();
             _postContentService = new PostContentService();
-            _facebookService = new FacebookService();
+            _facebookService = ServiceLocator.Get<IFacebookService>();
         }
 
         private void GetData()

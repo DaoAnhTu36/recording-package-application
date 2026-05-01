@@ -3,9 +3,9 @@ using Google.Apis.Drive.v3;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 
-namespace SellerCenter.Infrastructure
+namespace SellerCenter.Service.Implementation
 {
-    public class GoogleDriverRepository
+    public class GoogleService : IGoogleService
     {
         public async Task<string> UploadVideoToDrive(string filePath)
         {
