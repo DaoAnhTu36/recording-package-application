@@ -1,5 +1,4 @@
 ﻿using SellerCenter.Helpers;
-using SellerCenter.Infrastructure.Models;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
@@ -24,7 +23,7 @@ namespace SellerCenter.Forms
 
         private void GetListVideoFiles()
         {
-            List<PackingSessionModel> dataSession = _sessionService.GetAll();
+            var dataSession = _sessionService.GetAll();
             listRecord.DataSource = dataSession;
         }
 

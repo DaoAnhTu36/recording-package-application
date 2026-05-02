@@ -9,8 +9,9 @@ namespace SellerCenter.Forms
 {
     public partial class frmCreateNewPost : BaseForm
     {
-        private PromptTemplateService? _promptTemplateService;
-        private ProductService? _productService;
+        private readonly IPromptTemplateService _promptTemplateService;
+        private readonly IProductService _productService;
+        private readonly IPostContentService _postContentService;
         private List<string>? _lstImageUrls;
         private string? _videoUrl;
         private string? selectedVideoPath;
@@ -19,9 +20,10 @@ namespace SellerCenter.Forms
         public frmCreateNewPost()
         {
             InitializeComponent();
-            _promptTemplateService = new PromptTemplateService();
-            _productService = new ProductService();
+            _promptTemplateService = ServiceLocator.Get<IPromptTemplateService>();
+            _productService = ServiceLocator.Get<IProductService>();
             _chatGPTService = ServiceLocator.Get<IChatGPTService>();
+            _postContentService = ServiceLocator.Get<IPostContentService>();
         }
 
         private void frmCreateNewPost_Load(object sender, EventArgs e)
@@ -124,16 +126,10 @@ namespace SellerCenter.Forms
                     Title = item.Title,
                     Content = item.Content,
                     Hook = item.Hook,
-                    ImageUrl1 = item.Image_Url_1,
-                    ImageUrl2 = item.Image_Url_2,
-                    ImageUrl3 = item.Image_Url_3,
-                    ImageUrl4 = item.Image_Url_4,
-                    ImageUrl5 = item.Image_Url_5,
                     VideoUrl = selectedVideoPath,
                     Hashtag = item.Hashtag
                 };
-                var postContentService = new PostContentService();
-                postContentService?.Insert(post);
+                _postContentService.Create(post);
             }
         }
 
@@ -146,7 +142,7 @@ namespace SellerCenter.Forms
         {
             if (!string.IsNullOrEmpty(txtProductCode.Text))
             {
-                var productInfo = _productService?.GetByProductCode(txtProductCode.Text.Trim());
+                var productInfo = _productService.GetByProductCode(txtProductCode.Text.Trim());
                 if (productInfo != null)
                 {
                     txtProductName.Text = productInfo.ProductName ?? "";

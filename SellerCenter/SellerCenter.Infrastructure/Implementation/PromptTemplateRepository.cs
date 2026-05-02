@@ -4,11 +4,11 @@ using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Infrastructure.Implementation
 {
-    public class EmployeeFacebookAppsRepository : Repository<EmployeeFacebookAppModel>, IEmployeeFacebookAppsRepository
+    public class PromptTemplateRepository : Repository<PromptTemplateModel>, IPromptTemplateRepository
     {
         private readonly string _conn;
 
-        public EmployeeFacebookAppsRepository(IOptions<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
+        public PromptTemplateRepository(IOptions<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
         {
             _conn = dbConfig.Value.ConnectionString!;
         }

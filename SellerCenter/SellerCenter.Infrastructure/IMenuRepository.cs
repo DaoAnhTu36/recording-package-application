@@ -11,5 +11,7 @@ namespace SellerCenter.Infrastructure
         public Task<MenuModel> GetByCode(string menuCode);
 
         public Task<List<MenuModel>> GetByParentId(long? parentId);
+
+        public Task<bool> SoftDelete(long id);
     }
 }

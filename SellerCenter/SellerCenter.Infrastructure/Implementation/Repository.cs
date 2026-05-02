@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SellerCenter.Infrastructure.Extensions;
 using SellerCenter.Infrastructure.Models;
+using System.Data;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -58,7 +59,7 @@ namespace SellerCenter.Infrastructure.Implementation
             }
         }
 
-        public List<T> GetAll()
+        public List<T> GetAllList()
         {
             var list = new List<T>();
 
@@ -80,6 +81,70 @@ namespace SellerCenter.Infrastructure.Implementation
                 throw new Exception(ex.Message);
             }
             return list;
+        }
+
+        public DataTable GetAll()
+        {
+            var list = new List<T>();
+
+            using var conn = new MySqlConnection(_conn);
+            conn.Open();
+
+            var cmd = new MySqlCommand($"SELECT * FROM {_tableName}", conn);
+
+            try
+            {
+                using var adapter = new MySqlDataAdapter(cmd);
+                var table = new DataTable();
+                adapter.Fill(table);
+                return table;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable SearchByKey(string tableName, string keyword, params string[] columns)
+        {
+            using (var conn = new MySqlConnection(_conn))
+            {
+                conn.Open();
+
+                var query = $"SELECT * FROM {tableName} WHERE ";
+
+                var conditions = new List<string>();
+
+                for (int i = 0; i < columns.Length; i++)
+                {
+                    conditions.Add($"{columns[i]} LIKE @keyword");
+                }
+
+                query += string.Join(" OR ", conditions);
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", $"%{keyword}%");
+
+                    var adapter = new MySqlDataAdapter(cmd);
+                    var table = new DataTable();
+                    adapter.Fill(table);
+
+                    return table;
+                }
+            }
+        }
+
+        public bool IsExists(string tableName, string keyword, string columns)
+        {
+            using var conn = new MySqlConnection(_conn);
+            conn.Open();
+            var query = $"SELECT 1 FROM {tableName} WHERE ";
+            query += $"{columns} = @keyword";
+            using var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@keyword", $"%{keyword}%");
+            var result = cmd.ExecuteScalar();
+            return result != null;
         }
 
         public T GetById(long id)

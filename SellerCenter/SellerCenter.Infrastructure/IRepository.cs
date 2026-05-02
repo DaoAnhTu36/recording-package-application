@@ -1,4 +1,5 @@
 ﻿using SellerCenter.Infrastructure.Models;
+using System.Data;
 
 namespace SellerCenter.Infrastructure
 {
@@ -6,7 +7,13 @@ namespace SellerCenter.Infrastructure
     {
         long Create(T entity);
 
-        List<T> GetAll();
+        List<T> GetAllList();
+
+        DataTable GetAll();
+
+        DataTable SearchByKey(string tableName, string keyword, params string[] columns);
+
+        bool IsExists(string tableName, string keyword, string columns);
 
         T GetById(long id);
 

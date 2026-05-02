@@ -7,7 +7,7 @@ namespace SellerCenter.Forms
 {
     public partial class frmPostManager : BaseForm
     {
-        private readonly PostContentService? _postContentService;
+        private readonly IPostContentService _postContentService;
         private int _idEditing = 0;
         private PostContentModel? _postContentModel = new();
         private readonly IFacebookService _facebookService;
@@ -16,22 +16,22 @@ namespace SellerCenter.Forms
         public frmPostManager()
         {
             InitializeComponent();
-            _postContentService = new PostContentService();
+            _postContentService = ServiceLocator.Get<IPostContentService>();
             _facebookService = ServiceLocator.Get<IFacebookService>();
         }
 
         private void GetData()
         {
             var products = _postContentService?.GetAll();
-            txtKeyword.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtKeyword.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtKeyword.AutoCompleteCustomSource =
-                DataHelper.ToAutoCompleteSource(products!, "product_code");
-            if (products == null || products.Rows.Count == 0)
-            {
-                dataGridViewPostContent.DataSource = null;
-                return;
-            }
+            //txtKeyword.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //txtKeyword.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //txtKeyword.AutoCompleteCustomSource =
+            //    DataHelper.ToAutoCompleteSource(products!, "product_code");
+            //if (products == null || products.Rows.Count == 0)
+            //{
+            //    dataGridViewPostContent.DataSource = null;
+            //    return;
+            //}
             dataGridViewPostContent.DataSource = products;
         }
 

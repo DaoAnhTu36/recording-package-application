@@ -9,12 +9,12 @@ namespace SellerCenter.Forms
     {
         private List<string> selectedImagePaths = new List<string>();
         private string selectedVideoPath = string.Empty;
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
         public frmCreateNewProduct()
         {
             InitializeComponent();
-            _productService = new ProductService();
+            _productService = ServiceLocator.Get<IProductService>();
         }
 
         private void btnChooseImage_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace SellerCenter.Forms
                 ImageUrl = string.Join(CharacterConstants.Separator, selectedImagePaths),
                 VideoUrl = selectedVideoPath
             };
-            var idProduct = _productService.Insert(product);
+            var idProduct = _productService.Create(product);
             if (idProduct > 0)
             {
                 ResetProductForm();
@@ -81,7 +81,7 @@ namespace SellerCenter.Forms
 
         private void txtProductCode_Leave(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtProductCode.Text.Trim()) && _productService.ExistsByCode(txtProductCode.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtProductCode.Text.Trim()) && _productService.IsExists(EntityHelper.GetTableName<ProductModel>(), txtProductCode.Text.Trim(), nameof(ProductModel.ProductCode)))
             {
                 MessageBox.Show("Mã sản phẩm đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtProductCode.Focus();

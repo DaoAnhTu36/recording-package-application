@@ -1,20 +1,23 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.Extensions.Options;
+using SellerCenter.Service.DTO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace SellerCenter.Infrastructure
+namespace SellerCenter.Service.Implementation
 {
-    public class ShopeeRepository
+    public class ShopeeService : IShopeeService
     {
-        private readonly string _baseUrl = "https://partner.shopeemobile.com";
+        private readonly string _baseUrl;
         private readonly long _partnerId;
         private readonly string _partnerKey;
         private readonly HttpClient _http;
 
-        public ShopeeRepository(long partnerId, string partnerKey)
+        public ShopeeService(IOptions<ShopeeConfig> options)
         {
-            _partnerId = partnerId;
-            _partnerKey = partnerKey;
+            _partnerId = options.Value.PartnerId;
+            _partnerKey = options.Value.PartnerKey!;
+            _baseUrl = options.Value.BaseUrl!;
             _http = new HttpClient();
         }
 
@@ -28,7 +31,7 @@ namespace SellerCenter.Infrastructure
             return BitConverter.ToString(hash).Replace("-", "").ToLower();
         }
 
-        public string BuildAuthUrl(string redirectUrl)
+        private string BuildAuthUrl(string redirectUrl)
         {
             var path = "/api/v2/shop/auth_partner";
             var timestamp = GetTimestamp();

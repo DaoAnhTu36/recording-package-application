@@ -6,14 +6,14 @@ namespace SellerCenter.Forms
 {
     public partial class frmMenu : BaseForm
     {
-        private readonly MenuService1 _menuService;
+        private readonly IMenuService _menuService;
         private long _idEditing;
         private MenuModel? _menuModel;
 
         public frmMenu()
         {
             InitializeComponent();
-            _menuService = new MenuService1();
+            _menuService = ServiceLocator.Get<IMenuService>();
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
@@ -21,9 +21,9 @@ namespace SellerCenter.Forms
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            var data = _menuService.GetAllWithParentName();
+            var data = await _menuService.GetAllWithParentName();
             dataGridView1.DataSource = data;
             var dataMenuParent = data.Select(x => new
             {

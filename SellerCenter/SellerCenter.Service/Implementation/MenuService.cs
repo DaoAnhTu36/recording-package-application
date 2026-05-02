@@ -11,5 +11,10 @@ namespace SellerCenter.Service.Implementation
         {
             _menuRepo = menuRepo;
         }
+
+        public async Task<List<MenuViewModel>> GetAllWithParentName()
+        {
+            return await _menuRepo.GetAllWithParentName();
+        }
     }
 }

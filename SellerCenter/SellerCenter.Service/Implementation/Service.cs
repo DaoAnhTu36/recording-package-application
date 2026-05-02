@@ -1,5 +1,6 @@
 ﻿using SellerCenter.Infrastructure;
 using SellerCenter.Infrastructure.Models;
+using System.Data;
 
 namespace SellerCenter.Service.Implementation
 {
@@ -17,9 +18,22 @@ namespace SellerCenter.Service.Implementation
             return _repo.Create(entity);
         }
 
-        public List<T> GetAll()
+        public List<T> GetAllList()
+        {
+            return _repo.GetAllList();
+        }
+        public DataTable GetAll()
         {
             return _repo.GetAll();
+        }
+
+        public DataTable SearchByKey(string tableName, string keyword, params string[] columns)
+        {
+            return _repo.SearchByKey(tableName, keyword, columns);
+        }
+        public bool IsExists(string tableName, string keyword, string columns)
+        {
+            return _repo.IsExists(tableName, keyword, columns);
         }
 
         public T GetById(long id)

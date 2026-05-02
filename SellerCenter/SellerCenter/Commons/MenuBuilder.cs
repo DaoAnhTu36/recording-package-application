@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SellerCenter.Helpers;
 using SellerCenter.Infrastructure.Models;
 using SellerCenter.Models;
 using SellerCenter.Service;
@@ -10,13 +11,13 @@ namespace SellerCenter.Commons
     {
         private readonly Form _parentForm;
         private readonly Panel _mainPanel;
-        private readonly MenuService1 _menuService;
+        private readonly IMenuService _menuService;
 
         public MenuBuilder(Form parentForm, Panel mainPanel)
         {
             _parentForm = parentForm;
             _mainPanel = mainPanel;
-            _menuService = new MenuService1();
+            _menuService = ServiceLocator.Get<IMenuService>();
         }
 
         public MenuStrip BuildFromJson()
@@ -33,7 +34,7 @@ namespace SellerCenter.Commons
 
         private MenuStrip GenMenuLive()
         {
-            var raw = _menuService.GetAll()
+            var raw = _menuService.GetAllList()
                 .Where(x => x.IsActive && x.IsVisible)
                 .Select(x =>
                 {

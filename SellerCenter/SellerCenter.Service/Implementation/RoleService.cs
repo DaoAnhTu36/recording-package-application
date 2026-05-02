@@ -3,11 +3,11 @@ using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Service.Implementation
 {
-    public class RoleService : Service<RoleModel>, IRoleService
+    public class RoleService : Service<RoleModel>, IRoleRepository
     {
-        private readonly IMenuRepository _repository;
+        private readonly IRoleRepository _repository;
 
-        public RoleService(IMenuRepository repository) : base(repository)
+        public RoleService(IRoleRepository repository) : base(repository)
         {
             _repository = repository;
         }

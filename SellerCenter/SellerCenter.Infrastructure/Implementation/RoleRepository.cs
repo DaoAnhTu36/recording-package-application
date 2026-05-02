@@ -4,7 +4,7 @@ using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Infrastructure.Implementation
 {
-    public class RoleRepository : Repository<RoleModel>, IMenuRepository
+    public class RoleRepository : Repository<RoleModel>, IRoleRepository
     {
         private readonly string _conn;
 

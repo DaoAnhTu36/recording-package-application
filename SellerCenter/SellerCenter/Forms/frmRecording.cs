@@ -8,13 +8,13 @@ using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using SellerCenter.Helper;
 using SellerCenter.Helpers;
-using SellerCenter.Infrastructure;
 using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
     public partial class frmRecording : BaseForm
     {
+        private readonly IPackingSessionService _packingSessionService;
         private VideoCapture _camera;
         private VideoWriter? _writer;
         private int _width;
@@ -32,6 +32,7 @@ namespace SellerCenter.Forms
         public frmRecording()
         {
             InitializeComponent();
+            _packingSessionService = ServiceLocator.Get<IPackingSessionService>();
             _camera = new VideoCapture(0);
             _width = (int)_camera.Get(VideoCaptureProperties.FrameWidth);
             _height = (int)_camera.Get(VideoCaptureProperties.FrameHeight);
@@ -134,8 +135,7 @@ namespace SellerCenter.Forms
 
                     if (!string.IsNullOrEmpty(barcode))
                     {
-                        var packingSessionService = new PackingSessionRepository();
-                        if (packingSessionService.IsBarcodeExists(barcode))
+                        if (_packingSessionService.IsBarcodeExists(barcode))
                         {
                             historyScanBarcode.Invoke((MethodInvoker)(() =>
                             {
@@ -225,8 +225,7 @@ namespace SellerCenter.Forms
                     if (barcode != null)
                     {
                         _barcode = barcode;
-                        var packingSessionService = new PackingSessionService1();
-                        packingSessionService.InsertSession(barcode, _fullPathFile!);
+                        _packingSessionService.InsertSession(barcode, _fullPathFile!);
                     }
                 }
 
@@ -356,8 +355,7 @@ namespace SellerCenter.Forms
 
             string youtubeUrl = $"https://www.youtube.com/watch?v={video.Id}";
             lblStatus.Text = youtubeUrl;
-            var packingSessionService = new PackingSessionService1();
-            packingSessionService.UpdateSession(_barcode!, youtubeUrl);
+            _packingSessionService.UpdateSession(_barcode!, youtubeUrl);
         }
 
         private void frmRecording_Load(object sender, EventArgs e)

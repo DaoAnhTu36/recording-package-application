@@ -6,14 +6,14 @@ namespace SellerCenter.Forms
 {
     public partial class frmTemplatePrompt : BaseForm
     {
-        private readonly PromptTemplateService _promptTemplateService;
+        private readonly IPromptTemplateService _promptTemplateService;
         private long _idEditing = 0;
         public PromptTemplateModel? promptTemplateModel;
 
         public frmTemplatePrompt()
         {
             InitializeComponent();
-            _promptTemplateService = new PromptTemplateService();
+            _promptTemplateService = ServiceLocator.Get<IPromptTemplateService>();
         }
 
         private void frmTemplatePrompt_Load(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace SellerCenter.Forms
             }
             else
             {
-                var idTemplate = _promptTemplateService.Insert(template);
+                var idTemplate = _promptTemplateService.Create(template);
             }
             ResetForm();
             FillDataToGridView();

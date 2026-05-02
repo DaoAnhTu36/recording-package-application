@@ -1,18 +1,39 @@
-﻿namespace SellerCenter.Infrastructure.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace SellerCenter.Infrastructure.Models
 {
-    public class PostContentModel
+    [Table("post_content")]
+    public class PostContentModel : IEntity
     {
-        public int Id { get; set; }
+        [JsonPropertyName("id")]
+        public long Id { get; set; }
+
+        [JsonPropertyName("product_code")]
         public string? ProductCode { get; set; }
+
+        [JsonPropertyName("title")]
         public string? Title { get; set; }
+
+        [JsonPropertyName("content")]
         public string? Content { get; set; }
+
+        [JsonPropertyName("hook")]
         public string? Hook { get; set; }
-        public string? ImageUrl1 { get; set; }
-        public string? ImageUrl2 { get; set; }
-        public string? ImageUrl3 { get; set; }
-        public string? ImageUrl4 { get; set; }
-        public string? ImageUrl5 { get; set; }
+
+        [JsonPropertyName("image_url")]
+        public string? ImageUrl { get; set; }
+
+        [JsonPropertyName("video_url")]
         public string? VideoUrl { get; set; }
+
+        [JsonPropertyName("hashtag")]
         public string? Hashtag { get; set; }
+
+        [JsonPropertyName("created_at")]
+        public DateTime CreatedAt { get; set; }
+
+        [JsonPropertyName("hashtag")]
+        public DateTime UpdatedAt { get; set; }
     }
 }

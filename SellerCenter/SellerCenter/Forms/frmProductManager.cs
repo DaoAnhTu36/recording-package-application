@@ -1,15 +1,18 @@
-﻿using SellerCenter.Service;
+﻿using SellerCenter.Helper;
+using SellerCenter.Helpers;
+using SellerCenter.Infrastructure.Models;
+using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
     public partial class frmProductManager : BaseForm
     {
-        private readonly ProductService? _productService;
+        private readonly IProductService _productService;
 
         public frmProductManager()
         {
             InitializeComponent();
-            _productService = new ProductService();
+            _productService = ServiceLocator.Get<IProductService>();
         }
 
         private void frmProductManager_Load(object sender, EventArgs e)
@@ -25,7 +28,7 @@ namespace SellerCenter.Forms
                 GetData();
                 return;
             }
-            var dataSearch = _productService?.Search(keyword);
+            var dataSearch = _productService?.SearchByKey(EntityHelper.GetTableName<ProductModel>(), keyword, nameof(ProductModel.ProductName), nameof(ProductModel.ProductCode));
             dataGridView1.DataSource = dataSearch;
         }
 
