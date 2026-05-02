@@ -28,7 +28,7 @@ namespace SellerCenter.Forms
                 GetData();
                 return;
             }
-            var dataSearch = _productService?.SearchByKey(EntityHelper.GetTableName<ProductModel>(), keyword, nameof(ProductModel.ProductName), nameof(ProductModel.ProductCode));
+            var dataSearch = _productService?.SearchByKey(EntityHelper.GetTableName<ProductModel>(), keyword, "product_name", "product_code");
             dataGridView1.DataSource = dataSearch;
         }
 

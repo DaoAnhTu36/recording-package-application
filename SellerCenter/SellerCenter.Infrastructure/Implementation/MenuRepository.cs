@@ -9,9 +9,9 @@ namespace SellerCenter.Infrastructure.Implementation
     {
         private readonly string _conn;
 
-        public MenuRepository(IOptions<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
+        public MenuRepository(IOptions<AppSettingConfig> dbConfig) : base(dbConfig.Value.DatabaseConfig!.ConnectionString!)
         {
-            _conn = dbConfig.Value.ConnectionString!;
+            _conn = dbConfig.Value.DatabaseConfig!.ConnectionString!;
         }
 
         public async Task<List<MenuModel>> GetActiveVisible()

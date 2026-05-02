@@ -10,9 +10,9 @@ namespace SellerCenter.Infrastructure.Implementation
     {
         private readonly string _conn;
 
-        public PackingSessionRepository(IOptions<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
+        public PackingSessionRepository(IOptions<AppSettingConfig> dbConfig) : base(dbConfig.Value.DatabaseConfig!.ConnectionString!)
         {
-            _conn = dbConfig.Value.ConnectionString!;
+            _conn = dbConfig.Value.DatabaseConfig!.ConnectionString!;
         }
 
         public DataTable GetAllSessions()

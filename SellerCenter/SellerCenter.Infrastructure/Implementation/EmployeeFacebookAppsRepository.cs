@@ -8,9 +8,9 @@ namespace SellerCenter.Infrastructure.Implementation
     {
         private readonly string _conn;
 
-        public EmployeeFacebookAppsRepository(IOptions<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
+        public EmployeeFacebookAppsRepository(IOptions<AppSettingConfig> dbConfig) : base(dbConfig.Value.DatabaseConfig!.ConnectionString!)
         {
-            _conn = dbConfig.Value.ConnectionString!;
+            _conn = dbConfig.Value.DatabaseConfig!.ConnectionString!;
         }
     }
 }

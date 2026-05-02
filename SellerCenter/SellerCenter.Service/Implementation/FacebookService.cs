@@ -49,10 +49,11 @@ namespace SellerCenter.Service.Implementation
 
             var url = $"https://graph.facebook.com/v25.0/{pageId}/videos";
 
-            using var form = new MultipartFormDataContent();
-
-            form.Add(new StringContent(pageToken), "access_token");
-            form.Add(new StringContent(description), "description");
+            using var form = new MultipartFormDataContent
+            {
+                { new StringContent(pageToken), "access_token" },
+                { new StringContent(description), "description" }
+            };
 
             var videoBytes = await File.ReadAllBytesAsync(videoPath);
             var videoContent = new ByteArrayContent(videoBytes);

@@ -8,9 +8,9 @@ namespace SellerCenter.Infrastructure.Implementation
     {
         private readonly string _conn;
 
-        public PromptTemplateRepository(IOptions<DatabaseConfig> dbConfig) : base(dbConfig.Value.ConnectionString!)
+        public PromptTemplateRepository(IOptions<AppSettingConfig> dbConfig) : base(dbConfig.Value.DatabaseConfig!.ConnectionString!)
         {
-            _conn = dbConfig.Value.ConnectionString!;
+            _conn = dbConfig.Value.DatabaseConfig!.ConnectionString!;
         }
     }
 }

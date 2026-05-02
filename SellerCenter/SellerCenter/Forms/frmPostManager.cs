@@ -129,6 +129,10 @@ namespace SellerCenter.Forms
                     }
                     return;
                 }
+                else
+                {
+                    return;
+                }
             }
 
             if (string.IsNullOrEmpty(txtTitle.Text) || string.IsNullOrEmpty(txtContent.Text) || string.IsNullOrEmpty(txtHook.Text) || string.IsNullOrEmpty(txtHashtag.Text))

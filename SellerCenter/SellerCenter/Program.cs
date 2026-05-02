@@ -27,8 +27,7 @@ namespace SellerCenter
             .ConfigureServices((context, services) =>
             {
                 Logger.Init();
-                services.Configure<ChatGPTConfig>(context.Configuration.GetSection("ChatGPTConfig"));
-                services.Configure<DatabaseConfig>(context.Configuration.GetSection("DatabaseConfig"));
+                services.Configure<AppSettingConfig>(context.Configuration.GetSection("AppSettingConfig"));
                 services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                 services.AddScoped(typeof(IService<>), typeof(Service<>));
                 RegisterDIInfrastructure.AddInfrastructure(services);

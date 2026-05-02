@@ -102,7 +102,7 @@ namespace SellerCenter.Forms
                 var question = content?.Trim()!;
                 var answer = await _chatGPTService.SendRequest(question, [])!;
                 ChatGPTModel result = JsonConvert.DeserializeObject<ChatGPTModel>(answer)!;
-                txtResponseChatGPT.Text = result.Data!.ToString();
+                txtResponseChatGPT.Text = answer;
                 InsertResultToDatabase(result);
                 btnCreatePost.Enabled = true;
                 btnCreatePost.Text = "Tạo bài đăng";
@@ -124,12 +124,14 @@ namespace SellerCenter.Forms
             {
                 var post = new PostContentModel
                 {
-                    ProductCode = txtProductCode.Text.Trim(),
+                    ProductCode = txtProductCode.Text.Trim().ToUpper(),
                     Title = item.Title,
                     Content = item.Content,
                     Hook = item.Hook,
                     VideoUrl = selectedVideoPath,
-                    Hashtag = item.Hashtag
+                    Hashtag = item.Hashtag,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 };
                 _postContentService.Create(post);
             }

@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using SellerCenter.Commons;
 using SellerCenter.Helper;
 using SellerCenter.Infrastructure.Configs;
+using SellerCenter.Infrastructure.Configs.Model;
 using SellerCenter.Models;
 using System.Web;
 
@@ -12,14 +13,14 @@ namespace SellerCenter.Forms
     {
         private string? redirectUri;
         private string? graphVersion;
-        private readonly FacebookConfig facebookConfig = AppConfig.Get<FacebookConfig>("Facebook");
+        private readonly AppSettingConfig _appSettingConfig = AppConfig.Get<AppSettingConfig>("AppSettingConfig");
 
         public frmFacebook()
         {
             InitializeComponent();
             InitWebView();
-            redirectUri = facebookConfig.RedirectUri;
-            graphVersion = facebookConfig.GraphVersion;
+            redirectUri = _appSettingConfig.FacebookConfig!.RedirectUri;
+            graphVersion = _appSettingConfig.FacebookConfig!.GraphVersion;
         }
 
         private async void InitWebView()

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SellerCenter.Infrastructure.Configs.Model;
 using SellerCenter.Service.DTO;
 using System.Net.Http.Headers;
 using System.Text;
@@ -12,9 +13,9 @@ namespace SellerCenter.Service.Implementation
         private readonly string _apiKey;
         private readonly HttpClient _httpClient;
 
-        public ChatGPTService(IOptions<ChatGPTConfig> config)
+        public ChatGPTService(IOptions<AppSettingConfig> config)
         {
-            _apiKey = config!.Value.ApiKey!;
+            _apiKey = config!.Value.ChatGPTConfig!.ApiKey!;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", _apiKey);
