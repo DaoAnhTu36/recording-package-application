@@ -33,7 +33,7 @@ namespace SellerCenter.Infrastructure.Models
         [JsonPropertyName("created_at")]
         public DateTime CreatedAt { get; set; }
 
-        [JsonPropertyName("hashtag")]
+        [JsonPropertyName("update_at")]
         public DateTime UpdatedAt { get; set; }
     }
 }

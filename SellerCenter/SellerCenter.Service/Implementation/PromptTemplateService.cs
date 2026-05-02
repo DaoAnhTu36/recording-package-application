@@ -3,7 +3,7 @@ using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Service.Implementation
 {
-    public class PromptTemplateService : Service<PromptTemplateModel>, IPromptTemplateRepository
+    public class PromptTemplateService : Service<PromptTemplateModel>, IPromptTemplateService
     {
         private readonly IPromptTemplateRepository _repository;
 

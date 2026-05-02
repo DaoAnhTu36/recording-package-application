@@ -113,6 +113,8 @@ namespace SellerCenter.Forms
             }
             finally
             {
+                btnCreatePost.Enabled = true;
+                btnCreatePost.Text = "Tạo bài viết";
             }
         }
 

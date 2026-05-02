@@ -11,9 +11,8 @@ namespace SellerCenter.Service.Implementation
     {
         private readonly string _apiKey;
         private readonly HttpClient _httpClient;
-        private readonly IOptions<ChatGPTConfig> config;
 
-        public ChatGPTService()
+        public ChatGPTService(IOptions<ChatGPTConfig> config)
         {
             _apiKey = config!.Value.ApiKey!;
             _httpClient = new HttpClient();

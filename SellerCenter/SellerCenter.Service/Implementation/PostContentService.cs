@@ -4,7 +4,7 @@ using System.Data;
 
 namespace SellerCenter.Service.Implementation
 {
-    public class PostContentService : Service<PostContentModel>, IPostContentRepository
+    public class PostContentService : Service<PostContentModel>, IPostContentService
     {
         private readonly IPostContentRepository _repository;
 

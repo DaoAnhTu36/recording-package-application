@@ -257,9 +257,24 @@ namespace SellerCenter.Infrastructure.Implementation
 
                     var value = rd[columnName];
 
-                    if (value == DBNull.Value) continue;
+                    if (value == DBNull.Value)
+                    {
+                        prop.SetValue(obj, null);
+                        continue;
+                    }
 
-                    prop.SetValue(obj, Convert.ChangeType(value, prop.PropertyType));
+                    var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+
+                    try
+                    {
+                        var safeValue = Convert.ChangeType(value, targetType);
+                        prop.SetValue(obj, safeValue);
+                    }
+                    catch
+                    {
+                        Logger.Info($"Không thể chuyển đổi giá trị '{value}' sang kiểu '{targetType.Name}' cho thuộc tính '{prop.Name}'.");
+                        continue;
+                    }
                 }
 
                 return obj;

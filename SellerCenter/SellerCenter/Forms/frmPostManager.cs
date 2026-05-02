@@ -23,15 +23,15 @@ namespace SellerCenter.Forms
         private void GetData()
         {
             var products = _postContentService?.GetAll();
-            //txtKeyword.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //txtKeyword.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            //txtKeyword.AutoCompleteCustomSource =
-            //    DataHelper.ToAutoCompleteSource(products!, "product_code");
-            //if (products == null || products.Rows.Count == 0)
-            //{
-            //    dataGridViewPostContent.DataSource = null;
-            //    return;
-            //}
+            txtKeyword.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtKeyword.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtKeyword.AutoCompleteCustomSource =
+                DataHelper.ToAutoCompleteSource(products!, "product_code");
+            if (products == null || products.Rows.Count == 0)
+            {
+                dataGridViewPostContent.DataSource = null;
+                return;
+            }
             dataGridViewPostContent.DataSource = products;
         }
 
@@ -72,15 +72,14 @@ namespace SellerCenter.Forms
 
         private void txtKeyword_TextChanged(object sender, EventArgs e)
         {
-            //var keyword = txtKeyword.Text.Trim();
-            //if (string.IsNullOrEmpty(keyword))
-            //{
-            //    GetData();
-            //    return;
-            //}
-            //var dataSearch = _postContentService?.Search(keyword);
-            //MappingData();
-            //dataGridViewPostContent.DataSource = dataSearch;
+            var keyword = txtKeyword.Text.Trim();
+            if (string.IsNullOrEmpty(keyword))
+            {
+                GetData();
+                return;
+            }
+            var dataSearch = _postContentService?.Search(keyword);
+            dataGridViewPostContent.DataSource = dataSearch;
         }
 
         private void txtKeyword_Leave(object sender, EventArgs e)

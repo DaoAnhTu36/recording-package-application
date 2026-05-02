@@ -3,7 +3,7 @@ using SellerCenter.Infrastructure.Models;
 
 namespace SellerCenter.Service.Implementation
 {
-    public class ProductService : Service<ProductModel>, IProductRepository
+    public class ProductService : Service<ProductModel>, IProductService
     {
         private readonly IProductRepository _repository;
 

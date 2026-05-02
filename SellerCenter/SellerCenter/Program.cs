@@ -9,6 +9,7 @@ using SellerCenter.Infrastructure.Configs.Model;
 using SellerCenter.Infrastructure.Extensions;
 using SellerCenter.Infrastructure.Implementation;
 using SellerCenter.Service;
+using SellerCenter.Service.DTO;
 using SellerCenter.Service.Extentions;
 using SellerCenter.Service.Implementation;
 using System.Reflection;
@@ -25,6 +26,8 @@ namespace SellerCenter
             AppHost = Host.CreateDefaultBuilder()
             .ConfigureServices((context, services) =>
             {
+                Logger.Init();
+                services.Configure<ChatGPTConfig>(context.Configuration.GetSection("ChatGPTConfig"));
                 services.Configure<DatabaseConfig>(context.Configuration.GetSection("DatabaseConfig"));
                 services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                 services.AddScoped(typeof(IService<>), typeof(Service<>));
@@ -32,7 +35,6 @@ namespace SellerCenter
                 RegisterDIService.AddService(services);
             })
             .Build();
-            Logger.Init();
             AppConfig.Init();
             ApplicationConfiguration.Initialize();
             Application.ThreadException += (sender, args) =>
