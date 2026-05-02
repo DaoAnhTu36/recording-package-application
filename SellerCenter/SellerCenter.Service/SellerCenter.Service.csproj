@@ -9,6 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+	<PackageReference Include="OpenCvSharp4.Extensions" Version="4.13.0.20260330" />
+	<PackageReference Include="OpenCvSharp4.Windows" Version="4.13.0.20260302" />
+	<PackageReference Include="ZXing.Net" Version="0.16.11" />
+	<PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.14" />
   </ItemGroup>
 
   <ItemGroup>
