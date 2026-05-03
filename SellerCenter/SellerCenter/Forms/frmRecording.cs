@@ -15,6 +15,7 @@ namespace SellerCenter.Forms
     public partial class frmRecording : BaseForm
     {
         private readonly IPackingSessionService _packingSessionService;
+        private readonly ICameraService _cameraService;
         private VideoCapture _camera;
         private VideoWriter? _writer;
         private int _width;
@@ -28,11 +29,13 @@ namespace SellerCenter.Forms
         private CancellationTokenSource? _checkCts;
         private Task? _checkTask;
         private string? _barcode;
+        private bool _hasValueBarcode;
 
         public frmRecording()
         {
             InitializeComponent();
             _packingSessionService = ServiceLocator.Get<IPackingSessionService>();
+            _cameraService = ServiceLocator.Get<ICameraService>();
             _camera = new VideoCapture(0);
             _width = (int)_camera.Get(VideoCaptureProperties.FrameWidth);
             _height = (int)_camera.Get(VideoCaptureProperties.FrameHeight);
@@ -59,7 +62,6 @@ namespace SellerCenter.Forms
 
             _cts = new CancellationTokenSource();
             btnStart.Enabled = false;
-            btnEnd.Enabled = true;
             historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Bắt đầu quay video.");
 
             _recordTask = Task.Run(() => RecordLoop(_cts.Token));
@@ -87,20 +89,53 @@ namespace SellerCenter.Forms
                     old?.Dispose();
                 }));
 
-                lblRecordStatus.Invoke((MethodInvoker)(() =>
+                if (!_hasValueBarcode)
                 {
-                    lblRecordStatus.Text = "Đang quay video đóng hàng.";
-                }));
+                    var qrHelper = new QrScannerHelper();
+                    var barcode = qrHelper.DecodeQR(frame);
 
-                lock (_writerLock)
-                {
-                    if (_writer != null && _writer.IsOpened())
+                    if (!string.IsNullOrEmpty(barcode))
                     {
-                        _writer.Write(frame);
+                        if (_packingSessionService.IsBarcodeExists(barcode))
+                        {
+                            historyScanBarcode.Invoke((MethodInvoker)(() =>
+                            {
+                                historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Mã QR {barcode} đã tồn tại.");
+                            }));
+                        }
+                        else
+                        {
+                            if (ConfigOutputVideo(barcode))
+                            {
+                                BeginInvoke((MethodInvoker)(() =>
+                                {
+                                    lblBarcodeScan.Text = barcode;
+                                    lblRecordStatus.Text = "Sẵn sàng quay video";
+                                    btnEnd.Enabled = true;
+                                    historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Sẵn sàng quay video.");
+                                }));
+                                _hasValueBarcode = true;
+                            }
+                        }
                     }
                 }
+                else
+                {
+                    lblRecordStatus.Invoke((MethodInvoker)(() =>
+                    {
+                        lblRecordStatus.Text = "Đang quay video đóng hàng.";
+                    }));
 
-                Thread.Sleep(10);
+                    lock (_writerLock)
+                    {
+                        if (_writer != null && _writer.IsOpened())
+                        {
+                            _writer.Write(frame);
+                        }
+                    }
+
+                    Thread.Sleep(10);
+                }
             }
         }
 
@@ -151,7 +186,7 @@ namespace SellerCenter.Forms
                                     lblBarcodeScan.Text = barcode;
                                     lblRecordStatus.Text = "Sẵn sàng quay video";
                                     btnStart.Enabled = true;
-                                    btnCheckOrder.Enabled = false;
+                                    //btnCheckOrder.Enabled = false;
                                     historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Sẵn sàng quay video.");
                                 }));
 
@@ -168,10 +203,11 @@ namespace SellerCenter.Forms
         private async Task StopRecordingAsync()
         {
             historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Đã dừng quay video.");
-            btnCheckOrder.Enabled = true;
-            btnStart.Enabled = false;
+            //btnCheckOrder.Enabled = true;
+            btnStart.Enabled = true;
             btnEnd.Enabled = false;
             btnUploadYoutube.Enabled = true;
+            _hasValueBarcode = false;
             _cts?.Cancel();
 
             if (_recordTask != null)
@@ -196,6 +232,14 @@ namespace SellerCenter.Forms
 
         private bool ConfigOutputVideo(string? barcode)
         {
+            if (string.IsNullOrEmpty(barcode))
+            {
+                historyScanBarcode.Invoke((MethodInvoker)(() =>
+                {
+                    historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Mã QR không hợp lệ.");
+                }));
+                return false;
+            }
             lock (_writerLock)
             {
                 _writer?.Release();
@@ -360,8 +404,14 @@ namespace SellerCenter.Forms
 
         private void frmRecording_Load(object sender, EventArgs e)
         {
-            btnCheckOrder.Enabled = true;
+            //btnCheckOrder.Enabled = true;
+            btnStart.Enabled = true;
             LayoutHelper.SetupEqualTable(tableLayoutPanel1, 4, 3);
+        }
+
+        private void btnEndWithoutSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

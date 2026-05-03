@@ -3,7 +3,7 @@ using SellerCenter.Service;
 
 namespace SellerCenter.Forms
 {
-    public partial class frmLogin : BaseForm
+    public partial class frmLogin : Form
     {
         private readonly IEmployeeService _employeeService;
 

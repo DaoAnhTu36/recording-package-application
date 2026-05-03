@@ -30,7 +30,7 @@ namespace SellerCenter.Infrastructure.Models
         [JsonPropertyName("sort_order")]
         public int SortOrder { get; set; }
 
-        [JsonPropertyName("sort_order")]
+        [JsonPropertyName("permission_code")]
         public string? PermissionCode { get; set; }
 
         [JsonPropertyName("is_active")]

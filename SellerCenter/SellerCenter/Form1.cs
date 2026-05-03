@@ -5,7 +5,6 @@ namespace SellerCenter
     public partial class Form1 : Form
     {
         private Form? currentForm;
-        private Dictionary<string, Form> formCache = new();
 
         public Form1()
         {
@@ -26,12 +25,14 @@ namespace SellerCenter
             form.Dock = DockStyle.Fill;
 
             panelMain.Controls.Add(form);
+            var formName = form.Text;
             form.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UIHelper.InitMenu(this, panelMain);
+            Label label = new Label();
+            UIHelper.InitMenu(this, panelMain, label);
         }
     }
 }

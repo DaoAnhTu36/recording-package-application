@@ -12,20 +12,18 @@ namespace SellerCenter.Helper
             {
                 if (!type.IsClass || type.IsAbstract)
                 {
-                    Logger.Info($"Skipping {type.FullName} because it is not a concrete class.");
                     continue;
                 }
 
                 if (!type.Name.EndsWith("Service") &&
                     !type.Name.EndsWith("Repository"))
                 {
-                    Logger.Info($"Skipping {type.FullName} because it does not end with 'Service' or 'Repository'."); continue;
+                    continue;
                 }
                 foreach (var i in type.GetInterfaces())
                 {
                     if (i.Name != $"I{type.Name}")
                     {
-                        Logger.Info($"Skipping {type.FullName} because it does not implement an interface named I{type.Name}.");
                         continue;
                     }
 

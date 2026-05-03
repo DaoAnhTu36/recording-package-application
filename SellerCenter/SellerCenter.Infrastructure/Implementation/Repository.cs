@@ -173,10 +173,10 @@ namespace SellerCenter.Infrastructure.Implementation
             conn.Open();
 
             var props = typeof(T).GetProperties()
-                .Where(p => p.Name != "Id");
+                .Where(p => p.Name != "Id" && p.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name.ToLower() != "id");
 
             var setClause = string.Join(",",
-                props.Select(p => $"{p.Name.ToLower()}=@{p.Name}"));
+                props.Select(p => $"{p.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name.ToLower()}=@{p.Name}"));
 
             var cmd = new MySqlCommand($@"
                 UPDATE {_tableName}

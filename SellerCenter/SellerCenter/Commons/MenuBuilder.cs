@@ -12,17 +12,18 @@ namespace SellerCenter.Commons
         private readonly Form _parentForm;
         private readonly Panel _mainPanel;
         private readonly IMenuService _menuService;
+        private Label? _label;
 
-        public MenuBuilder(Form parentForm, Panel mainPanel)
+        public MenuBuilder(Form parentForm, Panel mainPanel, Label? label = null)
         {
             _parentForm = parentForm;
             _mainPanel = mainPanel;
             _menuService = ServiceLocator.Get<IMenuService>();
+            _label = label;
         }
 
         public MenuStrip BuildFromJson()
         {
-            //var menuStrip = GenMenuStatic();
             var menuStrip = GenMenuLive();
             menuStrip.Renderer = new ModernMenuRenderer();
             menuStrip.BackColor = Color.White;
@@ -138,13 +139,13 @@ namespace SellerCenter.Commons
             }
             else if (!string.IsNullOrWhiteSpace(item.Form))
             {
-                menuItem.Click += (s, e) => OpenFormByName(item.Form);
+                menuItem.Click += (s, e) => OpenFormByName(menuItem, item.Form);
             }
 
             return menuItem;
         }
 
-        private void OpenFormByName(string formName)
+        private void OpenFormByName(ToolStripMenuItem item, string formName)
         {
             var formType = Assembly.GetExecutingAssembly()
                 .GetTypes()
@@ -164,6 +165,11 @@ namespace SellerCenter.Commons
             }
 
             OpenFormInPanel(form);
+            var lstMenuParent = UIHelper.GetParentMenuItems(item);
+            if (_label != null)
+            {
+                _label.Text = string.Join(" > ", lstMenuParent.Select(x => x.Text).Reverse()) + " > " + item.Text;
+            }
         }
 
         private void OpenFormInPanel(Form form)

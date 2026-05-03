@@ -7,16 +7,40 @@ namespace SellerCenter.Helpers
 {
     public static class UIHelper
     {
-        public static void InitMenu(Form form, Panel panelMain)
+        public static void InitMenu(Form form, Panel panelMain, Label? label = null)
         {
             if (form.MainMenuStrip != null)
                 return;
-
-            var builder = new MenuBuilder(form, panelMain);
+            if (label != null)
+            {
+                label.Text = "Trang chủ";
+                label.Dock = DockStyle.Top;
+                label.Height = 50;
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                label.BackColor = Color.Red;
+                label.ForeColor = Color.White;
+                label.Font = UIConfig.HeaderFont;
+                form.Controls.Add(label);
+            }
+            var builder = new MenuBuilder(form, panelMain, label);
             var menuStrip = builder.BuildFromJson();
-
             form.MainMenuStrip = menuStrip;
             form.Controls.Add(menuStrip);
+        }
+
+        public static List<ToolStripItem> GetParentMenuItems(ToolStripItem currentItem)
+        {
+            var parents = new List<ToolStripItem>();
+
+            var item = currentItem;
+
+            while (item.OwnerItem != null)
+            {
+                var parent = item.OwnerItem;
+                parents.Add(parent);
+                item = parent;
+            }
+            return parents;
         }
 
         public static void StyleButton(Button btn, Color? backColor = null)
@@ -33,6 +57,7 @@ namespace SellerCenter.Helpers
 
         public static void StyleDataGridView(DataGridView dgv)
         {
+            dgv.Dock = DockStyle.Fill;
             dgv.Font = UIConfig.DefaultFont;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.RowHeadersVisible = false;
@@ -47,7 +72,7 @@ namespace SellerCenter.Helpers
             //dgv.AutoGenerateColumns = false;
             //dgv.DataBindingComplete += (s, e) =>
             //{
-            //    dgv.AutoGenerateColumns = false;
+            //    dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //};
         }
 

@@ -3,7 +3,7 @@
     public static class UIConfig
     {
         public static Font DefaultFont = new Font("Segoe UI", 10);
-        public static Font HeaderFont = new Font("Segoe UI", 10, FontStyle.Bold);
+        public static Font HeaderFont = new Font("Segoe UI", 14, FontStyle.Bold);
 
         public static int ButtonHeight = 35;
         public static int ButtonWidth = 120;

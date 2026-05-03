@@ -40,7 +40,6 @@ namespace SellerCenter.Forms
             lblStatus = new Label();
             progressBar1 = new ProgressBar();
             tableLayoutPanel1 = new TableLayoutPanel();
-            btnCheckOrder = new Button();
             label2 = new Label();
             lblBarcodeScan = new Label();
             lblRecordStatus = new Label();
@@ -147,7 +146,6 @@ namespace SellerCenter.Forms
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(262, 41);
             progressBar1.TabIndex = 16;
-            progressBar1.Visible = false;
             // 
             // tableLayoutPanel1
             // 
@@ -155,7 +153,6 @@ namespace SellerCenter.Forms
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.0769234F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.9230766F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 267F));
-            tableLayoutPanel1.Controls.Add(btnCheckOrder, 0, 0);
             tableLayoutPanel1.Controls.Add(lblStatus, 1, 3);
             tableLayoutPanel1.Controls.Add(btnStart, 0, 1);
             tableLayoutPanel1.Controls.Add(btnEnd, 0, 2);
@@ -175,21 +172,6 @@ namespace SellerCenter.Forms
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
             tableLayoutPanel1.Size = new Size(574, 183);
             tableLayoutPanel1.TabIndex = 17;
-            // 
-            // btnCheckOrder
-            // 
-            btnCheckOrder.BackColor = SystemColors.ControlLightLight;
-            btnCheckOrder.Dock = DockStyle.Fill;
-            btnCheckOrder.Enabled = false;
-            btnCheckOrder.Font = new Font("Microsoft Sans Serif", 8.25F);
-            btnCheckOrder.ForeColor = SystemColors.ActiveCaptionText;
-            btnCheckOrder.Location = new Point(3, 3);
-            btnCheckOrder.Name = "btnCheckOrder";
-            btnCheckOrder.Size = new Size(141, 37);
-            btnCheckOrder.TabIndex = 1;
-            btnCheckOrder.Text = "Kiểm tra đơn";
-            btnCheckOrder.UseVisualStyleBackColor = false;
-            btnCheckOrder.Click += btnCheckOrder_Click;
             // 
             // label2
             // 
@@ -284,7 +266,6 @@ namespace SellerCenter.Forms
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
-        private Button btnCheckOrder;
         private Label label2;
         private Label lblBarcodeScan;
         private Label lblRecordStatus;
