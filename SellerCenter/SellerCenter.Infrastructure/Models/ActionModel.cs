@@ -3,17 +3,17 @@ using System.Text.Json.Serialization;
 
 namespace SellerCenter.Infrastructure.Models
 {
-    [Table("auth_role_permissions")]
-    public class RolePermissionModel : IEntity
+    [Table("auth_actions")]
+    public class ActionModel : IEntity
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonPropertyName("role_id")]
-        public long RoleId { get; set; }
+        [JsonPropertyName("action_key")]
+        public string? ActionKey { get; set; }
 
-        [JsonPropertyName("permission_id")]
-        public long PermissionId { get; set; }
+        [JsonPropertyName("action_name")]
+        public string? ActionName { get; set; }
 
         [JsonPropertyName("is_active")]
         public bool IsActive { get; set; }

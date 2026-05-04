@@ -82,13 +82,15 @@
             // 
             // btnLogin
             // 
+            btnLogin.BackColor = Color.CornflowerBlue;
             btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(119, 163);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(133, 29);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Đăng nhập";
-            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
             // label1

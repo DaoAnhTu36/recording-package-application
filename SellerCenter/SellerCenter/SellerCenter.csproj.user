@@ -10,6 +10,9 @@
     <Compile Update="Forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\frmBigSellerShopee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -32,6 +35,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\frmFacebookAppPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\frmHistoryScreen.cs">

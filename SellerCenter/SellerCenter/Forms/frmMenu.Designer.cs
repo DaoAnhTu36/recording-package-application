@@ -63,7 +63,7 @@
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(1898, 692);
+            dataGridView1.Size = new Size(1892, 687);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -73,11 +73,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(dataGridView1, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 298);
+            tableLayoutPanel1.Location = new Point(3, 295);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1904, 698);
+            tableLayoutPanel1.Size = new Size(1898, 693);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -92,7 +92,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 29.52953F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 70.4704742F));
-            tableLayoutPanel2.Size = new Size(1910, 999);
+            tableLayoutPanel2.Size = new Size(1904, 991);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -117,19 +117,19 @@
             tableLayoutPanel3.Location = new Point(3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 7;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
-            tableLayoutPanel3.Size = new Size(499, 289);
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 33.3333321F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 31.6666679F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 107F));
+            tableLayoutPanel3.Size = new Size(499, 286);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(116, 220);
+            btnCancel.Location = new Point(116, 199);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 8;
@@ -140,7 +140,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(3, 188);
+            label6.Location = new Point(3, 164);
             label6.Name = "label6";
             label6.Size = new Size(59, 15);
             label6.TabIndex = 10;
@@ -149,7 +149,7 @@
             // txtIconName
             // 
             txtIconName.Dock = DockStyle.Fill;
-            txtIconName.Location = new Point(116, 150);
+            txtIconName.Location = new Point(116, 135);
             txtIconName.Name = "txtIconName";
             txtIconName.Size = new Size(380, 23);
             txtIconName.TabIndex = 5;
@@ -157,7 +157,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(3, 147);
+            label5.Location = new Point(3, 132);
             label5.Name = "label5";
             label5.Size = new Size(63, 15);
             label5.TabIndex = 8;
@@ -166,7 +166,7 @@
             // txtFormName
             // 
             txtFormName.Dock = DockStyle.Fill;
-            txtFormName.Location = new Point(116, 108);
+            txtFormName.Location = new Point(116, 100);
             txtFormName.Name = "txtFormName";
             txtFormName.Size = new Size(380, 23);
             txtFormName.TabIndex = 4;
@@ -174,7 +174,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 105);
+            label4.Location = new Point(3, 97);
             label4.Name = "label4";
             label4.Size = new Size(49, 15);
             label4.TabIndex = 6;
@@ -183,7 +183,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 68);
+            label3.Location = new Point(3, 65);
             label3.Name = "label3";
             label3.Size = new Size(60, 15);
             label3.TabIndex = 4;
@@ -192,7 +192,7 @@
             // txtMenuName
             // 
             txtMenuName.Dock = DockStyle.Fill;
-            txtMenuName.Location = new Point(116, 37);
+            txtMenuName.Location = new Point(116, 36);
             txtMenuName.Name = "txtMenuName";
             txtMenuName.Size = new Size(380, 23);
             txtMenuName.TabIndex = 2;
@@ -217,7 +217,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 34);
+            label2.Location = new Point(3, 33);
             label2.Name = "label2";
             label2.Size = new Size(60, 15);
             label2.TabIndex = 2;
@@ -227,7 +227,7 @@
             // 
             cbbMenuParent.Dock = DockStyle.Fill;
             cbbMenuParent.FormattingEnabled = true;
-            cbbMenuParent.Location = new Point(116, 71);
+            cbbMenuParent.Location = new Point(116, 68);
             cbbMenuParent.Name = "cbbMenuParent";
             cbbMenuParent.Size = new Size(380, 23);
             cbbMenuParent.TabIndex = 3;
@@ -235,14 +235,14 @@
             // txtSortOrder
             // 
             txtSortOrder.Dock = DockStyle.Fill;
-            txtSortOrder.Location = new Point(116, 191);
+            txtSortOrder.Location = new Point(116, 167);
             txtSortOrder.Name = "txtSortOrder";
             txtSortOrder.Size = new Size(380, 23);
             txtSortOrder.TabIndex = 6;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(3, 220);
+            btnSave.Location = new Point(3, 199);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 7;
@@ -254,7 +254,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1910, 999);
+            ClientSize = new Size(1904, 991);
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);

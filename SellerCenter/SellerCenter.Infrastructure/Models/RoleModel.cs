@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace SellerCenter.Infrastructure.Models
 {
-    [Table("roles")]
+    [Table("auth_roles")]
     public class RoleModel : IEntity
     {
         [JsonPropertyName("id")]

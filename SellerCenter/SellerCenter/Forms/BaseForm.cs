@@ -11,8 +11,8 @@ namespace SellerCenter.Forms
             UIHelper.ApplyAll(this);
             this.Name = "Seller Center";
             this.Icon = Properties.Resources.AppIcon;
-            this.MaximumSize = new Size(1920, 1080);
-            this.MinimumSize = new Size(1920, 1080);
+            this.MaximumSize = new Size(1920, 900);
+            this.MinimumSize = new Size(1920, 900);
         }
     }
 }

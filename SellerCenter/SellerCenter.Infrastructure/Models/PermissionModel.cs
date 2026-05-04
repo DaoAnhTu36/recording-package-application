@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace SellerCenter.Infrastructure.Models
 {
-    [Table("permissions")]
+    [Table("auth_permissions")]
     public class PermissionModel : IEntity
     {
         [JsonPropertyName("id")]

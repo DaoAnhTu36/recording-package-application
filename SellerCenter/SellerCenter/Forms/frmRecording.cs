@@ -58,6 +58,7 @@ namespace SellerCenter.Forms
 
         private void StartRecording()
         {
+            AudioHelper.SoundPlay();
             if (_recordTask != null && !_recordTask.IsCompleted) return;
 
             _cts = new CancellationTokenSource();
@@ -202,6 +203,7 @@ namespace SellerCenter.Forms
 
         private async Task StopRecordingAsync()
         {
+            AudioHelper.SoundStop();
             historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Đã dừng quay video.");
             //btnCheckOrder.Enabled = true;
             btnStart.Enabled = true;
@@ -411,7 +413,6 @@ namespace SellerCenter.Forms
 
         private void btnEndWithoutSave_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

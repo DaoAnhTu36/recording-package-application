@@ -17,7 +17,7 @@ namespace SellerCenter.Helpers
                 label.Dock = DockStyle.Top;
                 label.Height = 50;
                 label.TextAlign = ContentAlignment.MiddleCenter;
-                label.BackColor = Color.Red;
+                label.BackColor = Color.CornflowerBlue;
                 label.ForeColor = Color.White;
                 label.Font = UIConfig.HeaderFont;
                 form.Controls.Add(label);
@@ -113,6 +113,10 @@ namespace SellerCenter.Helpers
             rtb.ShortcutsEnabled = true;
         }
 
+        public static void StyleTableLayoutPanel(TableLayoutPanel tlp)
+        {
+        }
+
         public static void ApplyAll(Control parent)
         {
             foreach (Control ctrl in parent.Controls)
@@ -129,6 +133,8 @@ namespace SellerCenter.Helpers
                     StyleLabel(lbl);
                 else if (ctrl is RichTextBox rtb)
                     StyleRichTextBox(rtb);
+                else if (ctrl is TableLayoutPanel tlp)
+                    StyleTableLayoutPanel(tlp);
 
                 if (ctrl.HasChildren)
                     ApplyAll(ctrl);
