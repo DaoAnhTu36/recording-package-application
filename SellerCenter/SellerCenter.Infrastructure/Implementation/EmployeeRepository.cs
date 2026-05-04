@@ -42,7 +42,7 @@ namespace SellerCenter.Infrastructure.Implementation
                     PasswordHash = reader["password_hash"].ToString(),
                     FullName = reader["full_name"].ToString(),
                     Phone = reader["phone"].ToString(),
-                    Role = reader["role"].ToString()
+                    RoleId = Convert.ToInt64(reader["role_id"])
                 };
                 return user;
             }
@@ -92,6 +92,20 @@ namespace SellerCenter.Infrastructure.Implementation
         ", conn);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
+            return await cmd.ExecuteNonQueryAsync() > 0;
+        }
+
+        public async Task<bool> UpdateRole(long id, long roleId)
+        {
+            using var conn = new MySqlConnection(_conn);
+            conn.Open();
+            var cmd = new MySqlCommand(@"
+                UPDATE employees
+                SET role_id = @roleId
+                WHERE id = @id;
+            ", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@roleId", roleId);
             return await cmd.ExecuteNonQueryAsync() > 0;
         }
     }

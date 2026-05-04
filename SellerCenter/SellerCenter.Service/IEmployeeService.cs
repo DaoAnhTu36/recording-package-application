@@ -9,5 +9,7 @@ namespace SellerCenter.Service
         public Task Logout();
 
         public Task<bool> UpdatePassword(long id, string newPassword);
+
+        public Task<bool> UpdateRole(long id, long roleId);
     }
 }

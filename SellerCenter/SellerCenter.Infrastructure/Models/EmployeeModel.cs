@@ -25,8 +25,8 @@ namespace SellerCenter.Infrastructure.Models
         [JsonPropertyName("phone")]
         public string? Phone { get; set; }
 
-        [JsonPropertyName("role")]
-        public string? Role { get; set; }
+        [JsonPropertyName("role_id")]
+        public long RoleId { get; set; }
 
         [JsonPropertyName("is_active")]
         public bool IsActive { get; set; }

@@ -40,11 +40,11 @@
             label5 = new Label();
             cbbRole = new ComboBox();
             btnSave = new Button();
-            btnUpdate = new Button();
             dataGridView1 = new DataGridView();
             txtFullName = new TextBox();
             label6 = new Label();
             formInfo = new TableLayoutPanel();
+            btnUpdate = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             formInfo.SuspendLayout();
@@ -101,7 +101,6 @@
             label3.Size = new Size(57, 15);
             label3.TabIndex = 4;
             label3.Text = "Password";
-            label3.Click += label3_Click;
             // 
             // txtPhone
             // 
@@ -149,24 +148,13 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // btnUpdate
-            // 
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Location = new Point(132, 239);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 20);
-            btnUpdate.TabIndex = 8;
-            btnUpdate.Text = "Cập nhật";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Visible = false;
-            btnUpdate.Click += btnUpdate_Click;
-            // 
             // dataGridView1
             // 
             dataGridView1.Location = new Point(3, 290);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1896, 617);
             dataGridView1.TabIndex = 12;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // txtFullName
             // 
@@ -193,7 +181,6 @@
             formInfo.Controls.Add(label1, 0, 0);
             formInfo.Controls.Add(txtFullName, 1, 1);
             formInfo.Controls.Add(btnSave, 0, 6);
-            formInfo.Controls.Add(btnUpdate, 1, 6);
             formInfo.Controls.Add(txtUsername, 1, 0);
             formInfo.Controls.Add(label6, 0, 1);
             formInfo.Controls.Add(label5, 0, 5);
@@ -204,6 +191,7 @@
             formInfo.Controls.Add(txtPhone, 1, 4);
             formInfo.Controls.Add(label3, 0, 3);
             formInfo.Controls.Add(txtPassword, 1, 3);
+            formInfo.Controls.Add(btnUpdate, 1, 6);
             formInfo.Location = new Point(3, 3);
             formInfo.Name = "formInfo";
             formInfo.RowCount = 7;
@@ -217,6 +205,17 @@
             formInfo.Size = new Size(554, 262);
             formInfo.TabIndex = 15;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(132, 239);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(75, 20);
+            btnUpdate.TabIndex = 14;
+            btnUpdate.Text = "Cập nhật";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Visible = false;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 1;
@@ -229,14 +228,14 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 28.75883F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 71.24117F));
-            tableLayoutPanel2.Size = new Size(1910, 999);
+            tableLayoutPanel2.Size = new Size(1904, 999);
             tableLayoutPanel2.TabIndex = 16;
             // 
             // frmEmployeeManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1910, 999);
+            ClientSize = new Size(1904, 999);
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
@@ -265,11 +264,11 @@
         private Label label5;
         private ComboBox cbbRole;
         private Button btnSave;
-        private Button btnUpdate;
         private DataGridView dataGridView1;
         private TextBox txtFullName;
         private Label label6;
         private TableLayoutPanel formInfo;
         private TableLayoutPanel tableLayoutPanel2;
+        private Button btnUpdate;
     }
 }

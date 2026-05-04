@@ -35,5 +35,10 @@ namespace SellerCenter.Service.Implementation
         {
             return await _employeeRepository.UpdatePassword(id, newPassword);
         }
+
+        public async Task<bool> UpdateRole(long id, long roleId)
+        {
+            return await _employeeRepository.UpdateRole(id, roleId);
+        }
     }
 }
