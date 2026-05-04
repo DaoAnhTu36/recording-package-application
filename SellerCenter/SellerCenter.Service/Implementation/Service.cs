@@ -22,6 +22,7 @@ namespace SellerCenter.Service.Implementation
         {
             return _repo.GetAllList();
         }
+
         public DataTable GetAll()
         {
             return _repo.GetAll();
@@ -31,9 +32,15 @@ namespace SellerCenter.Service.Implementation
         {
             return _repo.SearchByKey(tableName, keyword, columns);
         }
+
         public bool IsExists(string tableName, string keyword, string columns)
         {
             return _repo.IsExists(tableName, keyword, columns);
+        }
+
+        public bool IsExistMulti(string tableName, Dictionary<string, object> keyValues)
+        {
+            return _repo.IsExistMulti(tableName, keyValues);
         }
 
         public T GetById(long id)
@@ -49,6 +56,11 @@ namespace SellerCenter.Service.Implementation
         public bool Delete(long id)
         {
             return _repo.Delete(id);
+        }
+
+        public List<T> GetMulti<T>(string tableName, Dictionary<string, object> keyValues)
+        {
+            return _repo.GetMulti<T>(tableName, keyValues);
         }
     }
 }

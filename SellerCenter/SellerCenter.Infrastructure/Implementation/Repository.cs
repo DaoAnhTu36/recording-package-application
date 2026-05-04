@@ -147,6 +147,31 @@ namespace SellerCenter.Infrastructure.Implementation
             return result != null;
         }
 
+        public bool IsExistMulti(string tableName, Dictionary<string, object> keyValues)
+        {
+            using var conn = new MySqlConnection(_conn);
+            conn.Open();
+
+            var conditions = new List<string>();
+            var cmd = new MySqlCommand();
+            cmd.Connection = conn;
+
+            int i = 0;
+            foreach (var kv in keyValues)
+            {
+                string paramName = $"@p{i}";
+                conditions.Add($"{kv.Key} = {paramName}");
+                cmd.Parameters.AddWithValue(paramName, kv.Value);
+                i++;
+            }
+
+            var whereClause = string.Join(" AND ", conditions);
+            cmd.CommandText = $"SELECT 1 FROM {tableName} WHERE {whereClause} LIMIT 1";
+
+            var result = cmd.ExecuteScalar();
+            return result != null;
+        }
+
         public T GetById(long id)
         {
             using var conn = new MySqlConnection(_conn);
@@ -283,6 +308,74 @@ namespace SellerCenter.Infrastructure.Implementation
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public List<T> GetMulti<T>(string tableName, Dictionary<string, object> keyValues)
+        {
+            using var conn = new MySqlConnection(_conn);
+            conn.Open();
+
+            var conditions = new List<string>();
+            var cmd = new MySqlCommand();
+            cmd.Connection = conn;
+
+            int i = 0;
+            foreach (var kv in keyValues)
+            {
+                string paramName = $"@p{i}";
+                conditions.Add($"{kv.Key} = {paramName}");
+                cmd.Parameters.AddWithValue(paramName, kv.Value);
+                i++;
+            }
+
+            var whereClause = string.Join(" AND ", conditions);
+            cmd.CommandText = $"SELECT * FROM {tableName} WHERE {whereClause}";
+
+            var reader = cmd.ExecuteReader();
+
+            var result = new List<T>();
+            var props = typeof(T).GetProperties();
+
+            while (reader.Read())
+            {
+                var obj = Activator.CreateInstance<T>();
+
+                foreach (var prop in props)
+                {
+                    var attr = prop.GetCustomAttribute<JsonPropertyNameAttribute>();
+
+                    var columnName = attr != null
+                        ? attr.Name
+                        : prop.Name;
+
+                    if (!reader.HasColumn(columnName)) continue;
+
+                    var value = reader[columnName];
+
+                    if (value == DBNull.Value)
+                    {
+                        prop.SetValue(obj, null);
+                        continue;
+                    }
+
+                    var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+
+                    try
+                    {
+                        var safeValue = Convert.ChangeType(value, targetType);
+                        prop.SetValue(obj, safeValue);
+                    }
+                    catch
+                    {
+                        Logger.Info($"Không thể chuyển đổi giá trị '{value}' sang kiểu '{targetType.Name}' cho thuộc tính '{prop.Name}'.");
+                        continue;
+                    }
+                }
+
+                result.Add(obj);
+            }
+
+            return result;
         }
     }
 }

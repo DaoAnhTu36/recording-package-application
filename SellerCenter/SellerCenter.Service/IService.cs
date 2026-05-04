@@ -19,6 +19,10 @@ namespace SellerCenter.Service
 
         bool IsExists(string tableName, string keyword, string columns);
 
+        bool IsExistMulti(string tableName, Dictionary<string, object> keyValues);
+
         DataTable SearchByKey(string tableName, string keyword, params string[] columns);
+
+        List<T> GetMulti<T>(string tableName, Dictionary<string, object> keyValues);
     }
 }

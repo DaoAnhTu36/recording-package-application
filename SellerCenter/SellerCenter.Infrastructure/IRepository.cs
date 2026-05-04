@@ -15,6 +15,10 @@ namespace SellerCenter.Infrastructure
 
         bool IsExists(string tableName, string keyword, string columns);
 
+        bool IsExistMulti(string tableName, Dictionary<string, object> keyValues);
+
+        List<T> GetMulti<T>(string tableName, Dictionary<string, object> keyValues);
+
         T GetById(long id);
 
         bool Update(T entity);
