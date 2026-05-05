@@ -84,10 +84,11 @@
             // 
             btnLogin.BackColor = Color.CornflowerBlue;
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.ForeColor = Color.White;
+            btnLogin.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnLogin.ForeColor = SystemColors.ControlLightLight;
             btnLogin.Location = new Point(119, 163);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(133, 29);
+            btnLogin.Size = new Size(133, 39);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Đăng nhập";
             btnLogin.UseVisualStyleBackColor = false;

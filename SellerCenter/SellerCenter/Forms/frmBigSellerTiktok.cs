@@ -11,7 +11,7 @@ namespace SellerCenter.Forms
 
         private async Task InitWebViewAsync()
         {
-            string path = Path.Combine(Application.StartupPath, "WebViewProfile", "TikTok");
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WebViewProfile", "TikTok");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

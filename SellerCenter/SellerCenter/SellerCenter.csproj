@@ -7,8 +7,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <PublishSingleFile>true</PublishSingleFile>
-	  <SelfContained>true</SelfContained>
 	  <ApplicationIcon>logo.ico</ApplicationIcon>
+	  <PublishReadyToRun>true</PublishReadyToRun>
+	  <SelfContained>false</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>

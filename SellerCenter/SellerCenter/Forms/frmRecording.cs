@@ -15,6 +15,7 @@ namespace SellerCenter.Forms
     public partial class frmRecording : BaseForm
     {
         private readonly IPackingSessionService _packingSessionService;
+        private readonly ISoundService _soundService;
         private readonly ICameraService _cameraService;
         private VideoCapture _camera;
         private VideoWriter? _writer;
@@ -22,7 +23,7 @@ namespace SellerCenter.Forms
         private int _height;
         private string? _fullPathFile;
         private string? _fullNameFile;
-        private bool _isSaveIntoDatabase = true;
+        private bool _isSaveIntoDatabase = false;
         private CancellationTokenSource? _cts;
         private Task? _recordTask;
         private readonly object _writerLock = new();
@@ -35,40 +36,37 @@ namespace SellerCenter.Forms
         {
             InitializeComponent();
             _packingSessionService = ServiceLocator.Get<IPackingSessionService>();
+            _soundService = ServiceLocator.Get<ISoundService>();
             _cameraService = ServiceLocator.Get<ICameraService>();
             _camera = new VideoCapture(0);
             _width = (int)_camera.Get(VideoCaptureProperties.FrameWidth);
             _height = (int)_camera.Get(VideoCaptureProperties.FrameHeight);
         }
 
-        private void btnCheckOrder_Click(object sender, EventArgs e)
-        {
-            CheckOrder();
-        }
-
-        private void btnStart_Click(object sender, EventArgs e)
+        private async void btnStart_Click(object sender, EventArgs e)
         {
             StartRecording();
         }
 
         private async void btnEnd_Click(object sender, EventArgs e)
         {
-            await StopRecordingAsync();
+            StopRecordingAsync();
         }
 
-        private void StartRecording()
+        private async void StartRecording()
         {
-            AudioHelper.SoundPlay();
-            if (_recordTask != null && !_recordTask.IsCompleted) return;
+            if (_recordTask != null && !_recordTask.IsCompleted)
+            {
+                return;
+            }
 
             _cts = new CancellationTokenSource();
-            btnStart.Enabled = false;
-            historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Bắt đầu quay video.");
+            AutoScrollListBox($"{DateTime.Now:HH:mm:ss} - Bắt đầu quay video.");
 
             _recordTask = Task.Run(() => RecordLoop(_cts.Token));
         }
 
-        private void RecordLoop(CancellationToken token)
+        private async void RecordLoop(CancellationToken token)
         {
             while (!token.IsCancellationRequested)
             {
@@ -94,26 +92,33 @@ namespace SellerCenter.Forms
                 {
                     var qrHelper = new QrScannerHelper();
                     var barcode = qrHelper.DecodeQR(frame);
-
                     if (!string.IsNullOrEmpty(barcode))
                     {
-                        if (_packingSessionService.IsBarcodeExists(barcode))
+                        if (!ValidateHelper.IsValidTrackingCode(barcode))
+                        {
+                            AutoScrollListBox($"{DateTime.Now:HH:mm:ss} - Mã QR {barcode} không hợp lệ.");
+                        }
+                        else if (_packingSessionService.IsBarcodeExists(barcode))
                         {
                             historyScanBarcode.Invoke((MethodInvoker)(() =>
                             {
-                                historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Mã QR {barcode} đã tồn tại.");
+                                AutoScrollListBox($"{DateTime.Now:HH:mm:ss} - Mã QR {barcode} đã tồn tại.");
                             }));
                         }
                         else
                         {
-                            if (ConfigOutputVideo(barcode))
+                            _barcode = barcode;
+                            var locaPath = ConfigOutputVideo(barcode);
+                            if (!string.IsNullOrEmpty(locaPath))
                             {
                                 BeginInvoke((MethodInvoker)(() =>
                                 {
                                     lblBarcodeScan.Text = barcode;
                                     lblRecordStatus.Text = "Sẵn sàng quay video";
+                                    lblLocalPath.Text = locaPath;
+                                    btnStart.Enabled = false;
                                     btnEnd.Enabled = true;
-                                    historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Sẵn sàng quay video.");
+                                    btnRestart.Enabled = true;
                                 }));
                                 _hasValueBarcode = true;
                             }
@@ -140,75 +145,18 @@ namespace SellerCenter.Forms
             }
         }
 
-        private void CheckOrder()
+        private async void StopRecordingAsync()
         {
-            historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Hãy quét mã đơn hàng.");
-            _checkCts = new CancellationTokenSource();
-
-            _checkTask = Task.Run(() =>
+            await _soundService.PlayStopAsync();
+            if (_isSaveIntoDatabase)
             {
-                while (!_checkCts!.Token.IsCancellationRequested)
-                {
-                    using var frame = new Mat();
-                    _camera.Read(frame);
-
-                    if (frame.Empty())
-                    {
-                        Thread.Sleep(10);
-                        continue;
-                    }
-
-                    var bmp = BitmapConverter.ToBitmap(frame);
-                    pictureBoxCamera.Invoke((MethodInvoker)(() =>
-                    {
-                        var old = pictureBoxCamera.Image;
-                        pictureBoxCamera.Image = bmp;
-                        old?.Dispose();
-                    }));
-
-                    var qrHelper = new QrScannerHelper();
-                    var barcode = qrHelper.DecodeQR(frame);
-
-                    if (!string.IsNullOrEmpty(barcode))
-                    {
-                        if (_packingSessionService.IsBarcodeExists(barcode))
-                        {
-                            historyScanBarcode.Invoke((MethodInvoker)(() =>
-                            {
-                                historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Mã QR {barcode} đã tồn tại.");
-                            }));
-                        }
-                        else
-                        {
-                            if (ConfigOutputVideo(barcode))
-                            {
-                                BeginInvoke((MethodInvoker)(() =>
-                                {
-                                    lblBarcodeScan.Text = barcode;
-                                    lblRecordStatus.Text = "Sẵn sàng quay video";
-                                    btnStart.Enabled = true;
-                                    //btnCheckOrder.Enabled = false;
-                                    historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Sẵn sàng quay video.");
-                                }));
-
-                                break;
-                            }
-                        }
-                    }
-
-                    Thread.Sleep(30);
-                }
-            });
-        }
-
-        private async Task StopRecordingAsync()
-        {
-            AudioHelper.SoundStop();
+                _packingSessionService.InsertSession(lblBarcodeScan.Text, lblLocalPath.Text);
+                ProcessUploadYoutube();
+            }
             historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Đã dừng quay video.");
             //btnCheckOrder.Enabled = true;
             btnStart.Enabled = true;
             btnEnd.Enabled = false;
-            btnUploadYoutube.Enabled = true;
             _hasValueBarcode = false;
             _cts?.Cancel();
 
@@ -232,16 +180,8 @@ namespace SellerCenter.Forms
             lblRecordStatus.Text = "Không sẵn sàng quay video";
         }
 
-        private bool ConfigOutputVideo(string? barcode)
+        private string ConfigOutputVideo(string? barcode)
         {
-            if (string.IsNullOrEmpty(barcode))
-            {
-                historyScanBarcode.Invoke((MethodInvoker)(() =>
-                {
-                    historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Mã QR không hợp lệ.");
-                }));
-                return false;
-            }
             lock (_writerLock)
             {
                 _writer?.Release();
@@ -261,25 +201,16 @@ namespace SellerCenter.Forms
                 {
                     historyScanBarcode.Invoke((MethodInvoker)(() =>
                     {
-                        historyScanBarcode.Items.Add($"{DateTime.Now:HH:mm:ss} - Không tạo được file video");
+                        AutoScrollListBox($"{DateTime.Now:HH:mm:ss} - Không tạo được file video");
                     }));
-                    return false;
+                    return string.Empty;
                 }
 
-                if (_isSaveIntoDatabase)
-                {
-                    if (barcode != null)
-                    {
-                        _barcode = barcode;
-                        _packingSessionService.InsertSession(barcode, _fullPathFile!);
-                    }
-                }
-
-                return true;
+                return _fullPathFile;
             }
         }
 
-        private async void btnUploadYoutube_Click(object sender, EventArgs e)
+        private async void ProcessUploadYoutube()
         {
             if (string.IsNullOrWhiteSpace(_fullPathFile) || string.IsNullOrWhiteSpace(_fullNameFile) || !File.Exists(_fullPathFile))
             {
@@ -289,7 +220,6 @@ namespace SellerCenter.Forms
 
             try
             {
-                btnUploadYoutube.Enabled = false;
                 progressBar1.Visible = true;
                 progressBar1.Value = 0;
                 lblStatus.Visible = true;
@@ -308,7 +238,6 @@ namespace SellerCenter.Forms
             }
             finally
             {
-                btnUploadYoutube.Enabled = true;
             }
         }
 
@@ -413,6 +342,72 @@ namespace SellerCenter.Forms
 
         private void btnEndWithoutSave_Click(object sender, EventArgs e)
         {
+        }
+
+        private void AutoScrollListBox(string mess)
+        {
+            historyScanBarcode.Invoke((MethodInvoker)(() =>
+            {
+                historyScanBarcode.Items.Add(mess);
+                historyScanBarcode.TopIndex = historyScanBarcode.Items.Count - 1;
+            }));
+        }
+
+        private async void btnRestart_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn bắt đầu lại?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
+            await ResetFormAsync();
+        }
+
+        private async Task ResetFormAsync()
+        {
+            if (_cts != null)
+            {
+                _cts.Cancel();
+            }
+
+            if (_recordTask != null)
+            {
+                await _recordTask;
+                _recordTask = null;
+            }
+
+            lock (_writerLock)
+            {
+                if (_writer != null)
+                {
+                    _writer.Release();
+                    _writer.Dispose();
+                    _writer = null;
+                }
+            }
+
+            _hasValueBarcode = false;
+            _barcode = null;
+            _fullPathFile = null;
+            _fullNameFile = null;
+            _isSaveIntoDatabase = false;
+
+            lblBarcodeScan.Text = "Vui lòng quét mã vạch";
+            lblRecordStatus.Text = "Không sẵn sàng quay video";
+            lblLocalPath.Text = "";
+
+            btnStart.Enabled = true;
+            btnEnd.Enabled = false;
+            btnRestart.Enabled = false;
+
+            progressBar1.Value = 0;
+            progressBar1.Visible = false;
+            lblStatus.Text = "";
+            lblStatus.Visible = false;
+
+            pictureBoxCamera.Image?.Dispose();
+            pictureBoxCamera.Image = null;
+
+            AutoScrollListBox($"{DateTime.Now:HH:mm:ss} - Reset hệ thống.");
         }
     }
 }

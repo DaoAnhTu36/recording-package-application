@@ -11,7 +11,7 @@ namespace SellerCenter.Forms
 
         private async void frmBigSeller_Load(object sender, EventArgs e)
         {
-            string path = Path.Combine(Application.StartupPath, "WebViewProfile", "Shopee");
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WebViewProfile", "Shopee");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
