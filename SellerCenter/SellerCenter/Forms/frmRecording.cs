@@ -23,7 +23,7 @@ namespace SellerCenter.Forms
         private int _height;
         private string? _fullPathFile;
         private string? _fullNameFile;
-        private bool _isSaveIntoDatabase = false;
+        private bool _isSaveIntoDatabase = true;
         private CancellationTokenSource? _cts;
         private Task? _recordTask;
         private readonly object _writerLock = new();
